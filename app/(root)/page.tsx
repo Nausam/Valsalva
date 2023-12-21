@@ -13,7 +13,7 @@ export default function Home() {
             </h1>
             <p className="p-regular-20 md:p-regular-24">
               Dive into a World of Excellence: Unleashing Precision, Power, and
-              Unparalleled Performance in Every Fin.
+              Unparalleled Performance in Every Fin!
             </p>
             <Button
               asChild
