@@ -11,7 +11,7 @@ import { useSnapshot } from "valtio";
 
 const Mask = () => {
   const snap = useSnapshot(state);
-  const { nodes, materials } = useGLTF("/assets/models/Mask.glb");
+  const { nodes, materials } = useGLTF("/assets/models/mask.glb");
 
   const logoTexture = useTexture(snap.logoDecal);
   const fullTexture = useTexture(snap.fullDecal);
