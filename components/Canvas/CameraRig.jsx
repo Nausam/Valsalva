@@ -11,8 +11,8 @@ const CameraRig = ({ children }) => {
   const bind = useDrag(
     ({ movement: [dx, dy], down }) => {
       if (group.current && down) {
-        const sensitivity = 0.0013; // Adjust the sensitivity as needed
-        const rotationSpeed = 0.3;
+        const sensitivity = 0; // Adjust the sensitivity as needed
+        const rotationSpeed = 3;
 
         // Rotate the model based on drag movement
         group.current.rotation.y += dx * sensitivity * rotationSpeed;

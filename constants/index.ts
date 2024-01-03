@@ -16,22 +16,21 @@ export const headerLinks = [
     route: "/product/customize",
   },
   {
+    label: "Create",
+    route: "/product/create",
+  },
+  {
     label: "My Profile",
     route: "/profile",
   },
 ];
 
-export const eventDefaultValues = {
+export const productDefaultValues = {
   title: "",
   description: "",
-  location: "",
   imageUrl: "",
-  startDateTime: new Date(),
-  endDateTime: new Date(),
   categoryId: "",
   price: "",
-  isFree: false,
-  url: "",
 };
 
 export const EditorTabs = [

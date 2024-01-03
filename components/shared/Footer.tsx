@@ -9,7 +9,7 @@ const Footer = () => {
           <h2 className="font-bold text-3xl">Valsalva</h2>
         </Link>
 
-        <p>@2024 Valsalva. All Rights reserved.</p>
+        <p>© 2024 Valsalva. All Rights Reserved.</p>
       </div>
     </footer>
   );

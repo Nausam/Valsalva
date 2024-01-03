@@ -1,8 +1,17 @@
+import Collection from "@/components/shared/Collection";
 import { Button } from "@/components/ui/button";
+import { getAllProducts } from "@/lib/actions/product.actions";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Home() {
+export default async function Home() {
+  const products = await getAllProducts({
+    query: "",
+    category: "",
+    page: 1,
+    limit: 6,
+  });
+
   return (
     <>
       <section className="bg-primary-50 bg-dotted-pattern bg-contain py-5 md:py-10">
@@ -32,6 +41,27 @@ export default function Home() {
             className="max-h-[70vh] object-contain object-center 2xl:max-h-[60vh]"
           />
         </div>
+      </section>
+
+      <section
+        id="products"
+        className="wrapper my-8 flex flex-col gap-8 md:gap-12"
+      >
+        <h2 className="h2-bold">Featured Products</h2>
+
+        <div className="flex w-full flex-col gap-5 md:flex-row">
+          SERACH CATEFORY FILTER
+        </div>
+
+        <Collection
+          data={products?.data}
+          emptyTitle="No products found"
+          emptyStateSubtext="Come back later"
+          collectionType="All_Products"
+          limit={6}
+          page={1}
+          totalPages={2}
+        />
       </section>
     </>
   );
