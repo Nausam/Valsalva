@@ -4,6 +4,7 @@ import {
   CreateProductParams,
   DeleteProductParams,
   GetAllProductsParams,
+  GetProductsByUserParams,
   GetRelatedProductsByCategoryParams,
   UpdateProductParams,
 } from "@/types";
@@ -13,6 +14,10 @@ import User from "../database/models/user.model";
 import Product from "../database/models/product.model";
 import Category from "../database/models/category.model";
 import { revalidatePath } from "next/cache";
+
+const getCategoryByName = async (name: string) => {
+  return Category.findOne({ name: { $regex: name, $options: "i" } });
+};
 
 const populateProduct = async (query: any) => {
   return query
@@ -82,13 +87,26 @@ export const getAllProducts = async ({
   try {
     await connectToDatabase();
 
-    const conditions = {};
+    const titleCondition = query
+      ? { title: { $regex: query, $options: "i" } }
+      : {};
+    const categoryCondition = category
+      ? await getCategoryByName(category)
+      : null;
 
+    const conditions = {
+      $and: [
+        titleCondition,
+        categoryCondition ? { category: categoryCondition._id } : {},
+      ],
+    };
+
+    const skipAmount = (Number(page) - 1) * limit;
     const productQuery = Product.find(conditions)
       .sort({
         createdAt: "desc",
       })
-      .skip(0)
+      .skip(skipAmount)
       .limit(limit);
 
     const products = await populateProduct(productQuery);
@@ -142,7 +160,7 @@ export async function updateProduct({
   }
 }
 
-// GET RELATED EVENTS: EVENTS WITH SAME CATEGORY
+// GET RELATED PRODUCTS: PRODUCTS WITH SAME CATEGORY
 export async function getRelatedProductsByCategory({
   categoryId,
   productId,
@@ -156,6 +174,35 @@ export async function getRelatedProductsByCategory({
     const conditions = {
       $and: [{ category: categoryId }, { _id: { $ne: productId } }],
     };
+
+    const productsQuery = Product.find(conditions)
+      .sort({ createdAt: "desc" })
+      .skip(skipAmount)
+      .limit(limit);
+
+    const products = await populateProduct(productsQuery);
+    const productsCount = await Product.countDocuments(conditions);
+
+    return {
+      data: JSON.parse(JSON.stringify(products)),
+      totalPages: Math.ceil(productsCount / limit),
+    };
+  } catch (error) {
+    handleError(error);
+  }
+}
+
+// GET PRODUCTS BY ORGANIZER
+export async function getProductsByUser({
+  userId,
+  limit = 6,
+  page,
+}: GetProductsByUserParams) {
+  try {
+    await connectToDatabase();
+
+    const conditions = { organizer: userId };
+    const skipAmount = (page - 1) * limit;
 
     const productsQuery = Product.find(conditions)
       .sort({ createdAt: "desc" })

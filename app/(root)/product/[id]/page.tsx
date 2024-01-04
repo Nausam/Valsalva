@@ -69,9 +69,9 @@ const ProductDetails = async ({
             emptyTitle="No products found"
             emptyStateSubtext="Come back later"
             collectionType="All_Products"
-            limit={6}
-            page={1}
-            totalPages={2}
+            limit={3}
+            page={searchParams.page as string}
+            totalPages={similarProducts?.totalPages}
           />
         </div>
       </section>

@@ -14,8 +14,8 @@ const Card = ({ product, hasOrderLink }: CardProps) => {
   const { sessionClaims } = auth();
   const userId = sessionClaims?.userId as string;
 
-  const isProductCreator = product.creator._id === userId;
-  // const isProductCreator = product.creator._id === userId.toString();
+  // const isProductCreator = product.creator._id === userId;
+  const isProductCreator = product.creator._id === userId.toString();
 
   return (
     <div className="group relative flex min-h-[380px] w-full max-w-[400px] flex-col overflow-hidden rounded-xl bg-white shadow-md transition-all hover:shadow-lg md:min-h-[438px]">
@@ -24,6 +24,7 @@ const Card = ({ product, hasOrderLink }: CardProps) => {
         style={{ backgroundImage: `url(${product.imageUrl})` }}
         className="flex-center flex-grow bg-gray-50 bg-cover bg-center text-grey-500"
       />
+
       {isProductCreator && (
         <div className="absolute right-2 top-2 flex flex-col gap-4 rounded-xl bg-white p-3 shadow-sm transition-all">
           <Link href={`/product/${product._id}/update`}>

@@ -1,4 +1,4 @@
-import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import { SignedIn, SignedOut, UserButton, auth } from "@clerk/nextjs";
 import Link from "next/link";
 import React from "react";
 import { Button } from "../ui/button";
@@ -6,6 +6,9 @@ import NavItems from "./NavItems";
 import MobileNav from "./MobileNav";
 
 const Header = () => {
+  const { sessionClaims } = auth();
+  const admin = sessionClaims?.userId as string;
+
   return (
     <header className="w-full borber-b">
       <div className="wrapper flex items-center justify-between">

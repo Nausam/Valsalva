@@ -16,6 +16,10 @@ export const headerLinks = [
     route: "/product/customize",
   },
   {
+    label: "Store",
+    route: "/store",
+  },
+  {
     label: "Create",
     route: "/product/create",
   },

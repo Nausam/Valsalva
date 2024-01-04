@@ -53,7 +53,7 @@ export type GetAllProductsParams = {
   page: number;
 };
 
-export type GetEventsByUserParams = {
+export type GetProductsByUserParams = {
   userId: string;
   limit?: number;
   page: number;
@@ -109,8 +109,8 @@ export type CreateOrderParams = {
   createdAt: Date;
 };
 
-export type GetOrdersByEventParams = {
-  eventId: string;
+export type GetOrdersByProductParams = {
+  productId: string;
   searchString: string;
 };
 
