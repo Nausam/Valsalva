@@ -13,7 +13,7 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
   const userId = sessionClaims?.userId as string;
 
   const ordersPage = Number(searchParams?.ordersPage) || 1;
-  const productsPage = Number(searchParams?.productsPage) || 1;
+  // const productsPage = Number(searchParams?.productsPage) || 1;
 
   const orders = await getOrdersByUser({ userId, page: ordersPage });
 
