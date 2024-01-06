@@ -7,11 +7,10 @@ const Footer = () => {
       <div className="flex-center wrapper flex-between flex flex-col gap-4 p-5 text-center sm:flex-row">
         <Link href="/">
           <Image
-            src="/assets/images/valsalva-line.png"
+            src="/assets/images/valsalva.png"
             width={200}
             height={20}
-            alt="Evently logo"
-            quality={100}
+            alt="valsalva typography"
           />
         </Link>
 

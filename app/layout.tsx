@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   description:
     "Valsalva is an elegent e-commerce website to buy snorkeling gear and equipment.",
   icons: {
-    icon: "/asets/images/logo.svg",
+    icon: "/asets/images/logo.png",
   },
 };
 

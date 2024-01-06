@@ -17,18 +17,17 @@ const Header = async () => {
       <div className="wrapper flex items-center justify-between">
         <Link href="/" className="flex gap-2">
           <Image
-            src="/assets/images/valsalva.png"
+            src="/assets/images/logo.png"
             width={20}
             height={20}
-            alt="Evently logo"
+            alt="valsalva logo"
           />
 
           <Image
-            src="/assets/images/valsalva-logo.png"
+            src="/assets/images/valsalva.png"
             width={200}
             height={20}
-            alt="Evently logo"
-            quality={100}
+            alt="valsalva typography"
           />
         </Link>
 
