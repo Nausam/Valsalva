@@ -13,7 +13,7 @@ export default async function Store({ searchParams }: SearchParamProps) {
     query: searchText,
     category: category,
     page,
-    limit: 3,
+    limit: 20,
   });
 
   return (

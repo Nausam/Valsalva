@@ -39,9 +39,20 @@ const Checkout = ({
 
     await checkoutOrder(order);
   };
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    await onCheckout();
+  };
+
   return (
-    <form action={onCheckout} method="post">
-      <Button type="submit" role="link" size="lg" className="button sm:w-fit">
+    <form onSubmit={handleSubmit} method="post">
+      <Button
+        type="submit"
+        role="link"
+        size="lg"
+        className="button bg-green-600 sm:w-fit hover:bg-green-500"
+      >
         Buy Now
       </Button>
     </form>

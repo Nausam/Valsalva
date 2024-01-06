@@ -166,3 +166,49 @@ export async function getOrdersByUser({
     handleError(error);
   }
 }
+
+export async function getOrdersBySpecificUser({
+  userId,
+  limit = 3,
+  page,
+}: GetOrdersByUserParams) {
+  try {
+    await connectToDatabase();
+
+    const skipAmount = (Number(page) - 1) * limit;
+    const conditions = { buyer: userId };
+
+    const orders = await Order.find(conditions)
+      .sort({ createdAt: "desc" })
+      .skip(skipAmount)
+      .limit(limit)
+      .populate({
+        path: "product",
+        model: Product,
+        select: "title",
+        populate: {
+          path: "creator",
+          model: User,
+          select: "_id firstName lastName",
+        },
+      })
+      .populate({
+        path: "buyer",
+        model: User,
+        select: "_id firstName lastName",
+      });
+
+    console.log(orders);
+
+    const ordersCount = await Order.distinct("product._id").countDocuments(
+      conditions
+    );
+
+    return {
+      data: JSON.parse(JSON.stringify(orders)),
+      totalPages: Math.ceil(ordersCount / limit),
+    };
+  } catch (error) {
+    handleError(error);
+  }
+}

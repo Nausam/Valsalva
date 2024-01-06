@@ -1,17 +1,31 @@
 import Search from "@/components/shared/Search";
-import { getOrdersByProduct } from "@/lib/actions/order.actions";
+import {
+  getOrdersByProduct,
+  getOrdersBySpecificUser,
+  getOrdersByUser,
+} from "@/lib/actions/order.actions";
 import { formatDateTime, formatPrice } from "@/lib/utils";
 import { SearchParamProps } from "@/types";
-import { IOrderItem } from "@/lib/database/models/order.model";
+import {
+  IOrderItem,
+  IOrderSpecificItem,
+} from "@/lib/database/models/order.model";
+import { auth } from "@clerk/nextjs";
 
 const Orders = async ({ searchParams }: SearchParamProps) => {
-  const productId = (searchParams?.productId as string) || "";
-  const searchText = (searchParams?.query as string) || "";
+  // const productId = (searchParams?.productId as string) || "";
+  // const searchText = (searchParams?.query as string) || "";
 
-  const orders = await getOrdersByProduct({
-    productId,
-    searchString: searchText,
+  const { sessionClaims } = auth();
+  const userId = sessionClaims?.userId as string;
+
+  const result = await getOrdersBySpecificUser({
+    userId,
+    page: 1,
   });
+
+  const orders = result?.data || [];
+  // const totalPages = result?.totalPages || 0;
 
   return (
     <>
@@ -46,7 +60,7 @@ const Orders = async ({ searchParams }: SearchParamProps) => {
             ) : (
               <>
                 {orders &&
-                  orders.map((row: IOrderItem) => (
+                  orders.map((row: IOrderSpecificItem) => (
                     <tr
                       key={row._id}
                       className="p-regular-14 lg:p-regular-16 border-b "
@@ -56,9 +70,9 @@ const Orders = async ({ searchParams }: SearchParamProps) => {
                         {row._id}
                       </td>
                       <td className="min-w-[200px] flex-1 py-4 pr-4">
-                        {row.productTitle}
+                        {row.product.title}
                       </td>
-                      <td className="min-w-[150px] py-4">{row.buyer}</td>
+                      <td className="min-w-[150px] py-4">{`${row.buyer.firstName} ${row.buyer.lastName}`}</td>
                       <td className="min-w-[100px] py-4">
                         {formatDateTime(row.createdAt).dateTime}
                       </td>

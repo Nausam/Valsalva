@@ -30,10 +30,15 @@ const Collection = ({
           <ul className="grid w-full grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:gap-10">
             {data.map((product) => {
               const hasOrderLink = collectionType === "My_Products";
+              const hidePrice = collectionType === "My_Products";
 
               return (
                 <li key={product._id} className="flex justify-center">
-                  <Card product={product} hasOrderLink={hasOrderLink} />
+                  <Card
+                    product={product}
+                    hasOrderLink={hasOrderLink}
+                    hidePrice={hidePrice}
+                  />
                 </li>
               );
             })}

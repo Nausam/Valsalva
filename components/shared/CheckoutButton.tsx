@@ -17,7 +17,7 @@ const CheckoutButton = ({ product }: { product: IProduct }) => {
     <div className="flex items-center gap-3">
       <>
         <SignedOut>
-          <Button asChild className="button" size="lg">
+          <Button asChild className="button">
             <Link href="/sign-in">Buy</Link>
           </Button>
         </SignedOut>

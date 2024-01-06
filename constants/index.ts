@@ -20,12 +20,15 @@ export const headerLinks = [
     route: "/store",
   },
   {
-    label: "Create",
-    route: "/product/create",
-  },
-  {
     label: "My Profile",
     route: "/profile",
+  },
+];
+
+export const adminLinks = [
+  {
+    label: "Create",
+    route: "/product/create",
   },
 ];
 

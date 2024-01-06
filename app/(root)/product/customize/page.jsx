@@ -87,7 +87,7 @@ const page = () => {
         reject(error);
       };
 
-      fileReader.readAsDataURL(file); // You can adjust this based on your file type
+      fileReader.readAsDataURL(file);
     });
   };
 

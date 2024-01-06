@@ -24,6 +24,20 @@ export type IOrderItem = {
   buyer: string;
 };
 
+export type IOrderSpecificItem = {
+  _id: string;
+  totalAmount: string;
+  createdAt: Date;
+  product: {
+    title: string;
+  };
+  buyer: {
+    _id: string;
+    firstName: string;
+    lastName: string;
+  };
+};
+
 const OrderSchema = new Schema({
   createdAt: {
     type: Date,

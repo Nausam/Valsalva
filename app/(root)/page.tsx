@@ -20,32 +20,36 @@ export default async function Home({ searchParams }: SearchParamProps) {
 
   return (
     <>
-      <section className="bg-primary-50 bg-dotted-pattern bg-contain py-5 md:py-10">
-        <div className="wrapper grid grid-cols-1 gap-5 md:grid-cols-2 2xl:gap-0">
-          <div className="flex flex-col justify-center gap-8">
-            <h1 className="h1-bold">
+      <section className="bg-primary-50 bg-dotted-pattern bg-contain py-5 md:py-10 relative">
+        <div className="wrapper grid grid-cols-1 gap-5 lg:grid-cols-2 2xl:gap-0">
+          <div className="flex flex-col justify-center gap-8 relative z-10">
+            <h1 className="h1-bold text-white drop-shadow-md">
               Discover Precision, Power, and Beauty Below.
             </h1>
-            <p className="p-regular-20 md:p-regular-24">
+            <p className="p-regular-20 md:p-regular-24 text-white">
               Dive into a World of Excellence: Unleashing Precision, Power, and
               Unparalleled Performance in Every Fin!
             </p>
             <Button
               asChild
-              className="button bg-black hover:bg-slate-800 w-full sm:w-fit"
+              className="button bg-blue-600 hover:bg-blue-500 w-full sm:w-fit transition-all duration-300 ease-in-out shadow-lg"
               size="lg"
             >
-              <Link href="#products">Explore Now</Link>
+              <Link href="/store">Explore Now</Link>
             </Button>
           </div>
 
-          <Image
-            src="/assets/images/hero4.png"
-            alt="hero"
-            width={1000}
-            height={1000}
-            className="max-h-[70vh] object-contain object-center 2xl:max-h-[60vh]"
-          />
+          <div className="absolute top-0 left-0 right-0 bottom-0">
+            <Image
+              src="/assets/images/hero1.jpg"
+              alt="hero"
+              fill
+              style={{ objectFit: "cover" }}
+              className="object-contain object-center"
+              priority={true}
+              quality={100}
+            />
+          </div>
         </div>
       </section>
 
@@ -55,20 +59,41 @@ export default async function Home({ searchParams }: SearchParamProps) {
       >
         <h2 className="h2-bold">Featured Products</h2>
 
-        {/* <div className="flex w-full flex-col gap-5 md:flex-row">
-          <Search />
-          <CategoryFilter />
-        </div> */}
-
         <Collection
           data={products?.data}
           emptyTitle="No products found"
           emptyStateSubtext="Come back later"
           collectionType="All_Products"
-          limit={6}
-          page={1}
-          totalPages={2}
+          limit={3}
+          page={page}
+          totalPages={products?.totalPages}
         />
+      </section>
+
+      <section className="bg-primary-50 bg-dotted-pattern bg-contain py-5 md:py-10">
+        <div className="wrapper grid grid-cols-1 gap-5 md:grid-cols-2 2xl:gap-0">
+          <div className="flex flex-col justify-center gap-8">
+            <h1 className="h1-bold">Customize to your hearts desire!</h1>
+            <p className="p-regular-20 md:p-regular-24">
+              First ever custom fin builder in the Maldives.
+            </p>
+            <Button
+              size="lg"
+              asChild
+              className="button w-full sm:w-fit bg-blue-600 hover:bg-blue-500 transition-all duration-300 ease-in-out shadow-lg"
+            >
+              <Link href="/product/customize">Customize Now</Link>
+            </Button>
+          </div>
+
+          <Image
+            src="/assets/images/hero4.png"
+            alt="hero"
+            width={1000}
+            height={1000}
+            className="max-h-[70vh] object-contain object-center 2xl:max-h-[50vh]"
+          />
+        </div>
       </section>
     </>
   );
