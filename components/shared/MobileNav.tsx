@@ -34,7 +34,7 @@ const MobileNav = () => {
                 return (
                   <li
                     key={link.route}
-                    className="flex-center p-medium-16 whitespace-nowrap border-2 py-3 rounded-md bg-blue-500 hover:bg-blue-400 text-white"
+                    className="flex-center p-medium-16 whitespace-nowrap border-2 py-3 rounded-md bg-sky-600 hover:bg-sky-500 text-white"
                   >
                     <Link href={link.route}>{link.label}</Link>
                   </li>

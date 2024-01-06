@@ -67,7 +67,7 @@ const ProductDetails = async ({
         <div className="mt-10">
           <Collection
             data={similarProducts?.data}
-            emptyTitle="No products found"
+            emptyTitle="No similar products found!"
             emptyStateSubtext="Come back later"
             collectionType="All_Products"
             limit={3}

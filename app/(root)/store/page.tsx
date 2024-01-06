@@ -13,7 +13,7 @@ export default async function Store({ searchParams }: SearchParamProps) {
     query: searchText,
     category: category,
     page,
-    limit: 20,
+    limit: 3,
   });
 
   return (
@@ -35,6 +35,7 @@ export default async function Store({ searchParams }: SearchParamProps) {
           emptyStateSubtext="Come back later"
           collectionType="All_Products"
           limit={3}
+          homePage={false}
           page={page}
           totalPages={products?.totalPages}
         />

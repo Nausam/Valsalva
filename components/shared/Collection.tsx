@@ -7,6 +7,7 @@ type CollectionProps = {
   data: IProduct[];
   emptyTitle: string;
   emptyStateSubtext: string;
+  homePage?: boolean;
   limit: number;
   page: number | string;
   totalPages?: number;
@@ -19,6 +20,7 @@ const Collection = ({
   emptyTitle,
   emptyStateSubtext,
   page,
+  homePage = false,
   totalPages = 0,
   collectionType,
   urlParamName,
@@ -44,7 +46,7 @@ const Collection = ({
             })}
           </ul>
 
-          {totalPages > 1 && (
+          {!homePage === true && totalPages > 1 && (
             <Pagination
               urlParamName={urlParamName}
               page={page}
