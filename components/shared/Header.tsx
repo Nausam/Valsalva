@@ -24,7 +24,7 @@ const Header = async () => {
           />
 
           <Image
-            src="/assets/images/valsalva-line.png"
+            src="/assets/images/valsalva-logo.png"
             width={200}
             height={20}
             alt="Evently logo"
