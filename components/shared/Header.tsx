@@ -13,7 +13,7 @@ const Header = async () => {
   const user = auth();
 
   return (
-    <header className="w-full borber-b">
+    <header className="w-full z-50">
       <div className="wrapper flex items-center justify-between">
         <Link href="/" className="flex gap-2">
           <Image
