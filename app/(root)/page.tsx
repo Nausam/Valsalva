@@ -41,7 +41,7 @@ export default async function Home({ searchParams }: SearchParamProps) {
 
           <div className="absolute top-0 left-0 right-0 bottom-0">
             <Image
-              src="/assets/images/hero5.jpg"
+              src="/assets/images/hero6.jpg"
               alt="hero"
               fill
               style={{ objectFit: "cover" }}

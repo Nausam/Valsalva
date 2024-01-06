@@ -5,6 +5,7 @@ import { Button } from "../ui/button";
 import NavItems from "./NavItems";
 import MobileNav from "./MobileNav";
 import { adminLinks } from "@/constants";
+import Image from "next/image";
 
 const Header = async () => {
   const admins = process.env.ADMIN1 || process.env.ADMIN2;
@@ -14,11 +15,24 @@ const Header = async () => {
   return (
     <header className="w-full borber-b">
       <div className="wrapper flex items-center justify-between">
-        <Link href="/" className="w-36">
-          <h2 className="font-bold text-3xl">Valsalva</h2>
+        <Link href="/" className="flex gap-2">
+          <Image
+            src="/assets/images/valsalva.png"
+            width={20}
+            height={20}
+            alt="Evently logo"
+          />
+
+          <Image
+            src="/assets/images/valsalva-line.png"
+            width={200}
+            height={20}
+            alt="Evently logo"
+            quality={100}
+          />
         </Link>
 
-        <nav className="md:flex-between hidden w-full max-w-xs">
+        <nav className="md:flex-between mx-auto hidden w-full max-w-xs">
           <NavItems />
 
           {user.userId === admins && (
