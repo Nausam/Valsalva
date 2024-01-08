@@ -20,7 +20,7 @@ export default async function Home({ searchParams }: SearchParamProps) {
 
   return (
     <>
-      <section className="bg-primary-50 bg-dotted-pattern bg-contain py-5 md:py-16 relative">
+      <section className="bg-primary-50 bg-dotted-pattern bg-contain py-28 relative ">
         <div className="wrapper grid grid-cols-1 gap-5 lg:grid-cols-2 2xl:gap-0">
           <div className="flex flex-col justify-center gap-8 relative z-10">
             <h1 className="h1-bold text-white drop-shadow-md">
@@ -32,7 +32,7 @@ export default async function Home({ searchParams }: SearchParamProps) {
             </p>
             <Button
               asChild
-              className="button bg-sky-600 hover:bg-sky-500 w-full sm:w-fit transition-all duration-300 ease-in-out shadow-lg"
+              className="button bg-sky-600 border border-sky-500 hover:bg-sky-500 hover:bg-transparent hover:text-white hover:border-sky-500 font-bold w-full sm:w-fit transition-all duration-300 ease-in-out shadow-lg"
               size="lg"
             >
               <Link href="/store">Explore Now</Link>
@@ -80,7 +80,7 @@ export default async function Home({ searchParams }: SearchParamProps) {
             <Button
               size="lg"
               asChild
-              className="button w-full sm:w-fit bg-sky-600 hover:bg-sky-500 transition-all duration-300 ease-in-out shadow-lg"
+              className="button w-full sm:w-fit bg-sky-600 hover:bg-sky-500 border marker: hover:bg-transparent hover:text-black hover:border-sky-500 font-bold transition-all duration-300 ease-in-out shadow-lg"
             >
               <Link href="/product/customize">Customize Now</Link>
             </Button>

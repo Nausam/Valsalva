@@ -5,6 +5,7 @@ import NavItems from "./NavItems";
 import { SignedIn, auth } from "@clerk/nextjs";
 import { adminLinks } from "@/constants";
 import Link from "next/link";
+import MobileNavItems from "./MobileNavItems";
 
 const MobileNav = () => {
   const admins = process.env.ADMIN1 || process.env.ADMIN2;
@@ -26,7 +27,7 @@ const MobileNav = () => {
         <SheetContent className="flex flex-col gap-6 bg-white md:hidden">
           <h2 className="font-bold text-2xl">Valsalva</h2>
           <Separator />
-          <NavItems />
+          <MobileNavItems />
 
           {user.userId === admins && (
             <SignedIn>

@@ -34,7 +34,8 @@
     "components/Customizer/FilePicker.jsx",
     "components/Canvas/Backdrop.jsx",
     "components/Canvas/CameraRig.jsx",
-    "components/Canvas/Canvas.jsx"
+    "components/Canvas/Canvas.jsx",
+    "app/(root)/store/loading.tsx"
   ],
   "exclude": ["node_modules"]
 }

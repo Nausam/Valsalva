@@ -20,7 +20,7 @@ export default async function Store({ searchParams }: SearchParamProps) {
     <>
       <section
         id="products"
-        className="wrapper my-8 flex flex-col gap-8 md:gap-12"
+        className="wrapper my-8 flex flex-col gap-8 md:gap-12 mt-20"
       >
         <h2 className="h2-bold">Store</h2>
 

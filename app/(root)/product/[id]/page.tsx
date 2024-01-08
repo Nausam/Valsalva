@@ -22,7 +22,7 @@ const ProductDetails = async ({
 
   return (
     <>
-      <section className="flex justify-center bg-primary-50 bg-dotted-pattern bg-contain md:mt-10">
+      <section className="flex justify-center bg-primary-50 bg-dotted-pattern bg-contain mt-20">
         <div className="grid grid-cols-1 md:grid-cols-2 2xl:max-w-7xl">
           <Image
             src={product.imageUrl}

@@ -5,7 +5,7 @@ import { SignedIn } from "@clerk/nextjs";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const NavItems = () => {
+const MobileNavItems = () => {
   const pathname = usePathname();
 
   return (
@@ -18,7 +18,7 @@ const NavItems = () => {
             key={link.route}
             className={`${
               isActive && "text-blue-700"
-            } flex-center p-medium-16 whitespace-nowrap hover:scale-105 hover:text-blue-600 transition-all duration-300 ease-in-out text-white`}
+            } flex-center p-medium-16 whitespace-nowrap hover:scale-105 hover:text-blue-600 transition-all duration-300 ease-in-out text-black`}
           >
             <Link href={link.route}>{link.label}</Link>
           </li>
@@ -28,4 +28,4 @@ const NavItems = () => {
   );
 };
 
-export default NavItems;
+export default MobileNavItems;
