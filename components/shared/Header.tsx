@@ -13,7 +13,7 @@ const Header = async () => {
   const user = auth();
 
   return (
-    <header className="w-full z-50 bg-opacity-10 md:bg-opacity-30 bg-slate-900 fixed top-0 backdrop-blur-md">
+    <header className="w-full z-50 bg-opacity-10 md:bg-opacity-50 bg-slate-900 fixed top-0 backdrop-blur-md">
       <div className="wrapper flex items-center justify-between">
         <Link href="/" className="flex gap-2">
           <Image
@@ -22,13 +22,6 @@ const Header = async () => {
             height={20}
             alt="valsalva logo"
           />
-
-          {/* <Image
-            src="/assets/images/valsalva.png"
-            width={200}
-            height={20}
-            alt="valsalva typography"
-          /> */}
         </Link>
 
         <nav className="md:flex-between mx-auto hidden w-full max-w-xs">
@@ -40,7 +33,7 @@ const Header = async () => {
                 return (
                   <li
                     key={link.route}
-                    className="flex-center p-medium-16 whitespace-nowrap ml-10  hover:scale-105 transition-all duration-300 ease-in-out hover:text-blue-600 text-white"
+                    className="flex-center p-medium-16 whitespace-nowrap ml-10  hover:scale-105 transition-all duration-300 ease-in-out  text-white"
                   >
                     <Link href={link.route}>{link.label}</Link>
                   </li>

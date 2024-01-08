@@ -5,6 +5,8 @@ import { SignedIn } from "@clerk/nextjs";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+import AnimatedLink from "./AnimatedLink";
+
 const NavItems = () => {
   const pathname = usePathname();
 
@@ -14,14 +16,14 @@ const NavItems = () => {
         const isActive = pathname === link.route;
 
         return (
-          <li
-            key={link.route}
+          <Link
+            href={link.route}
             className={`${
-              isActive && "text-blue-700"
-            } flex-center p-medium-16 whitespace-nowrap hover:scale-105 hover:text-blue-600 transition-all duration-300 ease-in-out text-white`}
+              isActive && "bg-slate-500 px-2 bg-opacity-20 rounded-md"
+            }`}
           >
-            <Link href={link.route}>{link.label}</Link>
-          </li>
+            <AnimatedLink title={link.label} />
+          </Link>
         );
       })}
     </ul>
@@ -29,3 +31,12 @@ const NavItems = () => {
 };
 
 export default NavItems;
+
+// <li
+//   key={link.route}
+//   className={`${
+//     isActive && "text-blue-700"
+//   } flex-center p-medium-16 whitespace-nowrap hover:scale-105 hover:text-blue-600 transition-all duration-300 ease-in-out text-white`}
+// >
+//   <Link href={link.route}>{link.label}</Link>
+// </li>

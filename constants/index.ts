@@ -20,7 +20,7 @@ export const headerLinks = [
     route: "/store",
   },
   {
-    label: "My Profile",
+    label: "Profile",
     route: "/profile",
   },
 ];

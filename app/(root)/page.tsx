@@ -1,5 +1,5 @@
+import AnimatedHeroText from "@/components/shared/AnimatedHeroText";
 import Collection from "@/components/shared/Collection";
-import Search from "@/components/shared/Search";
 import { Button } from "@/components/ui/button";
 import { getAllProducts } from "@/lib/actions/product.actions";
 import { SearchParamProps } from "@/types";
@@ -18,6 +18,8 @@ export default async function Home({ searchParams }: SearchParamProps) {
     limit: 3,
   });
 
+  const title = "Discover Precision, Power, and Beauty Below.";
+
   return (
     <>
       <section className="bg-primary-50 bg-dotted-pattern bg-contain py-28 relative ">
@@ -26,6 +28,7 @@ export default async function Home({ searchParams }: SearchParamProps) {
             <h1 className="h1-bold text-white drop-shadow-md">
               Discover Precision, Power, and Beauty Below.
             </h1>
+
             <p className="p-regular-20 md:p-regular-24 text-white">
               Dive into a World of Excellence: Unleashing Precision, Power, and
               Unparalleled Performance in Every Fin!
