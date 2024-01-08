@@ -1,4 +1,3 @@
-import AnimatedHeroText from "@/components/shared/AnimatedHeroText";
 import Collection from "@/components/shared/Collection";
 import { Button } from "@/components/ui/button";
 import { getAllProducts } from "@/lib/actions/product.actions";
