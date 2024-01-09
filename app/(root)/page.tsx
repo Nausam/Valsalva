@@ -1,4 +1,4 @@
-import Collection from "@/components/shared/Collection";
+import FeaturedCollection from "@/components/shared/Collection";
 import { Button } from "@/components/ui/button";
 import { getAllProducts } from "@/lib/actions/product.actions";
 import { SearchParamProps } from "@/types";
@@ -55,12 +55,12 @@ export default async function Home({ searchParams }: SearchParamProps) {
       </section>
 
       <section
-        id="products"
-        className="wrapper my-8 flex flex-col gap-8 md:gap-12"
+        id="#products"
+        className="wrapper my-8 items-center flex flex-col gap-8 md:gap-12"
       >
         <h2 className="h2-bold">Featured Products</h2>
 
-        <Collection
+        <FeaturedCollection
           data={products?.data}
           emptyTitle="No products found"
           emptyStateSubtext="Come back later"
