@@ -8,9 +8,10 @@ import { adminLinks } from "@/constants";
 import Image from "next/image";
 
 const Header = async () => {
-  const admins = process.env.ADMIN1 || process.env.ADMIN2;
+  const admins = [process.env.ADMIN1, process.env.ADMIN2];
 
   const user = auth();
+  const isAdmin = user.userId !== null && admins.includes(user.userId);
 
   return (
     <header className="w-full z-50 bg-opacity-10 md:bg-opacity-50 bg-slate-900 fixed top-0 backdrop-blur-md">
@@ -27,7 +28,7 @@ const Header = async () => {
         <nav className="md:flex-between mx-auto hidden w-full max-w-xs">
           <NavItems />
 
-          {user.userId === admins && (
+          {isAdmin && (
             <SignedIn>
               {adminLinks.map((link) => {
                 return (
