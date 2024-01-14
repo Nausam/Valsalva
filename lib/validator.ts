@@ -9,4 +9,5 @@ export const productFormSchema = z.object({
   imageUrl: z.string(),
   categoryId: z.string(),
   price: z.string(),
+  isAvailable: z.boolean(),
 });

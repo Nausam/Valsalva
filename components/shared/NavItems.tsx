@@ -17,12 +17,13 @@ const NavItems = () => {
 
         return (
           <Link
+            key={link.label}
             href={link.route}
             className={`${
               isActive && "bg-slate-500 px-2 bg-opacity-20 rounded-md"
             }`}
           >
-            <AnimatedLink title={link.label} />
+            <AnimatedLink key={link.label} title={link.label} />
           </Link>
         );
       })}
@@ -31,12 +32,3 @@ const NavItems = () => {
 };
 
 export default NavItems;
-
-// <li
-//   key={link.route}
-//   className={`${
-//     isActive && "text-blue-700"
-//   } flex-center p-medium-16 whitespace-nowrap hover:scale-105 hover:text-blue-600 transition-all duration-300 ease-in-out text-white`}
-// >
-//   <Link href={link.route}>{link.label}</Link>
-// </li>

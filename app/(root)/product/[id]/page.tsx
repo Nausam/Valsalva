@@ -23,7 +23,7 @@ const ProductDetails = async ({
   return (
     <>
       <section className="flex justify-center bg-primary-50 bg-dotted-pattern bg-contain mt-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 2xl:max-w-7xl">
+        <div className="grid grid-cols-1 lg:grid-cols-2 md:grid-cols-1 2xl:max-w-7xl sm:py-10">
           <Image
             src={product.imageUrl}
             alt="hero image"
@@ -39,7 +39,13 @@ const ProductDetails = async ({
 
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
                 <div className="flex gap-3">
-                  <p className="p-bold-20 rounded-full bg-green-500/10 px-5 py-2 text-green-600">{`$${product.price}`}</p>
+                  {product.isAvailable === true ? (
+                    <p className="p-bold-20 rounded-full bg-green-500/10 px-5 py-2 text-green-600">{`$${product.price}`}</p>
+                  ) : (
+                    <p className="p-medium-16 rounded-full bg-red-500 px-4 py-2.5 text-white">
+                      Out of stock
+                    </p>
+                  )}
 
                   <p className="p-medium-16 rounded-full bg-grey-500/10 px-4 py-2.5 text-grey-500">
                     {product.category.name}
@@ -48,7 +54,9 @@ const ProductDetails = async ({
               </div>
             </div>
 
-            <CheckoutButton product={product} />
+            {product.isAvailable === true && (
+              <CheckoutButton product={product} />
+            )}
 
             <div className="flex flex-col gap-2">
               <p className="p-bold-20 text-grey-600">Description</p>

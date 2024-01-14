@@ -27,6 +27,8 @@ import { useRouter } from "next/navigation";
 import { createProduct, updateProduct } from "@/lib/actions/product.actions";
 import { IProduct } from "@/lib/database/models/product.model";
 
+import { Switch } from "@/components/ui/switch";
+
 type ProductFormProps = {
   userId: string;
   type: "Create" | "Update";
@@ -207,6 +209,24 @@ const ProductForm = ({
             )}
           />
         </div>
+
+        <FormField
+          control={form.control}
+          name="isAvailable"
+          render={({ field }) => (
+            <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm max-w-sm">
+              <div className="space-y-0.5">
+                <FormLabel>Is product available?</FormLabel>
+              </div>
+              <FormControl>
+                <Switch
+                  checked={field.value}
+                  onCheckedChange={field.onChange}
+                />
+              </FormControl>
+            </FormItem>
+          )}
+        />
 
         <Button
           type="submit"

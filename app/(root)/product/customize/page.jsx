@@ -24,9 +24,16 @@ const page = () => {
   const generateTabContent = () => {
     switch (activeEditorTab) {
       case "colorpicker":
-        return <ColorPicker />;
+        return <ColorPicker handleClose={() => setActiveEditorTab("")} />;
       case "filepicker":
-        return <FilePicker file={file} setFile={setFile} readFile={readFile} />;
+        return (
+          <FilePicker
+            file={file}
+            setFile={setFile}
+            readFile={readFile}
+            handleClose={() => setActiveEditorTab("")}
+          />
+        );
       case "aipicker":
         return (
           <AIPicker
@@ -99,10 +106,9 @@ const page = () => {
   };
 
   return (
-    <section className="w-full relative">
-      {generateTabContent()}
-      <div className="flex justify-between items-center h-screen">
-        <div className="flex flex-col gap-5 p-10">
+    <section className="w-full relative h-screen">
+      <div className="flex flex-col w-full h-screen">
+        <div className="absolute top-0 ml-10 gap-5 z-50 mt-20 py-5 flex">
           {EditorTabs.map((tab) => (
             <Tab
               key={tab.name}
@@ -110,11 +116,7 @@ const page = () => {
               handleClick={() => setActiveEditorTab(tab.name)}
             />
           ))}
-        </div>
 
-        <CanvasModal />
-
-        <div className="flex flex-col gap-5 p-10">
           {FilterTabs.map((tab) => (
             <Tab
               key={tab.name}
@@ -124,8 +126,34 @@ const page = () => {
               handleClick={() => handleActiveFilterTab(tab.name)}
             />
           ))}
+
+          <div className="mt-10">{generateTabContent()}</div>
         </div>
+        <CanvasModal />
       </div>
+      {/* <div className="flex justify-between items-center h-screen max-w-md">
+        <div className="absolute bottom-0 right-0 flex gap-5 p-10 bg-transparent z-50">
+          {EditorTabs.map((tab) => (
+            <Tab
+              key={tab.name}
+              tab={tab}
+              handleClick={() => setActiveEditorTab(tab.name)}
+            />
+          ))}
+        </div> */}
+
+      {/* <div className="absolute bottom-0 left-0 flex gap-5 p-10">
+          {FilterTabs.map((tab) => (
+            <Tab
+              key={tab.name}
+              tab={tab}
+              isFilterTab
+              isActiveTab={activeFilterTab[tab.name]}
+              handleClick={() => handleActiveFilterTab(tab.name)}
+            />
+          ))}
+        </div> */}
+      {/* </div> */}
     </section>
   );
 };

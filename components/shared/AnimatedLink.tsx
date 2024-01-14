@@ -91,6 +91,7 @@ const AnimatedWord = ({
           <span key={index}>&nbsp;</span>
         ) : (
           <motion.span
+            key={index}
             variants={animation}
             className="relative inline-block whitespace-nowrap"
           >

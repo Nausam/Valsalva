@@ -15,7 +15,8 @@ const Card = ({ product, hasOrderLink, hidePrice }: CardProps) => {
   const { sessionClaims } = auth();
   const userId = sessionClaims?.userId as string;
 
-  const isProductCreator = product.creator._id === userId;
+  const isProductCreator =
+    product && product.creator && product.creator._id === userId;
   // const isProductCreator = product.creator._id === userId.toString();
 
   return (
@@ -48,13 +49,13 @@ const Card = ({ product, hasOrderLink, hidePrice }: CardProps) => {
                 />
               </Link>
 
-              <DeleteConfirmation productId={product._id} />
+              {/* <DeleteConfirmation productId={product._id} /> */}
             </div>
           )}
 
           <div className="flex-start">
             <div className="">
-              {!hidePrice && (
+              {!hidePrice && product.isAvailable === true ? (
                 <div className="flex gap-2">
                   <span className="p-semibold-14 w-min rounded-full bg-green-100 px-4 py-1 text-green-500">
                     {`$${product.price}`}
@@ -64,12 +65,31 @@ const Card = ({ product, hasOrderLink, hidePrice }: CardProps) => {
                     {product.category.name}
                   </p>
                 </div>
+              ) : (
+                <div className="p-2 bg-red-500 rounded-full max-w-[120px]">
+                  <p className="text-white p-semibold-14">Out of stock</p>
+                </div>
               )}
             </div>
 
             <p className="p-semibold-14 mt-5 w-60 text-grey-500 flex-center">
               {product.description}
             </p>
+
+            {hasOrderLink && (
+              <Link
+                href={`/orders?eventId=${product._id}`}
+                className="flex mt-5"
+              >
+                <p className="text-primary-500">Order Details</p>
+                <Image
+                  src="/assets/icons/arrow.svg"
+                  alt="search"
+                  width={10}
+                  height={10}
+                />
+              </Link>
+            )}
           </div>
         </div>
       </div>

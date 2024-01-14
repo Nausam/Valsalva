@@ -27,6 +27,8 @@ const Orders = async ({ searchParams }: SearchParamProps) => {
   const orders = result?.data || [];
   // const totalPages = result?.totalPages || 0;
 
+  console.log("orders", orders);
+
   return (
     <>
       <section className=" bg-primary-50 bg-dotted-pattern bg-cover bg-center mt-20">
@@ -70,7 +72,7 @@ const Orders = async ({ searchParams }: SearchParamProps) => {
                         {row._id}
                       </td>
                       <td className="min-w-[200px] flex-1 py-4 pr-4">
-                        {row.product.title}
+                        {row.product?.title}
                       </td>
                       <td className="min-w-[150px] py-4">{`${row.buyer.firstName} ${row.buyer.lastName}`}</td>
                       <td className="min-w-[100px] py-4">

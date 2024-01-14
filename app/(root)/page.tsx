@@ -1,4 +1,4 @@
-import FeaturedCollection from "@/components/shared/Collection";
+import Collection from "@/components/shared/Collection";
 import { Button } from "@/components/ui/button";
 import { getAllProducts } from "@/lib/actions/product.actions";
 import { SearchParamProps } from "@/types";
@@ -60,7 +60,7 @@ export default async function Home({ searchParams }: SearchParamProps) {
       >
         <h2 className="h2-bold">Featured Products</h2>
 
-        <FeaturedCollection
+        <Collection
           data={products?.data}
           emptyTitle="No products found"
           emptyStateSubtext="Come back later"

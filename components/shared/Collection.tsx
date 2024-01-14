@@ -2,6 +2,7 @@ import { IProduct } from "@/lib/database/models/product.model";
 import React from "react";
 import FeaturedCard from "./Card";
 import Pagination from "./Pagination";
+import Card from "./Card";
 
 type CollectionProps = {
   data: IProduct[];
@@ -30,13 +31,13 @@ const Collection = ({
       {data.length > 0 ? (
         <div className="flex flex-col items-center gap-10 ">
           <ul className="grid w-full grid-cols-1 gap-5 md:grid-cols-1 lg:grid-cols-1 xl:gap-10">
-            {data.map((product) => {
+            {data.map((product, index) => {
               const hasOrderLink = collectionType === "My_Products";
               const hidePrice = collectionType === "My_Products";
 
               return (
-                <li key={product._id} className="flex justify-center">
-                  <FeaturedCard
+                <li key={index} className="flex justify-center">
+                  <Card
                     product={product}
                     hasOrderLink={hasOrderLink}
                     hidePrice={hidePrice}
