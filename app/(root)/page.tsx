@@ -82,7 +82,7 @@ export default async function Home({ searchParams }: SearchParamProps) {
             <Button
               size="lg"
               asChild
-              className="button w-full sm:w-fit bg-sky-600 hover:bg-sky-500 border marker: hover:bg-transparent hover:text-black hover:border-sky-500 font-bold transition-all duration-300 ease-in-out shadow-lg"
+              className="button w-full sm:w-fit border-sky-500 bg-sky-600 border marker: hover:bg-white hover:text-black hover:border-sky-500 font-bold transition-all duration-300 ease-in-out shadow-lg"
             >
               <Link href="/product/customize">Customize Now</Link>
             </Button>

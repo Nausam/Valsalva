@@ -2,6 +2,7 @@ import { IProduct } from "@/lib/database/models/product.model";
 import React from "react";
 import Pagination from "./Pagination";
 import Card from "./Card";
+import InventoryCard from "./InventoryCard";
 
 type CollectionProps = {
   data: IProduct[];
@@ -15,7 +16,7 @@ type CollectionProps = {
   collectionType?: "Products_Created" | "My_Products" | "All_Products";
 };
 
-const Collection = ({
+const InventoryCollection = ({
   data,
   emptyTitle,
   emptyStateSubtext,
@@ -36,7 +37,7 @@ const Collection = ({
 
               return (
                 <li key={index} className="flex justify-center">
-                  <Card
+                  <InventoryCard
                     product={product}
                     hasOrderLink={hasOrderLink}
                     hidePrice={hidePrice}
@@ -64,4 +65,4 @@ const Collection = ({
   );
 };
 
-export default Collection;
+export default InventoryCollection;

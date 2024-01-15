@@ -1,4 +1,5 @@
 import Collection from "@/components/shared/Collection";
+import InventoryCollection from "@/components/shared/InventoryCollection";
 import { Button } from "@/components/ui/button";
 import { getOrdersByUser } from "@/lib/actions/order.actions";
 import { getProductsByUser } from "@/lib/actions/product.actions";
@@ -33,7 +34,7 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
 
           <Button
             asChild
-            className="button hidden sm:flex bg-sky-600 border border-sky-500 hover:bg-sky-500 hover:bg-transparent hover:text-black hover:border-sky-500 font-bold w-full sm:w-fit transition-all duration-300 ease-in-out shadow-lg"
+            className="button hidden sm:flex bg-sky-600 border border-sky-500 hover:bg-white  hover:text-black hover:border-sky-500 font-bold w-full sm:w-fit transition-all duration-300 ease-in-out shadow-lg"
             size="lg"
           >
             <Link href="/store">Explore More</Link>
@@ -42,7 +43,7 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
       </section>
 
       <section className="wrapper my-8 ">
-        <Collection
+        <InventoryCollection
           data={orderedProducts}
           emptyTitle="No products purchased yet"
           emptyStateSubtext="No worries - plenty of products to choose from!"

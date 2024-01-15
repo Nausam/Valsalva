@@ -11,7 +11,7 @@ type CardProps = {
   hidePrice?: boolean;
 };
 
-const Card = ({ product, hasOrderLink, hidePrice }: CardProps) => {
+const InventoryCard = ({ product, hasOrderLink, hidePrice }: CardProps) => {
   const { sessionClaims } = auth();
   const userId = sessionClaims?.userId as string;
 
@@ -55,7 +55,7 @@ const Card = ({ product, hasOrderLink, hidePrice }: CardProps) => {
 
           <div className="flex-start">
             <div className="">
-              {!hidePrice && product.isAvailable === true ? (
+              {!hidePrice ? (
                 <div className="flex gap-2">
                   <span className="p-semibold-14 w-min rounded-full bg-green-100 px-4 py-1 text-green-500">
                     {`$${product.price}`}
@@ -66,30 +66,31 @@ const Card = ({ product, hasOrderLink, hidePrice }: CardProps) => {
                   </p>
                 </div>
               ) : (
-                <p className="p-semibold-14 w-32 rounded-full bg-red-500 p-2 text-white flex-center">
-                  Out of Stock
-                </p>
+                <div className="flex gap-2">
+                  <p className="p-semibold-14 w-min p-2 rounded-full border border-green-500 px-4 text-green-600 flex-center">
+                    Purchased
+                  </p>
+
+                  {hasOrderLink && (
+                    <Link href={`/orders?eventId=${product._id}`}>
+                      <p className="p-semibold-14 w-36 p-2 rounded-full border border-sky-500 bg-sky-600 px-4 text-white flex-center hover:bg-white hover:text-black transition-all duration-300">
+                        Order Details
+                      </p>
+                      {/* <Image
+                  src="/assets/icons/arrow.svg"
+                  alt="search"
+                  width={10}
+                  height={10}
+                /> */}
+                    </Link>
+                  )}
+                </div>
               )}
             </div>
 
             <p className="p-semibold-14 mt-5 w-60 text-grey-500 flex-center">
               {product.description}
             </p>
-
-            {hasOrderLink && (
-              <Link
-                href={`/orders?eventId=${product._id}`}
-                className="flex mt-5 "
-              >
-                <p className="text-primary-500">Order Details</p>
-                <Image
-                  src="/assets/icons/arrow.svg"
-                  alt="search"
-                  width={10}
-                  height={10}
-                />
-              </Link>
-            )}
           </div>
         </div>
       </div>
@@ -97,4 +98,4 @@ const Card = ({ product, hasOrderLink, hidePrice }: CardProps) => {
   );
 };
 
-export default Card;
+export default InventoryCard;
