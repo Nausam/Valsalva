@@ -16,20 +16,20 @@ const Mask = () => {
   const logoTexture = useTexture(snap.logoDecal);
   const fullTexture = useTexture(snap.fullDecal);
 
-  useFrame((state, delta) =>
-    easing.dampC(materials.M_Mask.color, snap.color, 0.25, delta)
-  );
+  useFrame((state, delta) => {
+    easing.dampC(materials.M_Mask.color, snap.color, 0.25, delta);
+    easing.dampC(materials.M_Goatee.color, snap.goateeColor, 0.25, delta);
+  });
 
   const stateString = JSON.stringify(snap);
 
   return (
-    <group key={stateString}>
+    <group key={stateString} dispose={null}>
       <mesh
         castShadow
         receiveShadow
         geometry={nodes.defaultMaterial.geometry}
         material={materials.M_Goatee}
-        dispose={null}
       ></mesh>
 
       <mesh
@@ -37,7 +37,6 @@ const Mask = () => {
         receiveShadow
         geometry={nodes.defaultMaterial_1.geometry}
         material={materials.M_Mask}
-        dispose={null}
       >
         {snap.isFullTexture && (
           <Decal

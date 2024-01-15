@@ -9,13 +9,15 @@ import {
   OrbitControls,
 } from "@react-three/drei";
 
-import CameraRig from "./CameraRig";
 import Mask from "./Mask";
 
 const CanvasModal = () => {
   return (
     <Canvas
-      gl={{ antialias: true, preserveDrawingBuffer: true }}
+      gl={{
+        antialias: true,
+        preserveDrawingBuffer: true,
+      }}
       shadows
       camera={{ position: [0, 5.5, 3], fov: 40 }}
     >

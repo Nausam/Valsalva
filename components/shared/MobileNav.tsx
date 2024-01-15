@@ -8,9 +8,10 @@ import Link from "next/link";
 import MobileNavItems from "./MobileNavItems";
 
 const MobileNav = () => {
-  const admins = process.env.ADMIN1 || process.env.ADMIN2;
-
   const user = auth();
+
+  const admins = [process.env.ADMIN1, process.env.ADMIN2];
+  const isAdmin = user.userId !== null && admins.includes(user.userId);
 
   return (
     <nav className="md:hidden">
@@ -29,7 +30,7 @@ const MobileNav = () => {
           <Separator />
           <MobileNavItems />
 
-          {user.userId === admins && (
+          {isAdmin && (
             <SignedIn>
               {adminLinks.map((link) => {
                 return (

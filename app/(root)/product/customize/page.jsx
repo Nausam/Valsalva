@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import ColorPicker from "@/components/Customizer/ColorPicker";
+// import ColorPicker from "@/components/Customizer/ColorPicker";
 import FilePicker from "@/components/Customizer/FilePicker";
 import Tab from "@/components/Customizer/Tab";
 import { DecalTypes, EditorTabs, FilterTabs } from "@/constants";
@@ -9,6 +9,8 @@ import CanvasModal from "@/components/Canvas/Canvas";
 
 import state from "@/store";
 import { useSnapshot } from "valtio";
+
+import { useControls } from "leva";
 
 const page = () => {
   const snap = useSnapshot(state);
@@ -20,11 +22,27 @@ const page = () => {
     stylishShirt: false,
   });
 
+  const { Model_Color, isLogoTexture, isFullTexture } = useControls({
+    Model_Color: {
+      value: snap.color,
+      onChange: (value) => (state.color = value),
+    },
+    Goatee_Color: {
+      value: snap.goateeColor,
+      onChange: (value) => (state.goateeColor = value),
+    },
+    isLogoTexture: { label: "Logo Texture", value: state.isLogoTexture },
+    isFullTexture: { label: "Full Texture", value: state.isFullTexture },
+  });
+
+  useEffect(() => {
+    state.isLogoTexture = isLogoTexture;
+    state.isFullTexture = isFullTexture;
+  }, [isLogoTexture, isFullTexture]);
+
   //SHOW TAB CONTENT DEPENDING THE ACTIVETAB
   const generateTabContent = () => {
     switch (activeEditorTab) {
-      case "colorpicker":
-        return <ColorPicker handleClose={() => setActiveEditorTab("")} />;
       case "filepicker":
         return (
           <FilePicker
@@ -32,15 +50,6 @@ const page = () => {
             setFile={setFile}
             readFile={readFile}
             handleClose={() => setActiveEditorTab("")}
-          />
-        );
-      case "aipicker":
-        return (
-          <AIPicker
-            prompt={prompt}
-            setPrompt={setPrompt}
-            generatingImg={generatingImg}
-            handleSubmit={handleSubmit}
           />
         );
       default:
@@ -117,43 +126,14 @@ const page = () => {
             />
           ))}
 
-          {FilterTabs.map((tab) => (
-            <Tab
-              key={tab.name}
-              tab={tab}
-              isFilterTab
-              isActiveTab={activeFilterTab[tab.name]}
-              handleClick={() => handleActiveFilterTab(tab.name)}
-            />
-          ))}
-
           <div className="mt-10">{generateTabContent()}</div>
+          <div
+            style={{ backgroundColor: Model_Color }}
+            className="p-4 rounded-lg mb-4"
+          ></div>
         </div>
         <CanvasModal />
       </div>
-      {/* <div className="flex justify-between items-center h-screen max-w-md">
-        <div className="absolute bottom-0 right-0 flex gap-5 p-10 bg-transparent z-50">
-          {EditorTabs.map((tab) => (
-            <Tab
-              key={tab.name}
-              tab={tab}
-              handleClick={() => setActiveEditorTab(tab.name)}
-            />
-          ))}
-        </div> */}
-
-      {/* <div className="absolute bottom-0 left-0 flex gap-5 p-10">
-          {FilterTabs.map((tab) => (
-            <Tab
-              key={tab.name}
-              tab={tab}
-              isFilterTab
-              isActiveTab={activeFilterTab[tab.name]}
-              handleClick={() => handleActiveFilterTab(tab.name)}
-            />
-          ))}
-        </div> */}
-      {/* </div> */}
     </section>
   );
 };

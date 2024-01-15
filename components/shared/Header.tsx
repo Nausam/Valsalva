@@ -8,9 +8,9 @@ import { adminLinks } from "@/constants";
 import Image from "next/image";
 
 const Header = async () => {
-  const admins = [process.env.ADMIN1, process.env.ADMIN2];
-
   const user = auth();
+
+  const admins = [process.env.ADMIN1, process.env.ADMIN2];
   const isAdmin = user.userId !== null && admins.includes(user.userId);
 
   return (

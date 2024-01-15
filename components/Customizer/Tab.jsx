@@ -22,17 +22,7 @@ const Tab = ({ tab, isFilterTab, isActiveTab, handleClick }) => {
         onClick={handleClick}
         style={activeStyles}
       >
-        <Image
-          src={tab.icon}
-          alt={tab.name}
-          // className={`${
-          //   isFilterTab
-          //     ? "w-[10px] h-[10px]"
-          //     : "w-[10px] h-[10px] object-contain"
-          // }`}
-          width={40}
-          height={40}
-        />
+        <Image src={tab.icon} alt={tab.name} width={35} height={35} />
       </div>
     </div>
   );
