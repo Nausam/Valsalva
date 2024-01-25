@@ -53,26 +53,26 @@ const Dropdown = ({ value, onChangeHandler }: DropdownProps) => {
 
   return (
     <Select onValueChange={onChangeHandler} defaultValue={value}>
-      <SelectTrigger className="select-field">
+      <SelectTrigger className="select-field ">
         <SelectValue placeholder="Category" />
       </SelectTrigger>
-      <SelectContent>
+      <SelectContent className="dark:bg-[#191919]">
         {categories.length > 0 &&
           categories.map((category) => (
             <SelectItem
               key={category._id}
               value={category._id}
-              className="select-item p-regular-14"
+              className="select-item p-regular-14 dark:text-white dark:hover:bg-[#252525]"
             >
               {category.name}
             </SelectItem>
           ))}
 
         <AlertDialog>
-          <AlertDialogTrigger className="p-medium-14 flex w-full rounded-sm py-3 pl-8 text-primary-500 hover:bg-primary-50 focus:text-primary-500">
+          <AlertDialogTrigger className="p-medium-14 flex w-full rounded-sm py-3 pl-8 text-primary-500 hover:bg-primary-50 focus:text-primary-500 dark:bg-[#191919]">
             Add new category
           </AlertDialogTrigger>
-          <AlertDialogContent className="bg-white">
+          <AlertDialogContent className="bg-white dark:bg-[#191919]">
             <AlertDialogHeader>
               <AlertDialogTitle>New Category</AlertDialogTitle>
               <AlertDialogDescription>

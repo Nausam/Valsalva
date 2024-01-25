@@ -31,8 +31,8 @@ const Orders = async ({ searchParams }: SearchParamProps) => {
 
   return (
     <>
-      <section className=" bg-primary-50 bg-dotted-pattern bg-cover bg-center mt-20">
-        <h3 className="wrapper h3-bold text-center sm:text-left ">Orders</h3>
+      <section className="mt-20">
+        <h3 className="wrapper h3-bold text-center sm:text-left">Orders</h3>
       </section>
 
       {/* <section className="wrapper mt-8">
@@ -40,9 +40,9 @@ const Orders = async ({ searchParams }: SearchParamProps) => {
       </section> */}
 
       <section className="wrapper overflow-x-auto">
-        <table className="w-full border-collapse border-t">
+        <table className="w-full border-collapse border-t dark:border-t-gray-500">
           <thead>
-            <tr className="p-medium-14 border-b text-grey-500">
+            <tr className="p-medium-14 border-b dark:border-b-gray-500  text-grey-600 dark:text-gray-300">
               <th className="min-w-[250px] py-3 text-left">Order ID</th>
               <th className="min-w-[200px] flex-1 py-3 pr-4 text-left">
                 Product Title
@@ -54,7 +54,7 @@ const Orders = async ({ searchParams }: SearchParamProps) => {
           </thead>
           <tbody>
             {orders && orders.length === 0 ? (
-              <tr className="border-b">
+              <tr className="border-b ">
                 <td colSpan={5} className="py-4 text-center text-gray-500">
                   No orders found.
                 </td>
@@ -65,20 +65,20 @@ const Orders = async ({ searchParams }: SearchParamProps) => {
                   orders.map((row: IOrderSpecificItem) => (
                     <tr
                       key={row._id}
-                      className="p-regular-14 lg:p-regular-16 border-b "
+                      className="p-regular-14 lg:p-regular-16 border-b dark:border-b-gray-700 "
                       style={{ boxSizing: "border-box" }}
                     >
                       <td className="min-w-[250px] py-4 text-primary-500">
                         {row._id}
                       </td>
-                      <td className="min-w-[200px] flex-1 py-4 pr-4">
+                      <td className="min-w-[200px] flex-1 py-4 pr-4 dark:text-gray-400">
                         {row.product?.title}
                       </td>
-                      <td className="min-w-[150px] py-4">{`${row.buyer.firstName} ${row.buyer.lastName}`}</td>
-                      <td className="min-w-[100px] py-4">
+                      <td className="min-w-[150px] py-4 dark:text-gray-400">{`${row.buyer.firstName} ${row.buyer.lastName}`}</td>
+                      <td className="min-w-[100px] py-4 dark:text-gray-400">
                         {formatDateTime(row.createdAt).dateTime}
                       </td>
-                      <td className="min-w-[100px] py-4 text-right">
+                      <td className="min-w-[100px] py-4 text-right dark:text-gray-400">
                         {formatPrice(row.totalAmount)}
                       </td>
                     </tr>

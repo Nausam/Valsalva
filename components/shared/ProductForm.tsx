@@ -134,7 +134,7 @@ const ProductForm = ({
             control={form.control}
             name="categoryId"
             render={({ field }) => (
-              <FormItem className="w-full">
+              <FormItem className="w-full dark:bg-[#191919] rounded-full text-black">
                 <FormControl>
                   <Dropdown
                     onChangeHandler={field.onChange}
@@ -147,7 +147,7 @@ const ProductForm = ({
           />
         </div>
 
-        <div className="flex flex-col gap-5 md:flex-row">
+        <div className="flex flex-col gap-5 md:flex-row ">
           <FormField
             control={form.control}
             name="description"
@@ -189,7 +189,7 @@ const ProductForm = ({
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormControl>
-                  <div className="flex-center h-[55px] w-full overflow-hidden rounded-full bg-grey-50 px-4 py-2">
+                  <div className="flex-center h-[55px] w-full overflow-hidden rounded-full bg-grey-50 dark:bg-[#191919] px-4 py-2">
                     <Image
                       src="/assets/icons/dollar.svg"
                       alt="price"
@@ -200,7 +200,7 @@ const ProductForm = ({
                       type="number"
                       placeholder="Price"
                       {...field}
-                      className="p-regular-16 border-0 bg-grey-50 outline-offset-0 focus:border-0 focus-visible:ring-0 focus-visible:ring-offset-0"
+                      className="p-regular-16 border-0 bg-grey-50 dark:bg-[#191919] outline-offset-0 focus:border-0 focus-visible:ring-0 focus-visible:ring-offset-0"
                     />
                   </div>
                 </FormControl>
@@ -214,7 +214,7 @@ const ProductForm = ({
           control={form.control}
           name="isAvailable"
           render={({ field }) => (
-            <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm max-w-sm">
+            <FormItem className="flex flex-row items-center justify-between rounded-full bg-grey-50 dark:bg-[#191919]  p-3 shadow-sm max-w-sm">
               <div className="space-y-0.5">
                 <FormLabel>Is product available?</FormLabel>
               </div>
@@ -232,7 +232,7 @@ const ProductForm = ({
           type="submit"
           size="lg"
           disabled={form.formState.isSubmitting}
-          className="button font-bold w-full bg-sky-500 hover:bg-transparent border hover:border-sky-500 hover:text-black shadow-xl"
+          className="button font-bold w-full bg-sky-500 hover:bg-transparent border border-sky-300 hover:border-sky-500 hover:text-black dark:text-white shadow-xl"
         >
           {form.formState.isSubmitting ? "Submitting..." : `${type} Product `}
         </Button>

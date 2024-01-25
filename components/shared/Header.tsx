@@ -6,6 +6,7 @@ import NavItems from "./NavItems";
 import MobileNav from "./MobileNav";
 import { adminLinks } from "@/constants";
 import Image from "next/image";
+import ThemeButton from "@/components/shared/ThemeButton";
 
 const Header = async () => {
   const user = auth();
@@ -14,7 +15,7 @@ const Header = async () => {
   const isAdmin = user.userId !== null && admins.includes(user.userId);
 
   return (
-    <header className="w-full z-50 bg-opacity-10 md:bg-opacity-50 bg-slate-900 fixed top-0 backdrop-blur-md">
+    <header className="w-full z-50 bg-opacity-10 md:bg-opacity-20 dark:bg-opacity-20 fixed top-0 backdrop-blur-md">
       <div className="wrapper flex items-center justify-between">
         <Link href="/" className="flex gap-2">
           <Image
@@ -34,7 +35,7 @@ const Header = async () => {
                 return (
                   <li
                     key={link.route}
-                    className="flex-center p-medium-16 whitespace-nowrap ml-10  hover:scale-105 transition-all duration-300 ease-in-out  text-white"
+                    className="flex-center p-medium-16 whitespace-nowrap ml-10  hover:scale-105 transition-all duration-300 ease-in-out text-black dark:text-white"
                   >
                     <Link href={link.route}>{link.label}</Link>
                   </li>
@@ -45,6 +46,7 @@ const Header = async () => {
         </nav>
 
         <div className="flex w-32 justify-end gap-3">
+          <ThemeButton />
           <SignedIn>
             <UserButton afterSignOutUrl="/" />
             <MobileNav />

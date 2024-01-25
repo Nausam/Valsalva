@@ -9,7 +9,7 @@ const AnimatedLink = ({ title }: { title: string }) => {
     <motion.div
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="relative overflow-hidden cursor-pointer text-white"
+      className="relative overflow-hidden cursor-pointer text-black dark:text-white"
     >
       <AnimatedWord
         title={title}

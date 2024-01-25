@@ -22,11 +22,11 @@ const MobileNav = () => {
             alt="menu"
             width={24}
             height={24}
-            className="cursor-pointer"
+            className="cursor-pointer dark:invert"
           />
         </SheetTrigger>
-        <SheetContent className="flex flex-col gap-6 bg-white md:hidden">
-          <h2 className="font-bold text-2xl">Valsalva</h2>
+        <SheetContent className="flex flex-col gap-6 bg-white dark:bg-[#191919] dark:text-white md:hidden border-none items-center">
+          <h2 className="font-bold text-2xl ">Valsalva</h2>
           <Separator />
           <MobileNavItems />
 
@@ -36,7 +36,7 @@ const MobileNav = () => {
                 return (
                   <li
                     key={link.route}
-                    className="flex-center p-medium-16 whitespace-nowrap border-2 py-3 rounded-md bg-sky-600 hover:bg-sky-500 text-white"
+                    className="flex-center p-medium-16 whitespace-nowrap py-3 rounded-md bg-sky-600 hover:bg-sky-500 text-white w-full mt-3"
                   >
                     <Link href={link.route}>{link.label}</Link>
                   </li>

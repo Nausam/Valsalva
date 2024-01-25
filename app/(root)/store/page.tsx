@@ -28,7 +28,9 @@ export default async function Store({ searchParams }: SearchParamProps) {
           <Search />
           <CategoryFilter />
         </div>
+      </section>
 
+      <section className="wrapper my-8 items-center justify-center flex gap-8 md:gap-12">
         <Collection
           data={products?.data}
           emptyTitle="No products found"

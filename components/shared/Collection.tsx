@@ -28,8 +28,8 @@ const Collection = ({
   return (
     <>
       {data.length > 0 ? (
-        <div className="flex flex-col items-center gap-10 ">
-          <ul className="grid w-full grid-cols-1 gap-5 md:grid-cols-1 lg:grid-cols-1 xl:gap-10">
+        <div className="flex-center flex-col gap-10 ">
+          <ul className="flex-center w-full flex-wrap gap-5 xl:gap-10">
             {data.map((product, index) => {
               const hasOrderLink = collectionType === "My_Products";
               const hidePrice = collectionType === "My_Products";
@@ -55,9 +55,15 @@ const Collection = ({
           )}
         </div>
       ) : (
-        <div className="flex-center wrapper min-h-[200px] w-full flex-col gap-3 rounded-[14px] bg-grey-50 py-28 text-center ">
-          <h3 className="p-bold-20 md:h5-bold"> {emptyTitle} </h3>
-          <p className="p-regular-14"> {emptyStateSubtext} </p>
+        <div className="flex-center wrapper min-h-[200px] w-full flex-col gap-3 rounded-[14px] bg-grey-50 dark:bg-[#191919] py-28 text-center ">
+          <h3 className="p-bold-20 md:h5-bold dark:text-gray-300">
+            {" "}
+            {emptyTitle}{" "}
+          </h3>
+          <p className="p-regular-14 dark:text-gray-400">
+            {" "}
+            {emptyStateSubtext}{" "}
+          </p>
         </div>
       )}
     </>

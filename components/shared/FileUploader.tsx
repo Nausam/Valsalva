@@ -32,7 +32,7 @@ export function FileUploader({
   return (
     <div
       {...getRootProps()}
-      className="flex-center bg-dark-3 flex h-72 cursor-pointer flex-col overflow-hidden rounded-xl bg-grey-50"
+      className="flex-center bg-dark-3 flex h-72 cursor-pointer flex-col overflow-hidden rounded-xl bg-grey-50 dark:bg-[#191919]"
     >
       <input {...getInputProps()} className="cursor-pointer" />
 
@@ -56,7 +56,10 @@ export function FileUploader({
           />
           <h3 className="mb-2 mt-2">Drag photo here</h3>
           <p className="p-medium-12 mb-4">SVG, PNG, JPG</p>
-          <Button type="button" className="rounded-full">
+          <Button
+            type="button"
+            className="rounded-full dark:bg-[#252525] bg-gray-400 hover:bg-gray-500 dark:hover:bg-[#393939] text-white"
+          >
             Select from computer
           </Button>
         </div>

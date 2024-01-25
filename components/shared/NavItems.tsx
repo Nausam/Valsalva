@@ -20,7 +20,8 @@ const NavItems = () => {
             key={link.label}
             href={link.route}
             className={`${
-              isActive && "bg-slate-500 px-2 bg-opacity-20 rounded-md"
+              isActive &&
+              "bg-slate-500 px-2 bg-opacity-20 rounded-md text-black dark:text-white"
             }`}
           >
             <AnimatedLink key={link.label} title={link.label} />

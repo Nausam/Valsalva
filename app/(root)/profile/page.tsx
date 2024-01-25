@@ -28,13 +28,13 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
 
   return (
     <>
-      <section className="bg-primary-50 bg-dotted-pattern bg-cover bg-center mt-20">
+      <section className="mt-20">
         <div className="wrapper flex items-center justify-center sm:justify-between">
-          <h3 className="h3-bold text-center sm:text-left">Inventory</h3>
+          <h3 className="h3-bold text-center sm:text-left">Profile</h3>
 
           <Button
             asChild
-            className="button hidden sm:flex bg-sky-600 border border-sky-500 hover:bg-white  hover:text-black hover:border-sky-500 font-bold w-full sm:w-fit transition-all duration-300 ease-in-out shadow-lg"
+            className="button hidden sm:flex bg-sky-600 border border-sky-500 hover:bg-transparent  hover:text-black hover:border-sky-500 dark:text-white font-bold w-full sm:w-fit transition-all duration-300 ease-in-out shadow-lg"
             size="lg"
           >
             <Link href="/store">Explore More</Link>
@@ -42,7 +42,7 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
         </div>
       </section>
 
-      <section className="wrapper my-8 ">
+      <section className="wrapper my-8 items-center flex flex-col gap-8 md:gap-12">
         <InventoryCollection
           data={orderedProducts}
           emptyTitle="No products purchased yet"

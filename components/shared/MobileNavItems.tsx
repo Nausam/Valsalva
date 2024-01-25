@@ -9,7 +9,7 @@ const MobileNavItems = () => {
   const pathname = usePathname();
 
   return (
-    <ul className="md:flex-between flex w-full flex-col items-start gap-5 md:flex-row">
+    <ul className="md:flex-between flex w-full flex-col items-start justify-start gap-5 md:flex-row">
       {headerLinks.map((link) => {
         const isActive = pathname === link.route;
 
@@ -17,8 +17,8 @@ const MobileNavItems = () => {
           <li
             key={link.route}
             className={`${
-              isActive && "text-blue-700"
-            } flex-center p-medium-16 whitespace-nowrap hover:scale-105 hover:text-blue-600 transition-all duration-300 ease-in-out text-black`}
+              isActive && "bg-gray-200 dark:bg-[#252525]"
+            } flex-center p-medium-16 whitespace-nowrap hover:scale-105 hover:bg-gray-200 transition-all duration-300 ease-in-out text-black dark:text-white w-full py-3 rounded-lg dark:hover:bg-[#252525]`}
           >
             <Link href={link.route}>{link.label}</Link>
           </li>

@@ -20,24 +20,18 @@ const Card = ({ product, hasOrderLink, hidePrice }: CardProps) => {
   // const isProductCreator = product.creator._id === userId.toString();
 
   return (
-    <div className="relative flex min-h-[380px] w-full max-w-[800px] flex-col overflow-hidden rounded-xl bg-white shadow-lg transition-all hover:shadow-xl md:min-h-[238px]">
-      <div className="flex md:justify-between md:flex-row flex-col p-5 gap-5">
+    <div className="relative flex min-h-[280px] w-full max-w-[800px] flex-col overflow-hidden rounded-xl bg-white dark:bg-[#191919] shadow-lg hover:shadow-xl md:min-h-[238px] hover:scale-105 border dark:border-gray-800 hover:border-gray-400 dark:hover:border-gray-600 transition-all duration-300">
+      <div className="flex flex-col p-5 gap-5">
         <Link href={`/product/${product._id}`} className="">
           <Image
             src={product.imageUrl}
-            width={450}
+            width={300}
             height={100}
             alt="product image"
-            className="flex-1"
+            className="flex-1 rounded-lg transition-all duration-300"
           />
         </Link>
-        <div className="flex flex-col gap-5">
-          <Link href={`/product/${product._id}`}>
-            <p className="p-medium-18 md:p-medium-20 text-black">
-              {product.title}
-            </p>
-          </Link>
-
+        <div className="flex flex-col items-center justify-center gap-5">
           {isProductCreator && !hidePrice && (
             <div className="absolute left-2 top-2 flex flex-col gap-4 rounded-xl bg-white p-3 shadow-sm transition-all">
               <Link href={`/product/${product._id}/update`}>
@@ -53,15 +47,21 @@ const Card = ({ product, hasOrderLink, hidePrice }: CardProps) => {
             </div>
           )}
 
-          <div className="flex-start">
+          <Link href={`/product/${product._id}`}>
+            <p className="p-medium-16 text-black dark:text-gray-300">
+              {product.title}
+            </p>
+          </Link>
+
+          <div className="flex-center">
             <div className="">
               {!hidePrice && product.isAvailable === true ? (
                 <div className="flex gap-2">
-                  <span className="p-semibold-14 w-min rounded-full bg-green-100 px-4 py-1 text-green-500">
+                  <span className="p-semibold-14 w-min rounded-full bg-green-100 dark:bg-grey-500/10 px-4 py-1 text-green-500">
                     {`$${product.price}`}
                   </span>
 
-                  <p className="p-semibold-14 w-min rounded-full bg-grey-500/10 px-4 text-grey-500 flex-center">
+                  <p className="p-semibold-14 w-min rounded-full bg-grey-500/10 px-4 text-grey-500 flex-center dark:text-gray-400">
                     {product.category.name}
                   </p>
                 </div>
@@ -72,9 +72,9 @@ const Card = ({ product, hasOrderLink, hidePrice }: CardProps) => {
               )}
             </div>
 
-            <p className="p-semibold-14 mt-5 w-60 text-grey-500 flex-center">
+            {/* <p className="mt-8 w-60 text-gray-400 flex-center">
               {product.description}
-            </p>
+            </p> */}
 
             {hasOrderLink && (
               <Link
