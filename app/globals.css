@@ -278,3 +278,16 @@ body {
 .react-datepicker__time-list-item--selected {
   background-color: #624cf5 !important;
 }
+
+.large-device-canvas {
+  height: 70vh;
+  width: 90vw;
+}
+
+@media only screen and (max-width: 767px) {
+  /* Styles for devices with width <= 767px */
+  .large-device-canvas {
+    height: auto; /* Adjust as needed */
+    width: 100%; /* Adjust as needed */
+  }
+}

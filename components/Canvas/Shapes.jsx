@@ -7,14 +7,18 @@ import { Suspense, useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 
 export default function Shapes() {
+  const isLargeDevice =
+    typeof window !== "undefined" && window.innerWidth <= 768;
+
   return (
-    <div className="mt-96">
+    <div className="mt-96 w-full">
       <Canvas
-        className="z-0"
+        className="z-0 w-full"
         shadows
         gl={{ antialias: true }}
         dpr={[1, 1.5]}
-        camera={{ position: [0, 0, 25], fov: 30, near: 1, far: 40 }}
+        camera={{ position: [0, 0, 25], fov: 20, near: 1, far: 40 }}
+        style={{ height: isLargeDevice ? "100vh" : "50vh" }}
       >
         <Suspense fallback={null}>
           <Geometries />
