@@ -228,14 +228,16 @@ const ProductForm = ({
           )}
         />
 
-        <Button
-          type="submit"
-          size="lg"
-          disabled={form.formState.isSubmitting}
-          className="button font-bold w-full bg-sky-500 hover:bg-transparent border border-sky-300 hover:border-sky-500 hover:text-black dark:text-white shadow-xl"
-        >
-          {form.formState.isSubmitting ? "Submitting..." : `${type} Product `}
-        </Button>
+        <div className="flex w-full justify-end">
+          <Button
+            type="submit"
+            size="lg"
+            disabled={form.formState.isSubmitting}
+            className="button bg-black border border-black hover:bg-transparent text-white hover:text-black dark:bg-white dark:border-black dark:hover:border-white dark:text-black dark:hover:bg-transparent dark:hover:text-white  font-bold w-full sm:w-fit transition-all duration-300 ease-in-out shadow-lg"
+          >
+            {form.formState.isSubmitting ? "Submitting..." : `${type} Product `}
+          </Button>
+        </div>
       </form>
     </Form>
   );

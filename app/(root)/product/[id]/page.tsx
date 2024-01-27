@@ -30,7 +30,7 @@ const ProductDetails = async ({
             width={1000}
             height={1000}
             style={{ objectFit: "cover" }}
-            className="h-full rounded-2xl"
+            className="h-full rounded-sm"
           />
 
           <div className="flex w-full flex-col gap-8 p-5 md:p-10">

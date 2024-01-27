@@ -55,7 +55,7 @@ const Collection = ({
           )}
         </div>
       ) : (
-        <div className="flex-center wrapper min-h-[200px] w-full flex-col gap-3 rounded-[14px] bg-grey-50 dark:bg-[#191919] py-28 text-center ">
+        <div className="flex-center wrapper min-h-[200px] w-full flex-col gap-3 rounded-sm bg-grey-50 dark:bg-[#191919] py-28 text-center ">
           <h3 className="p-bold-20 md:h5-bold dark:text-gray-300">
             {" "}
             {emptyTitle}{" "}

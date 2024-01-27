@@ -23,6 +23,7 @@ const Header = async () => {
             width={20}
             height={20}
             alt="valsalva logo"
+            className="invert dark:invert-0"
           />
         </Link>
 
@@ -45,7 +46,7 @@ const Header = async () => {
           )}
         </nav>
 
-        <div className="flex justify-end gap-3">
+        <div className="flex justify-end gap-3 items-center">
           <ThemeButton />
           <SignedIn>
             <UserButton afterSignOutUrl="/" />

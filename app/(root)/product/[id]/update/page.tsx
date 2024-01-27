@@ -19,7 +19,7 @@ const UpdateProduct = async ({ params: { id } }: UpdateProductProps) => {
 
   return (
     <>
-      <section className="bg-primary-50 bg-dotted-pattern bg-cover bg-center mt-20">
+      <section className="mt-20">
         <h3 className="wrapper h3-bold text-center sm:text-left">
           Update Product
         </h3>
