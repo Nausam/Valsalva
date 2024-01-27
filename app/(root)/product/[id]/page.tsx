@@ -40,23 +40,19 @@ const ProductDetails = async ({
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
                 <div className="flex gap-3">
                   {product.isAvailable === true ? (
-                    <p className="p-bold-20 rounded-full bg-green-500/10 px-5 py-2 text-green-600">{`$${product.price}`}</p>
+                    <p className="p-bold-20 bg-grey-500/10 rounded-sm px-5 py-2">{`$${product.price}`}</p>
                   ) : (
-                    <p className="p-medium-16 rounded-full bg-red-500 px-4 py-2.5 text-white">
+                    <p className="p-medium-16 rounded-sm bg-grey-500/10 px-4 py-2.5">
                       Out of stock
                     </p>
                   )}
 
-                  <p className="p-medium-16 rounded-full bg-grey-500/10 px-4 py-2.5 text-grey-500">
+                  <p className="p-medium-16 rounded-sm bg-grey-500/10 px-4 py-2.5 text-grey-500">
                     {product.category.name}
                   </p>
                 </div>
               </div>
             </div>
-
-            {product.isAvailable === true && (
-              <CheckoutButton product={product} />
-            )}
 
             <div className="flex flex-col gap-2">
               <p className="p-bold-20 text-grey-600 dark:text-gray-300">
@@ -66,6 +62,12 @@ const ProductDetails = async ({
               <p className="p-medium-16 lg:p-medium-18 text-gray-500 dark:text-gray-400">
                 {product.description}
               </p>
+
+              <div className="mt-5">
+                {product.isAvailable === true && (
+                  <CheckoutButton product={product} />
+                )}
+              </div>
             </div>
           </div>
         </div>

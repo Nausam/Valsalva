@@ -51,7 +51,7 @@ const Checkout = ({
         type="submit"
         role="link"
         size="lg"
-        className="button bg-green-600 border-green-500 border sm:w-fit hover:bg-transparent hover:text-black hover:border-green-500 dark:text-white font-bold shadow-lg transition-all duration-300"
+        className="button bg-black dark:text-black dark:bg-white border-black border sm:w-fit hover:bg-transparent hover:text-black hover:border-black dark:hover:bg-transparent dark:border-white dark:hover:text-white shadow-lg transition-all duration-300"
       >
         Buy Now
       </Button>

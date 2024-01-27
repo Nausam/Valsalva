@@ -19,7 +19,8 @@ const CheckoutButton = ({ product }: { product: IProduct }) => {
         <SignedOut>
           <Button
             asChild
-            className="button px-10 border bg-green-600 border-green-500  hover:bg-transparent hover:text-black dark:text-white hover:border-green-500 font-bold shadow-lg transition-all duration-300"
+            size="lg"
+            className="button bg-black dark:text-black dark:bg-white border-black border sm:w-fit hover:bg-transparent hover:text-black hover:border-black dark:hover:bg-transparent dark:border-white dark:hover:text-white shadow-lg transition-all duration-300"
           >
             <Link href="/sign-in">Buy</Link>
           </Button>

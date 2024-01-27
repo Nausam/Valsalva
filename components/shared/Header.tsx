@@ -45,7 +45,7 @@ const Header = async () => {
           )}
         </nav>
 
-        <div className="flex w-32 justify-end gap-3">
+        <div className="flex justify-end gap-3">
           <ThemeButton />
           <SignedIn>
             <UserButton afterSignOutUrl="/" />
@@ -59,6 +59,7 @@ const Header = async () => {
             >
               <Link href="/sign-in">Login</Link>
             </Button>
+            <MobileNav />
           </SignedOut>
         </div>
       </div>
