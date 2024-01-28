@@ -20,7 +20,7 @@ const InventoryCard = ({ product, hasOrderLink, hidePrice }: CardProps) => {
   // const isProductCreator = product.creator._id === userId.toString();
 
   return (
-    <div className="relative flex min-h-[380px] w-full max-w-[800px] flex-col overflow-hidden rounded-xl bg-white dark:bg-[#191919] shadow-lg hover:shadow-xl md:min-h-[238px] hover:scale-105 border dark:border-gray-800 hover:border-gray-400 dark:hover:border-gray-600 transition-all duration-300">
+    <div className="relative flex min-h-[380px] w-full max-w-[800px] flex-col overflow-hidden rounded-sm bg-white dark:bg-[#191919] shadow-lg hover:shadow-xl md:min-h-[238px] hover:scale-105 border dark:border-gray-800 transition-all duration-300">
       <div className="flex md:justify-between md:flex-row flex-col p-5 gap-5">
         <Link href={`/product/${product._id}`} className="">
           <Image
@@ -28,7 +28,7 @@ const InventoryCard = ({ product, hasOrderLink, hidePrice }: CardProps) => {
             width={450}
             height={100}
             alt="product image"
-            className="flex-1 rounded-lg"
+            className="flex-1 rounded-sm"
           />
         </Link>
         <div className="flex flex-col gap-5">
@@ -37,6 +37,10 @@ const InventoryCard = ({ product, hasOrderLink, hidePrice }: CardProps) => {
               {product.title}
             </p>
           </Link>
+
+          <p className="w-72 text-sm text-grey-500 flex-center dark:text-gray-400">
+            {product.description}
+          </p>
 
           {isProductCreator && !hidePrice && (
             <div className="absolute left-2 top-2 flex flex-col gap-4 rounded-xl bg-white p-3 shadow-sm transition-all">
@@ -67,13 +71,13 @@ const InventoryCard = ({ product, hasOrderLink, hidePrice }: CardProps) => {
                 </div>
               ) : (
                 <div className="flex gap-2">
-                  <p className="p-semibold-14 w-min p-2 rounded-full border border-green-500 px-4 text-green-600 flex-center">
+                  <p className="p-semibold-14 w-min p-2 rounded-sm border border-green-500 px-4 text-green-600 flex-center">
                     Purchased
                   </p>
 
                   {hasOrderLink && (
                     <Link href={`/orders?eventId=${product._id}`}>
-                      <p className="p-semibold-14 w-36 p-2 rounded-full border border-sky-500 bg-sky-600 px-4 text-white flex-center hover:bg-white dark:hover:bg-transparent dark:hover:text-white hover:text-black transition-all duration-300">
+                      <p className="p-semibold-14 w-36 p-2 rounded-sm border border-black/75 bg-black/80 px-4 text-white flex-center hover:bg-transparent dark:bg-gray-200 dark:border-white dark:text-black dark:hover:bg-transparent dark:hover:text-white hover:text-black transition-all duration-300">
                         Order Details
                       </p>
                       {/* <Image
@@ -87,10 +91,6 @@ const InventoryCard = ({ product, hasOrderLink, hidePrice }: CardProps) => {
                 </div>
               )}
             </div>
-
-            <p className="mt-6 w-60 text-grey-500 flex-center dark:text-gray-400">
-              {product.description}
-            </p>
           </div>
         </div>
       </div>

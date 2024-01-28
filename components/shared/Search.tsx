@@ -6,11 +6,7 @@ import { Input } from "../ui/input";
 import { formUrlQuery, removeKeysFromQuery } from "@/lib/utils";
 import { useRouter, useSearchParams } from "next/navigation";
 
-const Search = ({
-  placeholder = "Search title...",
-}: {
-  placeholder?: string;
-}) => {
+const Search = ({ placeholder = "Search..." }: { placeholder?: string }) => {
   const [query, setQuery] = useState("");
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -39,7 +35,7 @@ const Search = ({
   }, [query, searchParams, router]);
 
   return (
-    <div className="flex-center min-h-[54px] w-full overflow-hidden rounded-full bg-grey-50 dark:bg-[#191919] px-4 py-2">
+    <div className="flex-center min-h-[54px] w-full overflow-hidden rounded-sm bg-grey-50 dark:bg-[#191919] px-4 py-2">
       <Image
         src="/assets/icons/search.svg"
         alt="search"
