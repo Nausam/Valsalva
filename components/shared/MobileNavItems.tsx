@@ -4,6 +4,7 @@ import { adminLinks, headerLinks } from "@/constants";
 import { SignedIn } from "@clerk/nextjs";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { SheetClose } from "@/components/ui/sheet";
 
 const MobileNavItems = () => {
   const pathname = usePathname();
@@ -20,7 +21,9 @@ const MobileNavItems = () => {
               isActive && "bg-gray-200 dark:bg-[#252525]"
             } flex-center p-medium-16 whitespace-nowrap hover:scale-105 hover:bg-gray-200 transition-all duration-300 ease-in-out text-black dark:text-white w-full py-3 rounded-lg dark:hover:bg-[#252525]`}
           >
-            <Link href={link.route}>{link.label}</Link>
+            <SheetClose asChild>
+              <Link href={link.route}>{link.label}</Link>
+            </SheetClose>
           </li>
         );
       })}

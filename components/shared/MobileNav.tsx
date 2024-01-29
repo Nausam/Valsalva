@@ -1,4 +1,9 @@
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import Image from "next/image";
 import { Separator } from "../ui/separator";
 import NavItems from "./NavItems";
@@ -38,7 +43,9 @@ const MobileNav = () => {
                     key={link.route}
                     className="flex-center p-medium-16 whitespace-nowrap py-3 rounded-md bg-sky-600 hover:bg-sky-500 text-white w-full mt-3"
                   >
-                    <Link href={link.route}>{link.label}</Link>
+                    <SheetClose asChild>
+                      <Link href={link.route}>{link.label}</Link>
+                    </SheetClose>
                   </li>
                 );
               })}
