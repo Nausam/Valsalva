@@ -169,7 +169,7 @@ export async function getOrdersByUser({
 
 export async function getOrdersBySpecificUser({
   userId,
-  limit = 3,
+  limit = 100,
   page,
 }: GetOrdersByUserParams) {
   try {

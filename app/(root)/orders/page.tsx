@@ -27,8 +27,6 @@ const Orders = async ({ searchParams }: SearchParamProps) => {
   const orders = result?.data || [];
   // const totalPages = result?.totalPages || 0;
 
-  console.log("orders", orders);
-
   return (
     <>
       <section className="mt-20">

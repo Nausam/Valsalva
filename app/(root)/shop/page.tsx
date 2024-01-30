@@ -22,7 +22,7 @@ export default async function Store({ searchParams }: SearchParamProps) {
         id="products"
         className="wrapper my-8 flex flex-col gap-8 md:gap-12 mt-20"
       >
-        <h2 className="h2-bold">Store</h2>
+        <h2 className="h2-bold">Shop</h2>
 
         <div className="flex w-full flex-col gap-5 md:flex-row">
           <Search />
