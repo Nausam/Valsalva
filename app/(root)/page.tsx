@@ -44,8 +44,11 @@ export default async function Home({ searchParams }: SearchParamProps) {
             </Button>
           </div>
 
+          <div className="flex items-start justify-start w-full h-[500px]">
+            <LogoCanvas />
+          </div>
+
           {/* <Shapes /> */}
-          <LogoCanvas />
 
           {/* <div className="absolute top-0 left-0 right-0 bottom-0 ">
             <Image
@@ -60,7 +63,7 @@ export default async function Home({ searchParams }: SearchParamProps) {
         </div>
       </section>
 
-      <section className="wrapper flex flex-wrap justify-between text-center gap-10 mt-20">
+      <section className="wrapper flex flex-wrap justify-between text-center gap-10 mt-10">
         <div className="grid grid-cols-1 gap-5 lg:grid-cols-2 2xl:gap-0 items-center justify-center">
           <Image
             src="/assets/images/hero4.png"
@@ -70,7 +73,7 @@ export default async function Home({ searchParams }: SearchParamProps) {
             className="object-contain object-center mx-auto"
           />
 
-          <div className="flex flex-col justify-center gap-8">
+          <div className="flex flex-col justify-center gap-8 mt-16">
             <h2 className="h2-bold text-gray-800 dark:text-white text-start">
               About Us
             </h2>
@@ -83,7 +86,7 @@ export default async function Home({ searchParams }: SearchParamProps) {
             <Button
               size="lg"
               asChild
-              className="button bg-black border border-black hover:bg-transparent text-white hover:text-black dark:bg-white dark:border-black dark:hover:border-white dark:text-black dark:hover:bg-transparent dark:hover:text-white  font-bold w-full sm:w-fit transition-all duration-300 ease-in-out shadow-lg"
+              className="button bg-black border border-black hover:bg-transparent text-white hover:text-black dark:bg-white dark:border-black dark:hover:border-white dark:text-black dark:hover:bg-transparent dark:hover:text-white  font-bold w-full sm:w-fit transition-all duration-300 ease-in-out shadow-lg mt-5"
             >
               <Link href="/product/customize">Customize Now</Link>
             </Button>
@@ -134,7 +137,7 @@ export default async function Home({ searchParams }: SearchParamProps) {
 
       <section
         id="#products"
-        className="wrapper my-8 items-center flex flex-col gap-8 md:gap-12"
+        className="wrapper my-20 items-center flex flex-col gap-8 md:gap-12"
       >
         <h2 className="h2-bold">Featured Products</h2>
 
