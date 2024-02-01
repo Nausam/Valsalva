@@ -22,15 +22,15 @@ const ProductDetails = async ({
 
   return (
     <>
-      <section className="flex justify-center mt-20">
-        <div className="wrapper grid grid-cols-1 lg:grid-cols-2 md:grid-cols-1 2xl:max-w-7xl sm:py-10">
+      <section className="flex justify-center md:mt-10 mt-20">
+        <div className="wrapper grid grid-cols-1 lg:grid-cols-2  2xl:max-w-7xl sm:py-10 items-center">
           <Image
             src={product.imageUrl}
             alt="hero image"
             width={1000}
             height={1000}
             style={{ objectFit: "cover" }}
-            className="h-full rounded-sm"
+            className="rounded-sm"
           />
 
           <div className="flex w-full flex-col gap-8 p-5 md:p-10">

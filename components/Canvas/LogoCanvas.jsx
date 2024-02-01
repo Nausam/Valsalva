@@ -24,7 +24,7 @@ const LogoCanvas = () => {
         <PresentationControls
           global
           config={{ mass: 2, tension: 500 }}
-          snap={{ mass: 4, tension: 1500 }}
+          snap={{ mass: 5, tension: 1500 }}
           rotation={[0.2, -0.1, 0]}
           polar={[-Math.PI / 3, Math.PI / 3]}
           azimuth={[-Math.PI / 1.4, Math.PI / 2]}
@@ -35,6 +35,12 @@ const LogoCanvas = () => {
             scale={[1.6, 1.6, 2.7]}
           />
         </PresentationControls>
+
+        <OrbitControls
+          makeDefault
+          minPolarAngle={0}
+          maxPolarAngle={Math.PI / 2}
+        />
       </Center>
 
       <Environment preset="city" />

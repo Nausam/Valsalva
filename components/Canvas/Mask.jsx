@@ -1,6 +1,6 @@
 "use client";
 
-import React, { use } from "react";
+import React, { use, useEffect, useRef, useState } from "react";
 
 import { easing } from "maath";
 import { useFrame } from "@react-three/fiber";
@@ -8,10 +8,13 @@ import { Decal, useGLTF, useTexture } from "@react-three/drei";
 
 import state from "@/store";
 import { useSnapshot } from "valtio";
+import { gsap } from "gsap";
 
 const Mask = () => {
   const snap = useSnapshot(state);
   const { nodes, materials } = useGLTF("/assets/models/mask.glb");
+  const [visible, setVisible] = useState(false);
+  const meshRef = useRef();
 
   const logoTexture = useTexture(snap.logoDecal);
   const fullTexture = useTexture(snap.fullDecal);
@@ -23,8 +26,23 @@ const Mask = () => {
 
   const stateString = JSON.stringify(snap);
 
+  useEffect(() => {
+    let ctx = gsap.context(() => {
+      setVisible(true);
+      gsap.from(meshRef.current.scale, {
+        x: 0,
+        y: 0,
+        z: 0,
+        duration: gsap.utils.random(0.8, 1.2),
+        ease: "elastic.out(1,0.3)",
+        delay: gsap.utils.random(0, 0.3),
+      });
+    });
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <group key={stateString} dispose={null}>
+    <group ref={meshRef} key={stateString} dispose={null}>
       <mesh
         castShadow
         receiveShadow
