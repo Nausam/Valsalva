@@ -19,10 +19,10 @@ const CanvasModal = () => {
         preserveDrawingBuffer: true,
       }}
       shadows
-      camera={{ position: [2, 1.5, 1.3], fov: 30 }}
+      camera={{ position: [3.5, 2, 1.3], fov: 30 }}
     >
       <ambientLight intensity={1} />
-      <directionalLight intensity={5} color="grey" position={[0, 0, 5]} />
+      <directionalLight intensity={5} color="white" position={[0, 0, 5]} />
 
       <group>
         <Center top>

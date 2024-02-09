@@ -20,7 +20,7 @@ const LogoCanvas = () => {
   return (
     <Canvas shadows camera={{ position: [0, 0, 10], fov: 25 }}>
       <ambientLight intensity={10} />
-      <directionalLight intensity={10} color="grey" position={[0, 0, 5]} />
+      <directionalLight intensity={5} color="white" position={[0, 0, 5]} />
 
       <spotLight
         position={[10, 10, 10]}
