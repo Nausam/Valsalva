@@ -1,8 +1,14 @@
+import type { Metadata } from "next";
+
 import CategoryFilter from "@/components/shared/CategoryFilter";
 import Collection from "@/components/shared/Collection";
 import Search from "@/components/shared/Search";
 import { getAllProducts } from "@/lib/actions/product.actions";
 import { SearchParamProps } from "@/types";
+
+export const metadata: Metadata = {
+  title: "Shop | Valsalva",
+};
 
 export default async function Store({ searchParams }: SearchParamProps) {
   const page = Number(searchParams?.page) || 1;

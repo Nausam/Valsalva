@@ -13,6 +13,7 @@ export interface IOrder extends Document {
     firstName: string;
     lastName: string;
   };
+  footPocketColor: string;
 }
 
 export type IOrderItem = {
@@ -22,6 +23,7 @@ export type IOrderItem = {
   productTitle: string;
   productId: string;
   buyer: string;
+  footPocketColor: string;
 };
 
 export type IOrderSpecificItem = {
@@ -36,6 +38,7 @@ export type IOrderSpecificItem = {
     firstName: string;
     lastName: string;
   };
+  footPocketColor: string;
 };
 
 const OrderSchema = new Schema({
@@ -58,6 +61,10 @@ const OrderSchema = new Schema({
   buyer: {
     type: Schema.Types.ObjectId,
     ref: "User",
+  },
+  footPocketColor: {
+    type: String,
+    required: true,
   },
 });
 

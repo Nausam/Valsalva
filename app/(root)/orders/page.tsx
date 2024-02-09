@@ -1,3 +1,5 @@
+import { Metadata } from "next";
+
 import Search from "@/components/shared/Search";
 import {
   getOrdersByProduct,
@@ -11,6 +13,10 @@ import {
   IOrderSpecificItem,
 } from "@/lib/database/models/order.model";
 import { auth } from "@clerk/nextjs";
+
+export const metadata: Metadata = {
+  title: "Orders | Valsalva",
+};
 
 const Orders = async ({ searchParams }: SearchParamProps) => {
   // const productId = (searchParams?.productId as string) || "";

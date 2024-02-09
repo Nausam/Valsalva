@@ -57,6 +57,7 @@ export const createOrder = async (order: CreateOrderParams) => {
       ...order,
       product: order.productId,
       buyer: order.buyerId,
+      footPocketColor: order.footPocketColor,
     });
 
     return JSON.parse(JSON.stringify(newOrder));

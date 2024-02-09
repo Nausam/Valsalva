@@ -1,16 +1,17 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-// import ColorPicker from "@/components/Customizer/ColorPicker";
 import FilePicker from "@/components/Customizer/FilePicker";
 import Tab from "@/components/Customizer/Tab";
 import { DecalTypes, EditorTabs, FilterTabs } from "@/constants";
 import CanvasModal from "@/components/Canvas/Canvas";
-
 import state from "@/store";
 import { useSnapshot } from "valtio";
-
 import { useControls } from "leva";
+
+export const Metadata = {
+  title: "Customize | Valsalva",
+};
 
 const page = () => {
   const snap = useSnapshot(state);
@@ -22,18 +23,31 @@ const page = () => {
     stylishShirt: false,
   });
 
-  const { Model_Color, isLogoTexture, isFullTexture } = useControls({
-    Model_Color: {
-      value: snap.color,
-      onChange: (value) => (state.color = value),
-    },
-    Goatee_Color: {
-      value: snap.goateeColor,
-      onChange: (value) => (state.goateeColor = value),
-    },
-    isLogoTexture: { label: "Logo Texture", value: state.isLogoTexture },
-    isFullTexture: { label: "Full Texture", value: state.isFullTexture },
-  });
+  const colorMap = {
+    Black: "#252525",
+    White: "#A9A9A9",
+  };
+
+  const customColorNames = Object.keys(colorMap);
+
+  const { Model_Color, isLogoTexture, isFullTexture } = useControls(
+    "Color Settings",
+    {
+      footPocketColor: {
+        label: "Foot Pocket Color",
+        options: customColorNames,
+        getValueToStore: (value) => colorMap[value], // Map the selected color name to its hex value
+        onChange: (value) => (state.footPocketColor = colorMap[value]),
+      },
+      finColor: {
+        label: "Fin Color",
+        value: snap.finColor,
+        onChange: (value) => (state.finColor = value),
+      },
+      // isLogoTexture: { label: "Logo Texture", value: state.isLogoTexture },
+      // isFullTexture: { label: "Full Texture", value: state.isFullTexture },
+    }
+  );
 
   useEffect(() => {
     state.isLogoTexture = isLogoTexture;

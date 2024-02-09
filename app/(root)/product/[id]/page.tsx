@@ -1,3 +1,5 @@
+import { Metadata } from "next";
+
 import CheckoutButton from "@/components/shared/CheckoutButton";
 import Collection from "@/components/shared/Collection";
 import {
@@ -7,6 +9,10 @@ import {
 import { SearchParamProps } from "@/types";
 import Image from "next/image";
 import React from "react";
+
+export const metadata: Metadata = {
+  title: "Details | Valsalva",
+};
 
 const ProductDetails = async ({
   params: { id },
@@ -63,12 +69,26 @@ const ProductDetails = async ({
                 {product.description}
               </p>
 
-              <div className="mt-5">
+              {/* <div className="mt-5">
                 {product.isAvailable === true && (
                   <CheckoutButton product={product} />
                 )}
-              </div>
+              </div> */}
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="wrapper w-full">
+        <div className="flex flex-col gap-2 max-w-2xl">
+          <div className="p-bold-20 text-grey-600 dark:text-gray-300">
+            <p className="mb-3">Foot Pocket Color</p>
+          </div>
+
+          <div className="mt-10">
+            {product.isAvailable === true && (
+              <CheckoutButton product={product} />
+            )}
           </div>
         </div>
       </section>

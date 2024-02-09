@@ -7,11 +7,13 @@ import Link from "next/link";
 import React from "react";
 import { Button } from "../ui/button";
 import Checkout from "./Checkout";
+import FootPocketColorSelect from "./FootPocketColorSelect";
 
 const CheckoutButton = ({ product }: { product: IProduct }) => {
   const { user } = useUser();
 
   const userId = user?.publicMetadata.userId as string;
+  const [selectedColor, setSelectedColor] = React.useState<string>("");
 
   return (
     <div className="flex items-center gap-3">
@@ -27,7 +29,14 @@ const CheckoutButton = ({ product }: { product: IProduct }) => {
         </SignedOut>
 
         <SignedIn>
-          <Checkout product={product} userId={userId} />
+          <FootPocketColorSelect
+            onSelectColor={(color) => setSelectedColor(color)}
+          />
+          <Checkout
+            product={product}
+            userId={userId}
+            selectedColor={selectedColor}
+          />
         </SignedIn>
       </>
     </div>

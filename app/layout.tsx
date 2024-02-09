@@ -18,9 +18,9 @@ const ubuntu = Ubuntu({
 });
 
 export const metadata: Metadata = {
-  title: "Valsalva",
+  title: "Home | Valsalva",
   description:
-    "Valsalva is an elegent e-commerce website to buy snorkeling gear and equipment.",
+    "Welcome to Valsalva – your premier destination for all things snorkeling. Dive into elegance and explore our curated selection of top-quality snorkeling gear and equipment. Experience innovation like never before with our cutting-edge 3D fin customizer, allowing you to create personalized fins tailored to your unique style and preferences.",
   icons: {
     icon: "/asets/images/logo.png",
   },

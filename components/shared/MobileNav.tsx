@@ -31,7 +31,13 @@ const MobileNav = () => {
           />
         </SheetTrigger>
         <SheetContent className="flex flex-col gap-6 bg-white dark:bg-[#191919] dark:text-white md:hidden border-none items-center">
-          <h2 className="font-bold text-2xl ">Valsalva</h2>
+          <Image
+            src="/assets/images/valsalva.png"
+            width={200}
+            height={20}
+            alt="valsalva typography"
+            className="dark:invert invert-0"
+          />
           <Separator />
           <MobileNavItems />
 

@@ -1,8 +1,13 @@
+import React from "react";
+import { Metadata } from "next";
+
 import ProductForm from "@/components/shared/ProductForm";
 import { getProductById } from "@/lib/actions/product.actions";
 import { auth } from "@clerk/nextjs";
 
-import React from "react";
+export const metadata: Metadata = {
+  title: "Update | Valsalva",
+};
 
 type UpdateProductProps = {
   params: {

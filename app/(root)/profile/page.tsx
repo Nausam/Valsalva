@@ -1,3 +1,5 @@
+import { Metadata } from "next";
+
 import Collection from "@/components/shared/Collection";
 import InventoryCollection from "@/components/shared/InventoryCollection";
 import { Button } from "@/components/ui/button";
@@ -8,6 +10,10 @@ import { SearchParamProps } from "@/types";
 import { auth } from "@clerk/nextjs";
 import Link from "next/link";
 import React from "react";
+
+export const metadata: Metadata = {
+  title: "Profile | Valsalva",
+};
 
 const ProfilePage = async ({ searchParams }: SearchParamProps) => {
   const { sessionClaims } = auth();

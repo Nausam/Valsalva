@@ -19,9 +19,10 @@ const CanvasModal = () => {
         preserveDrawingBuffer: true,
       }}
       shadows
-      camera={{ position: [0, 5.5, 3], fov: 40 }}
+      camera={{ position: [2, 1.5, 1.3], fov: 30 }}
     >
       <ambientLight intensity={1} />
+      <directionalLight intensity={5} color="grey" position={[0, 0, 5]} />
 
       <group>
         <Center top>
@@ -38,10 +39,11 @@ const CanvasModal = () => {
         maxPolarAngle={Math.PI / 2}
       />
 
-      <Environment preset="dawn" background blur={1} />
+      <Environment preset="forest" background blur={1} />
     </Canvas>
   );
 };
 
 export default CanvasModal;
-8;
+
+<OrbitControls makeDefault minPolarAngle={0} maxPolarAngle={Math.PI / 2} />;

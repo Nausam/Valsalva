@@ -63,8 +63,8 @@ export default async function Home({ searchParams }: SearchParamProps) {
         </div>
       </section>
 
-      <section className="wrapper flex flex-wrap justify-between text-center gap-10 mt-10">
-        <div className="grid grid-cols-1 gap-5 lg:grid-cols-2 2xl:gap-0 items-center justify-center">
+      <section className="wrapper flex flex-wrap gap-10 mt-10">
+        <div className="grid grid-cols-1 gap-5 lg:grid-cols-2 2xl:gap-0 items-center justify-center ">
           <Image
             src="/assets/images/hero4.png"
             alt="hero"

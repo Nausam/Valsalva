@@ -1,7 +1,12 @@
+import { Metadata } from "next";
+import React from "react";
+
 import ProductForm from "@/components/shared/ProductForm";
 import { auth } from "@clerk/nextjs";
 
-import React from "react";
+export const metadata: Metadata = {
+  title: "Create | Valsalva",
+};
 
 const CreateProduct = () => {
   const { sessionClaims } = auth();
