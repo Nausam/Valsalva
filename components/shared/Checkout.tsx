@@ -11,11 +11,9 @@ loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 const Checkout = ({
   product,
   userId,
-  selectedColor,
 }: {
   product: IProduct;
   userId: string;
-  selectedColor: string;
 }) => {
   useEffect(() => {
     // Check to see if this is a redirect back from Checkout
@@ -37,12 +35,7 @@ const Checkout = ({
       productId: product._id,
       price: product.price,
       buyerId: userId,
-      footPocketColor: selectedColor,
     };
-    if (!order.footPocketColor) {
-      console.log("Please select a color");
-      return;
-    }
 
     await checkoutOrder(order);
   };

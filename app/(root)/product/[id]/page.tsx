@@ -81,9 +81,9 @@ const ProductDetails = async ({
 
       <section className="wrapper w-full">
         <div className="flex flex-col gap-2 max-w-2xl">
-          <div className="p-bold-20 text-grey-600 dark:text-gray-300">
+          {/* <div className="p-bold-20 text-grey-600 dark:text-gray-300">
             <p className="mb-3">Foot Pocket Color</p>
-          </div>
+          </div> */}
 
           <div className="mt-10">
             {product.isAvailable === true && (

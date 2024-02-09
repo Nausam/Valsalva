@@ -107,7 +107,6 @@ export type CreateOrderParams = {
   buyerId: string;
   totalAmount: string;
   createdAt: Date;
-  footPocketColor: string;
 };
 
 export type GetOrdersByProductParams = {

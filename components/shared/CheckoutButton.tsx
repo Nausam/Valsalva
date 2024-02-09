@@ -13,7 +13,6 @@ const CheckoutButton = ({ product }: { product: IProduct }) => {
   const { user } = useUser();
 
   const userId = user?.publicMetadata.userId as string;
-  const [selectedColor, setSelectedColor] = React.useState<string>("");
 
   return (
     <div className="flex items-center gap-3">
@@ -29,14 +28,7 @@ const CheckoutButton = ({ product }: { product: IProduct }) => {
         </SignedOut>
 
         <SignedIn>
-          <FootPocketColorSelect
-            onSelectColor={(color) => setSelectedColor(color)}
-          />
-          <Checkout
-            product={product}
-            userId={userId}
-            selectedColor={selectedColor}
-          />
+          <Checkout product={product} userId={userId} />
         </SignedIn>
       </>
     </div>
