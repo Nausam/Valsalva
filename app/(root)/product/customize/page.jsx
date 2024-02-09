@@ -131,6 +131,9 @@ const page = () => {
   return (
     <section className="w-full relative h-screen">
       <div className="flex flex-col w-full h-screen">
+        <Head>
+          <title>{Metadata.title}</title>
+        </Head>
         <div className="absolute top-0 ml-10 gap-5 z-50 mt-20 py-5 flex">
           {EditorTabs.map((tab) => (
             <Tab
