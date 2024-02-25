@@ -20,7 +20,7 @@ const page = () => {
   });
 
   const colorMap = {
-    Black: "#252525",
+    Black: "#353535",
     White: "#A9A9A9",
   };
 
@@ -39,6 +39,11 @@ const page = () => {
         label: "Fin Color",
         value: snap.finColor,
         onChange: (value) => (state.finColor = value),
+      },
+      bezelColor: {
+        label: "Bezel Color",
+        value: snap.bezelColor,
+        onChange: (value) => (state.bezelColor = value),
       },
       // isLogoTexture: { label: "Logo Texture", value: state.isLogoTexture },
       // isFullTexture: { label: "Full Texture", value: state.isFullTexture },

@@ -25,8 +25,9 @@ const Mask = () => {
   const fullTexture = useTexture(snap.fullDecal);
 
   useFrame((state, delta) => {
-    easing.dampC(physicalMaterial26.color, snap.footPocketColor, 0.25, delta);
-    easing.dampC(physicalMaterial28.color, snap.finColor, 0.25, delta);
+    easing.dampC(physicalMaterial01.color, snap.footPocketColor, 0.25, delta);
+    easing.dampC(physicalMaterial02.color, snap.finColor, 0.25, delta);
+    easing.dampC(physicalMaterial03.color, snap.bezelColor, 0.25, delta);
   });
 
   const stateString = JSON.stringify(snap);
@@ -46,43 +47,33 @@ const Mask = () => {
     return () => ctx.revert();
   }, []);
 
-  const { repeatU, repeatV, offsetX, offsetY, rotation } = useControls(
-    "Texture Settings",
-    {
-      repeatU: { label: "Stretch X", value: 0.04, min: 0, max: 0.1 },
-      repeatV: { label: "Stretch Y", value: 0.01, min: 0, max: 0.1 },
-      offsetX: { label: "Move X", value: 0.46, min: 0, max: 1 },
-      offsetY: { label: "Move Y", value: 0.9, min: 0, max: 1 },
-      rotation: { label: "Rotation", value: 2, min: 0, max: 10 },
-    }
-  );
+  const {
+    repeatU,
+    repeatV,
+    offsetX,
+    offsetY,
+    rotation,
+    flipHorizontal,
+    flipVertical,
+  } = useControls("Texture Settings", {
+    repeatU: { label: "Stretch X", value: 0.8, min: 0, max: 2 },
+    repeatV: { label: "Stretch Y", value: 1, min: 0, max: 2 },
+    offsetX: { label: "Move X", value: 0.1, min: 0, max: 2 },
+    offsetY: { label: "Move Y", value: 1, min: 0, max: 2 },
+    rotation: { label: "Rotation", value: 500, min: 0, max: 500 },
+    flipHorizontal: { label: "Flip Horizontal", value: false },
+    flipVertical: { label: "Flip Vertical", value: false },
+  });
+
+  let flipFactorX = flipHorizontal ? -1 : 1;
+  let flipFactorY = flipVertical ? -1 : 1;
 
   fullTexture.wrapS = fullTexture.wrapT = THREE.RepeatWrapping;
-  fullTexture.repeat.set(repeatU, repeatV);
-  fullTexture.offset.set(offsetX, offsetY);
+  fullTexture.repeat.set(repeatU * flipFactorX, repeatV * flipFactorY);
+  fullTexture.offset.set(offsetX * flipFactorX, offsetY * flipFactorY);
   fullTexture.rotation = Math.PI / rotation;
 
-  const physicalMaterial26 = new MeshPhysicalMaterial({
-    color: "#454545",
-    roughness: 0.5,
-    metalness: 0.5,
-    reflectivity: 0.5,
-    clearCoat: 0.5,
-    clearCoatRoughness: 0.5,
-    lights: true,
-  });
-
-  const physicalMaterial27 = new MeshPhysicalMaterial({
-    color: "#454545",
-    roughness: 0.5,
-    metalness: 0.5,
-    reflectivity: 0.5,
-    clearCoat: 0.5,
-    clearCoatRoughness: 0.5,
-    lights: true,
-  });
-
-  const physicalMaterial28 = new MeshPhysicalMaterial({
+  const physicalMaterial02 = new MeshPhysicalMaterial({
     color: 0xffffff,
     roughness: 0.5,
     metalness: 0.5,
@@ -94,144 +85,141 @@ const Mask = () => {
     map: fullTexture,
   });
 
+  const physicalMaterial01 = new MeshPhysicalMaterial({
+    color: 0xffffff,
+    roughness: 0.5,
+    metalness: 0.5,
+    clearcoat: 0.02,
+    transmission: 0,
+    reflectivity: 0,
+    roughnessMap: null,
+    metalnessMap: null,
+  });
+
+  const physicalMaterial03 = new MeshPhysicalMaterial({
+    color: 0xffffff,
+    roughness: 0.5,
+    metalness: 0.5,
+    clearcoat: 0.05,
+    transmission: 0,
+    reflectivity: 0,
+    roughnessMap: null,
+    metalnessMap: null,
+  });
+
   return (
     <group ref={meshRef} key={stateString} dispose={null}>
-      // Backside
-      <group
-        position={[1.4, 0, 0.9]}
-        rotation={[Math.PI, -0.06, 0]}
-        scale={0.02}
-      >
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Mesh.geometry}
-          material={physicalMaterial26}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Mesh_1.geometry}
-          material={physicalMaterial27}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Mesh_2.geometry}
-          material={physicalMaterial28}
-        ></mesh>
+      <group>
+        <group rotation={[0, -0.4, 0]}>
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.Plane006.geometry}
+            material={physicalMaterial02}
+          />
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.Plane008.geometry}
+            material={physicalMaterial03}
+          />
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.Object004.geometry}
+            material={physicalMaterial01}
+          />
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.Object006.geometry}
+            material={physicalMaterial01}
+          />
+        </group>
+        <group position={[0, 0, -0.8]} rotation={[0, 0, 0]}>
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.Plane006.geometry}
+            material={physicalMaterial02}
+          />
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.Plane008.geometry}
+            material={physicalMaterial03}
+          />
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.Object004.geometry}
+            material={physicalMaterial01}
+          />
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.Object006.geometry}
+            material={physicalMaterial01}
+          />
+        </group>
       </group>
-      <group position={[1.7, 0, 0.9]} rotation={[Math.PI, 0.3, 0]} scale={0.02}>
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Mesh.geometry}
-          material={physicalMaterial26}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Mesh_1.geometry}
-          material={physicalMaterial27}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Mesh_2.geometry}
-          material={physicalMaterial28}
-        ></mesh>
-      </group>
-      // Frontside
-      <group
-        position={[-0.02, 0, -0.826]}
-        rotation={[Math.PI, Math.PI / 9, 0]}
-        scale={-0.02}
-      >
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Mesh001.geometry}
-          material={physicalMaterial26}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Mesh001_1.geometry}
-          material={physicalMaterial27}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Mesh001_2.geometry}
-          material={physicalMaterial28}
-        ></mesh>
-      </group>
-      <group
-        position={[0.27, 0, -0.826]}
-        rotation={[Math.PI, Math.PI / 0.5, 0]}
-        scale={-0.02}
-      >
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Mesh001.geometry}
-          material={physicalMaterial26}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Mesh001_1.geometry}
-          material={physicalMaterial27}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Mesh001_2.geometry}
-          material={physicalMaterial28}
-        />
+
+      <group position={[0, 0.3, -2.5]}>
+        <group rotation={[0, 0.4, 3.15]}>
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.Plane006.geometry}
+            material={physicalMaterial02}
+          />
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.Plane008.geometry}
+            material={physicalMaterial03}
+          />
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.Object004.geometry}
+            material={physicalMaterial01}
+          />
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.Object006.geometry}
+            material={physicalMaterial01}
+          />
+        </group>
+        <group position={[0, 0, -0.8]} rotation={[0, 0, 3.15]}>
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.Plane006.geometry}
+            material={physicalMaterial02}
+          />
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.Plane008.geometry}
+            material={physicalMaterial03}
+          />
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.Object004.geometry}
+            material={physicalMaterial01}
+          />
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.Object006.geometry}
+            material={physicalMaterial01}
+          />
+        </group>
       </group>
     </group>
   );
 };
 
 export default Mask;
-
-{
-  /* <group ref={meshRef} key={stateString} dispose={null}>
-<mesh
-  castShadow
-  receiveShadow
-  geometry={nodes.defaultMaterial.geometry}
-  material={materials.M_Goatee}
-></mesh>
-
-<mesh
-  castShadow
-  receiveShadow
-  geometry={nodes.defaultMaterial_1.geometry}
-  material={materials.M_Mask}
->
-  {snap.isFullTexture && (
-    <Decal
-      position={[0, 0, 0]}
-      rotation={[0, 0, 0]}
-      scale={2}
-      map={fullTexture}
-      // map-anisotropy={16}
-    />
-  )}
-
-  {snap.isLogoTexture && (
-    <Decal
-      position={[0, 0, 0.15]}
-      rotation={[0, 0, 0]}
-      scale={0.5}
-      map={logoTexture}
-      // map-anisotropy={16}
-      depthTest={false}
-      depthWrite={true}
-    />
-  )}
-</mesh>
-</group> */
-}

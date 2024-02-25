@@ -5,7 +5,6 @@ import { SearchParamProps } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
 
-import Shapes from "@/components/Canvas/Shapes";
 import LogoCanvas from "@/components/Canvas/LogoCanvas";
 
 export default async function Home({ searchParams }: SearchParamProps) {
@@ -19,8 +18,6 @@ export default async function Home({ searchParams }: SearchParamProps) {
     page,
     limit: 3,
   });
-
-  const title = "Discover Precision, Power, and Beauty Below.";
 
   return (
     <>
@@ -44,22 +41,9 @@ export default async function Home({ searchParams }: SearchParamProps) {
             </Button>
           </div>
 
-          <div className="flex items-start justify-start w-full h-[500px]">
+          <div className="flex  items-end justify-end w-full h-[500px]">
             <LogoCanvas />
           </div>
-
-          {/* <Shapes /> */}
-
-          {/* <div className="absolute top-0 left-0 right-0 bottom-0 ">
-            <Image
-              src="/assets/images/hero6.jpg"
-              alt="hero"
-              fill
-              style={{ objectFit: "cover" }}
-              className="object-contain object-center"
-              priority={true}
-            />
-          </div> */}
         </div>
       </section>
 

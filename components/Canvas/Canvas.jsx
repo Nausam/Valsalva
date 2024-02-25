@@ -46,4 +46,6 @@ const CanvasModal = () => {
 
 export default CanvasModal;
 
-<OrbitControls makeDefault minPolarAngle={0} maxPolarAngle={Math.PI / 2} />;
+{
+  /* <OrbitControls makeDefault minPolarAngle={0} maxPolarAngle={Math.PI / 2} />; */
+}
