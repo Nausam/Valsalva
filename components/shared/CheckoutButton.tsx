@@ -7,11 +7,9 @@ import Link from "next/link";
 import React from "react";
 import { Button } from "../ui/button";
 import Checkout from "./Checkout";
-import FootPocketColorSelect from "./FootPocketColorSelect";
 
 const CheckoutButton = ({ product }: { product: IProduct }) => {
   const { user } = useUser();
-
   const userId = user?.publicMetadata.userId as string;
 
   return (

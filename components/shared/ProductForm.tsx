@@ -20,7 +20,7 @@ import { productFormSchema } from "@/lib/validator";
 import { productDefaultValues } from "@/constants";
 import Dropdown from "./Dropdown";
 import { FileUploader } from "./FileUploader";
-import { use, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { useUploadThing } from "@/lib/uploadthing";
 import { useRouter } from "next/navigation";

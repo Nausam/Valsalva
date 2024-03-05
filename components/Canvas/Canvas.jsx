@@ -9,7 +9,7 @@ import {
   OrbitControls,
 } from "@react-three/drei";
 
-import Mask from "./Mask";
+import Fin from "./Fin";
 
 const CanvasModal = () => {
   return (
@@ -26,7 +26,7 @@ const CanvasModal = () => {
 
       <group>
         <Center top>
-          <Mask />
+          <Fin />
         </Center>
         <AccumulativeShadows>
           <RandomizedLight position={[2, 5, 5]} />
@@ -45,7 +45,3 @@ const CanvasModal = () => {
 };
 
 export default CanvasModal;
-
-{
-  /* <OrbitControls makeDefault minPolarAngle={0} maxPolarAngle={Math.PI / 2} />; */
-}

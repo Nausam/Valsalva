@@ -50,11 +50,11 @@ export default async function Home({ searchParams }: SearchParamProps) {
       <section className="wrapper flex flex-wrap gap-10 mt-10">
         <div className="grid grid-cols-1 gap-5 lg:grid-cols-2 2xl:gap-0 items-center justify-center ">
           <Image
-            src="/assets/images/hero4.png"
+            src="/assets/images/logo_white.png"
             alt="hero"
-            width={400}
-            height={400}
-            className="object-contain object-center mx-auto"
+            width={300}
+            height={300}
+            className="object-contain object-center mx-auto invert dark:invert-0"
           />
 
           <div className="flex flex-col justify-center gap-8 mt-16">

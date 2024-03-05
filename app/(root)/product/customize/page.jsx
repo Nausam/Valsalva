@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import FilePicker from "@/components/Customizer/FilePicker";
 import Tab from "@/components/Customizer/Tab";
-import { DecalTypes, EditorTabs, FilterTabs } from "@/constants";
+import { DecalTypes, EditorTabs } from "@/constants";
 import CanvasModal from "@/components/Canvas/Canvas";
 import state from "@/store";
 import { useSnapshot } from "valtio";

@@ -25,13 +25,13 @@ const FilePicker = ({ file, setFile, readFile, handleClose }) => {
       </div>
 
       <div className="mt-4 flex space-x-3 gap-3">
-        <CustomButton
+        {/* <CustomButton
           title="Logo"
           handleClick={() => readFile("logo")}
           customStyles="text-semibold text-black border-black border shadow-md"
-        />
+        /> */}
         <CustomButton
-          title="Full"
+          title="Apply"
           handleClick={() => readFile("full")}
           customStyles="text-semibold text-black border-black border shadow-md"
         />

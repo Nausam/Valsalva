@@ -27,7 +27,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "components/Canvas/Mask.jsx",
+    "components/Canvas/Fin.jsx",
     "app/events/create/page.jsx",
     "components/Customizer/Tab.jsx",
     "components/Customizer/ColorPicker.jsx",

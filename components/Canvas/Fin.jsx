@@ -14,7 +14,7 @@ import { gsap } from "gsap";
 import { MeshPhysicalMaterial } from "three";
 import { useControls } from "leva";
 
-const Mask = () => {
+const Fin = () => {
   const snap = useSnapshot(state);
   const { nodes, materials } = useGLTF("/assets/models/fin.glb");
 
@@ -222,4 +222,4 @@ const Mask = () => {
   );
 };
 
-export default Mask;
+export default Fin;

@@ -69,21 +69,21 @@ const ProductDetails = async ({
                 {product.description}
               </p>
 
-              {/* <div className="mt-5">
+              <div className="mt-5">
                 {product.isAvailable === true && (
                   <CheckoutButton product={product} />
                 )}
-              </div> */}
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="wrapper w-full">
+      {/* <section className="wrapper w-full">
         <div className="flex flex-col gap-2 max-w-2xl">
-          {/* <div className="p-bold-20 text-grey-600 dark:text-gray-300">
+          <div className="p-bold-20 text-grey-600 dark:text-gray-300">
             <p className="mb-3">Foot Pocket Color</p>
-          </div> */}
+          </div>
 
           <div className="mt-10">
             {product.isAvailable === true && (
@@ -91,7 +91,7 @@ const ProductDetails = async ({
             )}
           </div>
         </div>
-      </section>
+      </section> */}
 
       <section className="wrapper my-8 flex-col gap-8 md:gap-12 mt-10">
         <h2 className="h2-bold">Similar Products</h2>
