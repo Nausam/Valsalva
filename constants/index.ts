@@ -38,6 +38,7 @@ export const productDefaultValues = {
   imageUrl: "",
   categoryId: "",
   price: "",
+  footPocketColor: "",
 };
 
 export const EditorTabs = [

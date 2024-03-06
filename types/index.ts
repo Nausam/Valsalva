@@ -24,6 +24,7 @@ export type CreateProductParams = {
     imageUrl: string;
     categoryId: string;
     price: string;
+    footPocketColor: string;
   };
   path: string;
 };
@@ -99,6 +100,7 @@ export type CheckoutOrderParams = {
   productId: string;
   price: string;
   buyerId: string;
+  footPocketColor: string;
 };
 
 export type CreateOrderParams = {
@@ -106,6 +108,7 @@ export type CreateOrderParams = {
   productId: string;
   buyerId: string;
   totalAmount: string;
+  footPocketColor: string;
   createdAt: Date;
 };
 

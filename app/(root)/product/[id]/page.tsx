@@ -9,6 +9,7 @@ import {
 import { SearchParamProps } from "@/types";
 import Image from "next/image";
 import React from "react";
+import { auth } from "@clerk/nextjs";
 
 export const metadata: Metadata = {
   title: "Details | Valsalva",
@@ -18,6 +19,9 @@ const ProductDetails = async ({
   params: { id },
   searchParams,
 }: SearchParamProps) => {
+  const { sessionClaims } = auth();
+
+  const userId = sessionClaims?.userId as string;
   const product = await getProductById(id);
 
   const similarProducts = await getRelatedProductsByCategory({
@@ -69,17 +73,17 @@ const ProductDetails = async ({
                 {product.description}
               </p>
 
-              <div className="mt-5">
+              {/* <div className="mt-5">
                 {product.isAvailable === true && (
                   <CheckoutButton product={product} />
                 )}
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
       </section>
 
-      {/* <section className="wrapper w-full">
+      <section className="wrapper w-full">
         <div className="flex flex-col gap-2 max-w-2xl">
           <div className="p-bold-20 text-grey-600 dark:text-gray-300">
             <p className="mb-3">Foot Pocket Color</p>
@@ -91,7 +95,7 @@ const ProductDetails = async ({
             )}
           </div>
         </div>
-      </section> */}
+      </section>
 
       <section className="wrapper my-8 flex-col gap-8 md:gap-12 mt-10">
         <h2 className="h2-bold">Similar Products</h2>

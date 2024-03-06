@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 
 import { IProduct } from "@/lib/database/models/product.model";
@@ -10,9 +10,11 @@ loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 const Checkout = ({
   product,
   userId,
+  footPocketColor,
 }: {
   product: IProduct;
   userId: string;
+  footPocketColor: string;
 }) => {
   useEffect(() => {
     // Check to see if this is a redirect back from Checkout
@@ -34,8 +36,9 @@ const Checkout = ({
       productId: product._id,
       price: product.price,
       buyerId: userId,
+      footPocketColor: footPocketColor,
     };
-
+    console.log("Order Details:", order);
     await checkoutOrder(order);
   };
 
@@ -50,7 +53,7 @@ const Checkout = ({
         type="submit"
         role="link"
         size="lg"
-        className="button bg-black dark:text-black dark:bg-white border-black border sm:w-fit hover:bg-transparent hover:text-black hover:border-black dark:hover:bg-transparent dark:border-white dark:hover:text-white shadow-lg transition-all duration-300"
+        className="button mt-10 bg-black dark:text-black dark:bg-white border-black border sm:w-fit hover:bg-transparent hover:text-black hover:border-black dark:hover:bg-transparent dark:border-white dark:hover:text-white shadow-lg transition-all duration-300"
       >
         Buy Now
       </Button>

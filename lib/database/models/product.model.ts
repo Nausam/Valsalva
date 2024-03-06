@@ -8,6 +8,7 @@ export interface IProduct extends Document {
   imageUrl: string;
   price: string;
   isAvailable: boolean;
+  footPocketColor: string;
   category: { _id: string; name: string };
   creator: { _id: string; firstName: string; lastName: string };
 }
@@ -18,6 +19,7 @@ const ProductSchema = new Schema({
   imageUrl: { type: String, required: true },
   price: { type: String },
   isAvailable: { type: Boolean, default: true },
+  footPocketColor: { type: String },
   category: { type: Schema.Types.ObjectId, ref: "Category" },
   creator: { type: Schema.Types.ObjectId, ref: "User" },
 });

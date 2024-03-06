@@ -13,6 +13,8 @@ export const connectToDatabase = async () => {
     throw new Error("MOGODB_URI is missing");
   }
 
+  // mongoose.set("debug", true);
+
   cached.promise =
     cached.promise ||
     mongoose.connect(MONGODB_URI, {

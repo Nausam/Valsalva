@@ -12,6 +12,7 @@ export async function POST(request: Request) {
 
   try {
     product = stripe.webhooks.constructEvent(body, sig, endpointSecret);
+    console.log("Stripe webhook event:", product);
   } catch (err) {
     return NextResponse.json({ message: "Webhook error", error: err });
   }
@@ -28,6 +29,7 @@ export async function POST(request: Request) {
       productId: metadata?.productId || "",
       buyerId: metadata?.buyerId || "",
       totalAmount: amount_total ? (amount_total / 100).toString() : "0",
+      footPocketColor: metadata?.footPocketColor || "",
       createdAt: new Date(),
     };
 

@@ -208,6 +208,23 @@ const ProductForm = ({
               </FormItem>
             )}
           />
+
+          <FormField
+            control={form.control}
+            name="footPocketColor"
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormControl>
+                  <Input
+                    placeholder="Foot Pocket Color"
+                    {...field}
+                    className="input-field"
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
         </div>
 
         <FormField

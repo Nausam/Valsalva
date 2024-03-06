@@ -37,6 +37,7 @@ export const checkoutOrder = async (order: CheckoutOrderParams) => {
       metadata: {
         productId: order.productId,
         buyerId: order.buyerId,
+        footPocketColor: order.footPocketColor,
       },
       mode: "payment",
       success_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/profile`,
@@ -57,10 +58,14 @@ export const createOrder = async (order: CreateOrderParams) => {
       ...order,
       product: order.productId,
       buyer: order.buyerId,
+      footPocketColor: order.footPocketColor,
     });
+
+    console.log("New order created:", newOrder);
 
     return JSON.parse(JSON.stringify(newOrder));
   } catch (error) {
+    console.error("Error creating order:", error);
     handleError(error);
   }
 };

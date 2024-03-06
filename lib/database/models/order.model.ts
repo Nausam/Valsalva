@@ -4,6 +4,7 @@ export interface IOrder extends Document {
   createdAt: Date;
   stripeId: string;
   totalAmount: string;
+  footPocketColor: string;
   product: {
     _id: string;
     title: string;
@@ -18,6 +19,7 @@ export interface IOrder extends Document {
 export type IOrderItem = {
   _id: string;
   totalAmount: string;
+  footPocketColor: string;
   createdAt: Date;
   productTitle: string;
   productId: string;
@@ -27,6 +29,7 @@ export type IOrderItem = {
 export type IOrderSpecificItem = {
   _id: string;
   totalAmount: string;
+  footPocketColor: string;
   createdAt: Date;
   product: {
     title: string;
@@ -49,6 +52,9 @@ const OrderSchema = new Schema({
     unique: true,
   },
   totalAmount: {
+    type: String,
+  },
+  footPocketColor: {
     type: String,
   },
   product: {

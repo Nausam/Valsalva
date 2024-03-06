@@ -38,8 +38,12 @@ const InventoryCard = ({ product, hasOrderLink, hidePrice }: CardProps) => {
             </p>
           </Link>
 
-          <p className="w-72 text-sm text-grey-500 flex-center dark:text-gray-400">
+          <p className="w-72 text-sm text-grey-500 flex-start dark:text-gray-400">
             {product.description}
+          </p>
+
+          <p className="w-72 text-sm text-grey-500 flex-start dark:text-gray-400">
+            Foot Pocket : {product.footPocketColor}
           </p>
 
           {isProductCreator && !hidePrice && (
