@@ -30,6 +30,9 @@ export async function POST(request: Request) {
       buyerId: metadata?.buyerId || "",
       totalAmount: amount_total ? (amount_total / 100).toString() : "0",
       footPocketColor: metadata?.footPocketColor || "",
+      bladeAngle: metadata?.bladeAngle || "",
+      softness: metadata?.softness || "",
+      bladeSize: metadata?.bladeSize || "",
       createdAt: new Date(),
     };
 

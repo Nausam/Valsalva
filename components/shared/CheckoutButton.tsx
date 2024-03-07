@@ -8,19 +8,7 @@ import React, { useState } from "react";
 import { Button } from "../ui/button";
 import Checkout from "./Checkout";
 
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import CustomSelect from "./CustomSelect";
-
-type ValueChangeProps = {
-  value?: string;
-  onChangeHandler?: () => void;
-};
 
 const CheckoutButton = ({ product }: { product: IProduct }) => {
   const { user } = useUser();
