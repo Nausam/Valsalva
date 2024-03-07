@@ -5,6 +5,9 @@ export interface IOrder extends Document {
   stripeId: string;
   totalAmount: string;
   footPocketColor: string;
+  bladeAngle: string;
+  softness: string;
+  bladeSize: string;
   product: {
     _id: string;
     title: string;
@@ -20,6 +23,9 @@ export type IOrderItem = {
   _id: string;
   totalAmount: string;
   footPocketColor: string;
+  bladeAngle: string;
+  softness: string;
+  bladeSize: string;
   createdAt: Date;
   productTitle: string;
   productId: string;
@@ -30,6 +36,9 @@ export type IOrderSpecificItem = {
   _id: string;
   totalAmount: string;
   footPocketColor: string;
+  bladeAngle: string;
+  softness: string;
+  bladeSize: string;
   createdAt: Date;
   product: {
     title: string;
@@ -55,6 +64,15 @@ const OrderSchema = new Schema({
     type: String,
   },
   footPocketColor: {
+    type: String,
+  },
+  bladeAngle: {
+    type: String,
+  },
+  softness: {
+    type: String,
+  },
+  bladeSize: {
     type: String,
   },
   product: {

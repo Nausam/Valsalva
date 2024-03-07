@@ -32,7 +32,7 @@ const ProductDetails = async ({
 
   return (
     <>
-      <section className="flex justify-center md:mt-10 mt-20">
+      <section className="flex justify-center md:mt-16 mt-20">
         <div className="wrapper grid grid-cols-1 lg:grid-cols-2  2xl:max-w-7xl sm:py-10 items-center">
           <Image
             src={product.imageUrl}
@@ -84,12 +84,8 @@ const ProductDetails = async ({
       </section>
 
       <section className="wrapper w-full">
-        <div className="flex flex-col gap-2 max-w-2xl">
-          <div className="p-bold-20 text-grey-600 dark:text-gray-300">
-            <p className="mb-3">Foot Pocket Color</p>
-          </div>
-
-          <div className="mt-10">
+        <div className="flex max-w-2xl">
+          <div className="mt-5">
             {product.isAvailable === true && (
               <CheckoutButton product={product} />
             )}

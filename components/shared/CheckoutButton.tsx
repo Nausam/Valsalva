@@ -8,16 +8,45 @@ import React, { useState } from "react";
 import { Button } from "../ui/button";
 import Checkout from "./Checkout";
 
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import CustomSelect from "./CustomSelect";
+
+type ValueChangeProps = {
+  value?: string;
+  onChangeHandler?: () => void;
+};
+
 const CheckoutButton = ({ product }: { product: IProduct }) => {
   const { user } = useUser();
   const userId = user?.publicMetadata.userId as string;
 
   const [selectedFootPocketColor, setSelectedFootPocketColor] = useState("");
+  const [selectedBladeAngle, setSelectedBladeAngle] = useState("");
+  const [selectedSoftness, setSelectedSoftness] = useState("");
+  const [selectedBladeSize, setSelectedBladeSize] = useState("");
 
-  const handleColorChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedColor = e.target.value;
-    setSelectedFootPocketColor(selectedColor);
+  const handleColorChange = (color: string) => {
+    setSelectedFootPocketColor(color);
   };
+
+  const handleBladeAngleChange = (angle: string) => {
+    setSelectedBladeAngle(angle);
+  };
+
+  const handleSoftnessChange = (softness: string) => {
+    setSelectedSoftness(softness);
+  };
+
+  const handleBladeSizeChange = (size: string) => {
+    setSelectedBladeSize(size);
+  };
+
   return (
     <div className="flex items-center gap-3">
       <>
@@ -32,21 +61,45 @@ const CheckoutButton = ({ product }: { product: IProduct }) => {
         </SignedOut>
 
         <SignedIn>
-          <select
-            className="rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-            id="footPocketColorSelect"
-            onChange={handleColorChange}
-          >
-            <option value="">Select Foot Pocket Color</option>
-            <option value="black">Black</option>
-            <option value="white">White</option>
-          </select>
+          <div className="flex flex-col gap-5">
+            <div className="flex gap-10 flex-wrap">
+              <CustomSelect
+                title="Foot Pocket Color"
+                selectItem1="Black"
+                selectItem2="White"
+                handleValueChange={handleColorChange}
+              />
+              <CustomSelect
+                title="Blade Angle"
+                selectItem1="Blade Angle ~ 20°"
+                selectItem2="Blade Angle ~ 33°"
+                handleValueChange={handleBladeAngleChange}
+              />
+              <CustomSelect
+                title="Softness"
+                selectItem1="Extra Soft"
+                selectItem2="Medium"
+                handleValueChange={handleSoftnessChange}
+              />
+              <CustomSelect
+                title="Blade Size"
+                selectItem1="Short | 70cm | 28 inch | 2.3 Feet"
+                selectItem2="Standard | 80cm | 32 inch | 2.6 Feet"
+                handleValueChange={handleBladeSizeChange}
+              />
+            </div>
 
-          <Checkout
-            product={product}
-            userId={userId}
-            footPocketColor={selectedFootPocketColor}
-          />
+            <div className="mt-10">
+              <Checkout
+                product={product}
+                userId={userId}
+                footPocketColor={selectedFootPocketColor}
+                bladeAngle={selectedBladeAngle}
+                softness={selectedSoftness}
+                bladeSize={selectedBladeSize}
+              />
+            </div>
+          </div>
         </SignedIn>
       </>
     </div>

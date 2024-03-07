@@ -19,6 +19,7 @@ export type UpdateUserParams = {
 export type CreateProductParams = {
   userId: string;
   product: {
+    productId: string;
     title: string;
     description: string;
     imageUrl: string;
@@ -101,6 +102,9 @@ export type CheckoutOrderParams = {
   price: string;
   buyerId: string;
   footPocketColor: string;
+  bladeAngle: string;
+  softness: string;
+  bladeSize: string;
 };
 
 export type CreateOrderParams = {
@@ -109,6 +113,9 @@ export type CreateOrderParams = {
   buyerId: string;
   totalAmount: string;
   footPocketColor: string;
+  bladeAngle: string;
+  softness: string;
+  bladeSize: string;
   createdAt: Date;
 };
 

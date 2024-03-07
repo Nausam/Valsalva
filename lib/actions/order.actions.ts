@@ -20,6 +20,8 @@ export const checkoutOrder = async (order: CheckoutOrderParams) => {
 
   const price = Number(order.price) * 100;
 
+  console.log("ORDER:", order);
+
   try {
     const session = await stripe.checkout.sessions.create({
       line_items: [
@@ -38,6 +40,9 @@ export const checkoutOrder = async (order: CheckoutOrderParams) => {
         productId: order.productId,
         buyerId: order.buyerId,
         footPocketColor: order.footPocketColor,
+        bladeAngle: order.bladeAngle,
+        softness: order.softness,
+        bladeSize: order.bladeSize,
       },
       mode: "payment",
       success_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/profile`,
@@ -59,9 +64,10 @@ export const createOrder = async (order: CreateOrderParams) => {
       product: order.productId,
       buyer: order.buyerId,
       footPocketColor: order.footPocketColor,
+      bladeAngle: order.bladeAngle,
+      softness: order.softness,
+      bladeSize: order.bladeSize,
     });
-
-    console.log("New order created:", newOrder);
 
     return JSON.parse(JSON.stringify(newOrder));
   } catch (error) {

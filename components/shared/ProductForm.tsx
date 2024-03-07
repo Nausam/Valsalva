@@ -43,6 +43,8 @@ const ProductForm = ({
   productId,
 }: ProductFormProps) => {
   const [files, setFiles] = useState<File[]>([]);
+  const [productCounter, setProductCounter] = useState(0);
+
   const initialValues =
     product && type === "Update" ? product : productDefaultValues;
 
@@ -68,10 +70,19 @@ const ProductForm = ({
       uploadedImageUrl = uploadedImages[0].url;
     }
 
+    // Increment productCounter
+    const paddedCounter = productCounter.toString().padStart(2, "0");
+    const newProductId = `Item[${paddedCounter}]`;
+    setProductCounter((prevCounter) => prevCounter + 1);
+
     if (type === "Create") {
       try {
         const newProduct = await createProduct({
-          product: { ...values, imageUrl: uploadedImageUrl },
+          product: {
+            ...values,
+            imageUrl: uploadedImageUrl,
+            productId: newProductId,
+          },
           userId,
           path: "/profile",
         });
@@ -189,7 +200,7 @@ const ProductForm = ({
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormControl>
-                  <div className="flex-center h-[55px] w-full overflow-hidden rounded-full bg-grey-50 dark:bg-[#191919] px-4 py-2">
+                  <div className="flex-center h-[55px] w-full overflow-hidden rounded-sm bg-grey-50 dark:bg-[#191919] px-4 py-2">
                     <Image
                       src="/assets/icons/dollar.svg"
                       alt="price"
@@ -231,7 +242,7 @@ const ProductForm = ({
           control={form.control}
           name="isAvailable"
           render={({ field }) => (
-            <FormItem className="flex flex-row items-center justify-between rounded-full bg-grey-50 dark:bg-[#191919]  p-3 shadow-sm max-w-sm">
+            <FormItem className="flex flex-row items-center justify-between rounded-sm bg-grey-50 dark:bg-[#191919]  p-3 shadow-sm max-w-sm">
               <div className="space-y-0.5">
                 <FormLabel>Is product available?</FormLabel>
               </div>
