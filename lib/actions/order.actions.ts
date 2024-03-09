@@ -227,3 +227,45 @@ export async function getOrdersBySpecificUser({
     handleError(error);
   }
 }
+
+export async function getAllOrders({
+  limit = 100,
+  page,
+}: GetOrdersByUserParams) {
+  try {
+    await connectToDatabase();
+
+    const skipAmount = (Number(page) - 1) * limit;
+
+    const orders = await Order.find()
+      .sort({ createdAt: "desc" })
+      .skip(skipAmount)
+      .limit(limit)
+      .populate({
+        path: "product",
+        model: Product,
+        select: "title",
+        populate: {
+          path: "creator",
+          model: User,
+          select: "_id firstName lastName",
+        },
+      })
+      .populate({
+        path: "buyer",
+        model: User,
+        select: "_id firstName lastName",
+      });
+
+    console.log(orders);
+
+    const ordersCount = await Order.countDocuments();
+
+    return {
+      data: JSON.parse(JSON.stringify(orders)),
+      totalPages: Math.ceil(ordersCount / limit),
+    };
+  } catch (error) {
+    handleError(error);
+  }
+}
