@@ -7,15 +7,13 @@ import { checkoutOrder } from "@/lib/actions/order.actions";
 
 loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 
-const Checkout = ({
+const CustomCheckout = ({
   product,
   userId,
   footPocketColor,
   bladeAngle,
   softness,
   bladeSize,
-  bladeCut,
-  imageUrl,
 }: {
   product: IProduct;
   userId: string;
@@ -23,8 +21,6 @@ const Checkout = ({
   bladeAngle: string;
   softness: string;
   bladeSize: string;
-  bladeCut: string;
-  imageUrl: string;
 }) => {
   useEffect(() => {
     // Check to see if this is a redirect back from Checkout
@@ -42,16 +38,14 @@ const Checkout = ({
 
   const onCheckout = async () => {
     const order = {
-      productTitle: product.title,
-      productId: product._id,
-      price: product.price,
+      productTitle: "Custom Fins",
+      productId: "Custom",
+      price: "500",
       buyerId: userId,
       footPocketColor: footPocketColor,
       bladeAngle: bladeAngle,
       softness: softness,
       bladeSize: bladeSize,
-      bladeCut: bladeCut,
-      imageUrl: imageUrl,
     };
     console.log("Order Details:", order);
     await checkoutOrder(order);
@@ -70,10 +64,10 @@ const Checkout = ({
         size="lg"
         className="button bg-black dark:text-black dark:bg-white border-black border sm:w-fit hover:bg-transparent hover:text-black hover:border-black dark:hover:bg-transparent dark:border-white dark:hover:text-white shadow-lg transition-all duration-300"
       >
-        Checkout
+        Buy Now
       </Button>
     </form>
   );
 };
 
-export default Checkout;
+export default CustomCheckout;

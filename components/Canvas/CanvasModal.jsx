@@ -18,7 +18,7 @@ const CanvasModal = () => {
         antialias: true,
         preserveDrawingBuffer: true,
       }}
-      shadows
+      // shadows
       camera={{ position: [3.5, 2, 1.3], fov: 30 }}
     >
       <ambientLight intensity={1} />
@@ -27,17 +27,12 @@ const CanvasModal = () => {
       <group>
         <Center top>
           <Fin />
+          <OrbitControls />
         </Center>
         <AccumulativeShadows>
           <RandomizedLight position={[2, 5, 5]} />
         </AccumulativeShadows>
       </group>
-
-      <OrbitControls
-        makeDefault
-        minPolarAngle={0}
-        maxPolarAngle={Math.PI / 2}
-      />
 
       <Environment preset="forest" background blur={1} />
     </Canvas>

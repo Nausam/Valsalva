@@ -47,6 +47,37 @@ const Fin = () => {
     return () => ctx.revert();
   }, []);
 
+  const colorMap = {
+    Black: "#353535",
+    White: "#A9A9A9",
+  };
+
+  const customColorNames = Object.keys(colorMap);
+
+  const { Model_Color, isLogoTexture, isFullTexture } = useControls(
+    "Color Settings",
+    {
+      footPocketColor: {
+        label: "Foot Pocket Color",
+        options: customColorNames,
+        getValueToStore: (value) => colorMap[value], // Map the selected color name to its hex value
+        onChange: (value) => (state.footPocketColor = colorMap[value]),
+      },
+      finColor: {
+        label: "Fin Color",
+        value: snap.finColor,
+        onChange: (value) => (state.finColor = value),
+      },
+      bezelColor: {
+        label: "Bezel Color",
+        value: snap.bezelColor,
+        onChange: (value) => (state.bezelColor = value),
+      },
+      // isLogoTexture: { label: "Logo Texture", value: state.isLogoTexture },
+      // isFullTexture: { label: "Full Texture", value: state.isFullTexture },
+    }
+  );
+
   const {
     repeatU,
     repeatV,
@@ -136,7 +167,7 @@ const Fin = () => {
             material={physicalMaterial01}
           />
         </group>
-        <group position={[0, 0, -0.8]} rotation={[0, 0, 0]}>
+        {/* <group position={[0, 0, -0.8]} rotation={[0, 0, 0]}>
           <mesh
             castShadow
             receiveShadow
@@ -161,10 +192,10 @@ const Fin = () => {
             geometry={nodes.Object006.geometry}
             material={physicalMaterial01}
           />
-        </group>
+        </group> */}
       </group>
 
-      <group position={[0, 0.3, -2.5]}>
+      {/* <group position={[0, 0.3, -2.5]}>
         <group rotation={[0, 0.4, 3.15]}>
           <mesh
             castShadow
@@ -217,7 +248,7 @@ const Fin = () => {
             material={physicalMaterial01}
           />
         </group>
-      </group>
+      </group> */}
     </group>
   );
 };

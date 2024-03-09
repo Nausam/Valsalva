@@ -43,6 +43,8 @@ export const checkoutOrder = async (order: CheckoutOrderParams) => {
         bladeAngle: order.bladeAngle,
         softness: order.softness,
         bladeSize: order.bladeSize,
+        bladeCut: order.bladeCut,
+        imageUrl: order.imageUrl,
       },
       mode: "payment",
       success_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/profile`,
@@ -67,6 +69,8 @@ export const createOrder = async (order: CreateOrderParams) => {
       bladeAngle: order.bladeAngle,
       softness: order.softness,
       bladeSize: order.bladeSize,
+      bladeCut: order.bladeCut,
+      imageUrl: order.imageUrl,
     });
 
     return JSON.parse(JSON.stringify(newOrder));

@@ -27,7 +27,7 @@ export const headerLinks = [
 
 export const adminLinks = [
   {
-    label: "Create",
+    label: "Create Product",
     route: "/product/create",
   },
 ];

@@ -8,6 +8,16 @@ import { adminLinks } from "@/constants";
 import Image from "next/image";
 import ThemeButton from "@/components/shared/ThemeButton";
 
+import {
+  Menubar,
+  MenubarContent,
+  MenubarItem,
+  MenubarMenu,
+  MenubarSeparator,
+  MenubarShortcut,
+  MenubarTrigger,
+} from "@/components/ui/menubar";
+
 const Header = async () => {
   const user = auth();
 
@@ -34,12 +44,30 @@ const Header = async () => {
             <SignedIn>
               {adminLinks.map((link) => {
                 return (
-                  <li
-                    key={link.route}
-                    className="flex-center p-medium-16 whitespace-nowrap ml-10  hover:scale-105 transition-all duration-300 ease-in-out text-black dark:text-white"
-                  >
-                    <Link href={link.route}>{link.label}</Link>
-                  </li>
+                  <Menubar className="ml-10 dark:bg-[#222222] dark:border-none dark:hover:bg-[#323232]">
+                    <MenubarMenu>
+                      <MenubarTrigger className="cursor-pointer">
+                        Admin
+                      </MenubarTrigger>
+                      <MenubarContent className="dark:bg-[#222222] dark:border-none">
+                        <Link href={link.route}>
+                          <MenubarItem className="dark:hover:bg-[#323232] hover:bg-primary-50 cursor-pointer">
+                            {link.label}
+                          </MenubarItem>
+                        </Link>
+                        <MenubarSeparator className="dark:bg-[#151515]" />
+                        <Link href="/product/65e9d07d684eaf43ce92ee67/custom">
+                          <MenubarItem className="dark:hover:bg-[#323232] hover:bg-primary-50 cursor-pointer">
+                            Custom
+                          </MenubarItem>
+                        </Link>
+                        <MenubarSeparator className="dark:bg-[#151515]" />
+                        <MenubarItem className="dark:hover:bg-[#323232] hover:bg-primary-50">
+                          View Orders
+                        </MenubarItem>
+                      </MenubarContent>
+                    </MenubarMenu>
+                  </Menubar>
                 );
               })}
             </SignedIn>

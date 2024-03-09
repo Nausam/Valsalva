@@ -36,7 +36,9 @@ const Orders = async ({ searchParams }: SearchParamProps) => {
   return (
     <>
       <section className="mt-20">
-        <h3 className="wrapper h3-bold text-center sm:text-left">Orders</h3>
+        <h3 className="wrapper h3-bold text-center sm:text-left">
+          Order Details
+        </h3>
       </section>
 
       {/* <section className="wrapper mt-8">
@@ -50,6 +52,18 @@ const Orders = async ({ searchParams }: SearchParamProps) => {
               <th className="min-w-[250px] py-3 text-left">Order ID</th>
               <th className="min-w-[200px] flex-1 py-3 pr-4 text-left">
                 Product Title
+              </th>
+              <th className="min-w-[200px] flex-1 py-3 pr-4 text-left">
+                Foot Pocket
+              </th>
+              <th className="min-w-[200px] flex-1 py-3 pr-4 text-left">
+                Blade Angle
+              </th>
+              <th className="min-w-[200px] flex-1 py-3 pr-4 text-left">
+                Softness
+              </th>
+              <th className="min-w-[200px] flex-1 py-3 pr-4 text-left">
+                Blade Size
               </th>
               <th className="min-w-[150px] py-3 text-left">Buyer</th>
               <th className="min-w-[100px] py-3 text-left">Created</th>
@@ -72,17 +86,29 @@ const Orders = async ({ searchParams }: SearchParamProps) => {
                       className="p-regular-14 lg:p-regular-16 border-b dark:border-b-gray-700 "
                       style={{ boxSizing: "border-box" }}
                     >
-                      <td className="min-w-[250px] py-4 text-primary-500">
+                      <td className="min-w-[200px] py-4 text-primary-500">
                         {row._id}
                       </td>
-                      <td className="min-w-[200px] flex-1 py-4 pr-4 dark:text-gray-400">
+                      <td className="min-w-[300px] flex-1 py-4 pr-4 dark:text-gray-400">
                         {row.product?.title}
                       </td>
-                      <td className="min-w-[150px] py-4 dark:text-gray-400">{`${row.buyer.firstName} ${row.buyer.lastName}`}</td>
-                      <td className="min-w-[100px] py-4 dark:text-gray-400">
+                      <td className="min-w-[100px] flex-1 py-4 pr-4 dark:text-gray-400">
+                        {row.footPocketColor}
+                      </td>
+                      <td className="min-w-[200px] flex-1 py-4 pr-4 dark:text-gray-400">
+                        {row.bladeAngle}
+                      </td>
+                      <td className="min-w-[100px] flex-1 py-4 pr-4 dark:text-gray-400">
+                        {row.softness}
+                      </td>
+                      <td className="min-w-[300px] flex-1 py-4 pr-4 dark:text-gray-400">
+                        {row.bladeSize}
+                      </td>
+                      <td className="min-w-[200px] py-4 dark:text-gray-400">{`${row.buyer.firstName} ${row.buyer.lastName}`}</td>
+                      <td className="min-w-[200px] py-4 dark:text-gray-400">
                         {formatDateTime(row.createdAt).dateTime}
                       </td>
-                      <td className="min-w-[100px] py-4 text-right dark:text-gray-400">
+                      <td className="min-w-[50px] py-4 text-right dark:text-gray-400">
                         {formatPrice(row.totalAmount)}
                       </td>
                     </tr>

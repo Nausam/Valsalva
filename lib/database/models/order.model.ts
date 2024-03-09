@@ -8,6 +8,8 @@ export interface IOrder extends Document {
   bladeAngle: string;
   softness: string;
   bladeSize: string;
+  bladeCut: string;
+  imageUrl: string;
   product: {
     _id: string;
     title: string;
@@ -26,6 +28,8 @@ export type IOrderItem = {
   bladeAngle: string;
   softness: string;
   bladeSize: string;
+  bladeCut: string;
+  imageUrl: string;
   createdAt: Date;
   productTitle: string;
   productId: string;
@@ -39,6 +43,8 @@ export type IOrderSpecificItem = {
   bladeAngle: string;
   softness: string;
   bladeSize: string;
+  bladeCut: string;
+  imageUrl: string;
   createdAt: Date;
   product: {
     title: string;
@@ -65,15 +71,23 @@ const OrderSchema = new Schema({
   },
   footPocketColor: {
     type: String,
+    required: true,
   },
   bladeAngle: {
     type: String,
+    required: true,
   },
   softness: {
     type: String,
+    required: true,
   },
   bladeSize: {
     type: String,
+    required: true,
+  },
+  imageUrl: {
+    type: String,
+    required: true,
   },
   product: {
     type: Schema.Types.ObjectId,

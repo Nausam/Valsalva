@@ -33,6 +33,8 @@ export async function POST(request: Request) {
       bladeAngle: metadata?.bladeAngle || "",
       softness: metadata?.softness || "",
       bladeSize: metadata?.bladeSize || "",
+      bladeCut: metadata?.bladeCut || "",
+      imageUrl: metadata?.imageUrl || "",
       createdAt: new Date(),
     };
 

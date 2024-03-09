@@ -105,6 +105,8 @@ export type CheckoutOrderParams = {
   bladeAngle: string;
   softness: string;
   bladeSize: string;
+  bladeCut: string;
+  imageUrl: string;
 };
 
 export type CreateOrderParams = {
@@ -116,6 +118,8 @@ export type CreateOrderParams = {
   bladeAngle: string;
   softness: string;
   bladeSize: string;
+  bladeCut: string;
+  imageUrl: string;
   createdAt: Date;
 };
 

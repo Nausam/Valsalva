@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import FilePicker from "@/components/Customizer/FilePicker";
 import Tab from "@/components/Customizer/Tab";
 import { DecalTypes, EditorTabs } from "@/constants";
-import CanvasModal from "@/components/Canvas/Canvas";
+import CanvasModal from "@/components/Canvas/CanvasModal";
 import state from "@/store";
 import { useSnapshot } from "valtio";
 import { useControls } from "leva";
@@ -72,16 +72,6 @@ const page = () => {
     }
   };
 
-  const handleDecals = (type, result) => {
-    const decalType = DecalTypes[type];
-
-    state[decalType.stateProperty] = result;
-
-    if (!activeFilterTab[decalType.filterTab]) {
-      handleActiveFilterTab(decalType.filterTab);
-    }
-  };
-
   const handleActiveFilterTab = (tabName) => {
     switch (tabName) {
       case "logoShirt":
@@ -104,6 +94,16 @@ const page = () => {
         [tabName]: !prevState[tabName],
       };
     });
+  };
+
+  const handleDecals = (type, result) => {
+    const decalType = DecalTypes[type];
+
+    state[decalType.stateProperty] = result;
+
+    if (!activeFilterTab[decalType.filterTab]) {
+      handleActiveFilterTab(decalType.filterTab);
+    }
   };
 
   const reader = (file) => {
@@ -142,6 +142,7 @@ const page = () => {
           ))}
 
           <div className="mt-10">{generateTabContent()}</div>
+
           <div
             style={{ backgroundColor: Model_Color }}
             className="p-4 rounded-lg mb-4"

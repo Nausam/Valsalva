@@ -8,6 +8,8 @@ import { generateClientDropzoneAccept } from "uploadthing/client";
 import { Button } from "@/components/ui/button";
 import { convertFileToUrl } from "@/lib/utils";
 
+import state from "@/store";
+
 type FileUploaderProps = {
   onFieldChange: (url: string) => void;
   imageUrl: string;
@@ -21,6 +23,24 @@ export function FileUploader({
 }: FileUploaderProps) {
   const onDrop = useCallback((acceptedFiles: FileWithPath[]) => {
     setFiles(acceptedFiles);
+
+    if (acceptedFiles.length > 0) {
+      const selectedFile = acceptedFiles[0];
+      // Generate the URL for the selected file
+      const fileUrl = URL.createObjectURL(selectedFile);
+      // Assign the file URL to state.fullDecal
+      state.fullDecal = fileUrl;
+      // Set the selected files using setFiles function
+      setFiles(acceptedFiles);
+      // Clear imageUrl since we're now updating state.fullDecal
+      onFieldChange("");
+    } else {
+      // Clear state.fullDecal if no files are selected
+      state.fullDecal = "";
+      // Clear imageUrl
+      onFieldChange("");
+    }
+
     onFieldChange(convertFileToUrl(acceptedFiles[0]));
   }, []);
 
@@ -32,18 +52,18 @@ export function FileUploader({
   return (
     <div
       {...getRootProps()}
-      className="flex-center bg-dark-3 flex h-72 cursor-pointer flex-col overflow-hidden rounded-sm bg-grey-50 dark:bg-[#191919]"
+      className="flex-center bg-dark-3 flex p-3 h-52 cursor-pointer flex-col overflow-hidden rounded-sm bg-grey-50 dark:bg-[#191919]"
     >
       <input {...getInputProps()} className="cursor-pointer" />
 
       {imageUrl ? (
-        <div className="flex h-full w-full flex-1 justify-center ">
+        <div className="flex h-full w-full flex-1 justify-center">
           <img
             src={imageUrl}
             alt="image"
             width={250}
             height={250}
-            className="w-full object-cover object-center"
+            className="w-full object-cover object-center rounded-sm"
           />
         </div>
       ) : (
