@@ -12,6 +12,16 @@ import { adminLinks } from "@/constants";
 import Link from "next/link";
 import MobileNavItems from "./MobileNavItems";
 
+import {
+  Menubar,
+  MenubarContent,
+  MenubarItem,
+  MenubarMenu,
+  MenubarSeparator,
+  MenubarShortcut,
+  MenubarTrigger,
+} from "@/components/ui/menubar";
+
 const MobileNav = () => {
   const user = auth();
 
@@ -45,14 +55,30 @@ const MobileNav = () => {
             <SignedIn>
               {adminLinks.map((link) => {
                 return (
-                  <li
-                    key={link.route}
-                    className="flex-center p-medium-16 whitespace-nowrap py-3 rounded-md bg-sky-600 hover:bg-sky-500 text-white w-full mt-3"
-                  >
-                    <SheetClose asChild>
-                      <Link href={link.route}>{link.label}</Link>
-                    </SheetClose>
-                  </li>
+                  <Menubar className="dark:bg-[#222222] dark:border-none dark:hover:bg-[#323232]">
+                    <MenubarMenu>
+                      <MenubarTrigger className="cursor-pointer">
+                        Admin
+                      </MenubarTrigger>
+                      <MenubarContent className="dark:bg-[#222222] dark:border-none">
+                        <Link href={link.route}>
+                          <MenubarItem className="dark:hover:bg-[#323232] hover:bg-primary-50 cursor-pointer">
+                            {link.label}
+                          </MenubarItem>
+                        </Link>
+                        <MenubarSeparator className="dark:bg-[#151515]" />
+                        <Link href="/product/65e9d07d684eaf43ce92ee67/custom">
+                          <MenubarItem className="dark:hover:bg-[#323232] hover:bg-primary-50 cursor-pointer">
+                            Custom
+                          </MenubarItem>
+                        </Link>
+                        <MenubarSeparator className="dark:bg-[#151515]" />
+                        <MenubarItem className="dark:hover:bg-[#323232] hover:bg-primary-50">
+                          View Orders
+                        </MenubarItem>
+                      </MenubarContent>
+                    </MenubarMenu>
+                  </Menubar>
                 );
               })}
             </SignedIn>

@@ -7,8 +7,8 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { Button } from "../ui/button";
 import Checkout from "./Checkout";
-import state from "@/store";
 
+import state from "@/store";
 import CustomSelect from "./CustomSelect";
 import { useSnapshot } from "valtio";
 
@@ -42,8 +42,6 @@ const CheckoutButton = ({ product }: { product: IProduct }) => {
   const [selectedBladeCut, setSelectedBladeCut] = useState("");
   const [files, setFiles] = useState<File[]>([]);
   const [imageUrl, setImageUrl] = useState("");
-
-  const snap = useSnapshot(state);
 
   const { startUpload } = useUploadThing("imageUploader");
 
@@ -113,36 +111,40 @@ const CheckoutButton = ({ product }: { product: IProduct }) => {
 
         <SignedIn>
           <div className="flex flex-col gap-5">
-            <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)}>
-                <FormField
-                  control={form.control}
-                  name="imageUrl"
-                  render={({ field }) => (
-                    <FormItem className="w-full">
-                      <FormControl className="h-72 w-full">
-                        <FileUploader
-                          onFieldChange={field.onChange}
-                          imageUrl={field.value}
-                          setFiles={setFiles}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+            {window.location.pathname ===
+              "/product/65e9d07d684eaf43ce92ee67/custom" && (
+              <Form {...form}>
+                <form onSubmit={form.handleSubmit(onSubmit)}>
+                  <FormField
+                    control={form.control}
+                    name="imageUrl"
+                    render={({ field }) => (
+                      <FormItem className="w-full">
+                        <FormControl className="h-72 w-full">
+                          <FileUploader
+                            onFieldChange={field.onChange}
+                            imageUrl={field.value}
+                            setFiles={setFiles}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
 
-                <div className="flex gap-10 m-2 items-center justify-center">
-                  <Button
-                    type="submit"
-                    size="lg"
-                    className="button bg-black border border-black hover:bg-transparent text-white hover:text-black dark:bg-white dark:border-black dark:hover:border-white dark:text-black dark:hover:bg-transparent dark:hover:text-white  font-bold w-full sm:w-fit transition-all duration-300 ease-in-out shadow-lg"
-                  >
-                    Upload
-                  </Button>
-                </div>
-              </form>
-            </Form>
+                  <div className="flex gap-10 m-2 items-center justify-center">
+                    <Button
+                      type="submit"
+                      size="lg"
+                      className="button bg-black border border-black hover:bg-transparent text-white hover:text-black dark:bg-white dark:border-black dark:hover:border-white dark:text-black dark:hover:bg-transparent dark:hover:text-white  font-bold w-full sm:w-fit transition-all duration-300 ease-in-out shadow-lg"
+                    >
+                      Upload
+                    </Button>
+                  </div>
+                </form>
+              </Form>
+            )}
+
             <div className="flex gap-10 flex-wrap">
               <CustomSelect
                 title="Foot Pocket Color"
