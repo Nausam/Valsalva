@@ -29,6 +29,7 @@ import {
 import { FileUploader } from "./FileUploader";
 import { useUploadThing } from "@/lib/uploadthing";
 import { customFormSchema } from "@/lib/customValidator";
+import CustomCheckout from "./CustomCheckout";
 
 const CheckoutButton = ({ product }: { product: IProduct }) => {
   const { user } = useUser();

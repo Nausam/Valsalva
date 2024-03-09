@@ -96,6 +96,7 @@ export type CreateCategoryParams = {
 };
 
 // ====== ORDER PARAMS
+
 export type CheckoutOrderParams = {
   productTitle: string;
   productId: string;

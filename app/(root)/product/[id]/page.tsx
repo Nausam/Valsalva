@@ -72,12 +72,6 @@ const ProductDetails = async ({
               <p className="p-medium-16 lg:p-medium-18 text-gray-500 dark:text-gray-400">
                 {product.description}
               </p>
-
-              {/* <div className="mt-5">
-                {product.isAvailable === true && (
-                  <CheckoutButton product={product} />
-                )}
-              </div> */}
             </div>
           </div>
         </div>

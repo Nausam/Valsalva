@@ -14,6 +14,8 @@ const CustomCheckout = ({
   bladeAngle,
   softness,
   bladeSize,
+  bladeCut,
+  imageUrl,
 }: {
   product: IProduct;
   userId: string;
@@ -21,6 +23,8 @@ const CustomCheckout = ({
   bladeAngle: string;
   softness: string;
   bladeSize: string;
+  bladeCut: string;
+  imageUrl: string;
 }) => {
   useEffect(() => {
     // Check to see if this is a redirect back from Checkout
@@ -46,6 +50,8 @@ const CustomCheckout = ({
       bladeAngle: bladeAngle,
       softness: softness,
       bladeSize: bladeSize,
+      bladeCut: bladeCut,
+      imageUrl: imageUrl,
     };
     console.log("Order Details:", order);
     await checkoutOrder(order);

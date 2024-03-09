@@ -87,7 +87,6 @@ const OrderSchema = new Schema({
   },
   imageUrl: {
     type: String,
-    required: true,
   },
   product: {
     type: Schema.Types.ObjectId,
