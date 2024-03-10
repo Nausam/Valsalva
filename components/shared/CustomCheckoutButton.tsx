@@ -33,7 +33,7 @@ import { toast } from "../ui/use-toast";
 import { usePathname } from "next/navigation";
 import CustomCheckout from "./CustomCheckout";
 
-const CheckoutButton = ({ product }: { product: IProduct }) => {
+const CustomCheckoutButton = ({ product }: { product: IProduct }) => {
   const { user } = useUser();
   const userId = user?.publicMetadata.userId as string;
 
@@ -102,13 +102,6 @@ const CheckoutButton = ({ product }: { product: IProduct }) => {
   const handleBladeCutChange = (cut: string) => {
     setSelectedBladeCut(cut);
   };
-
-  const isAnySelectEmpty =
-    !selectedFootPocketColor ||
-    !selectedBladeAngle ||
-    !selectedSoftness ||
-    !selectedBladeSize ||
-    !selectedBladeCut;
 
   return (
     <>
@@ -195,7 +188,7 @@ const CheckoutButton = ({ product }: { product: IProduct }) => {
             </div>
 
             <div className="flex mt-10 justify-end">
-              <Checkout
+              <CustomCheckout
                 product={product}
                 userId={userId}
                 footPocketColor={selectedFootPocketColor}
@@ -204,7 +197,7 @@ const CheckoutButton = ({ product }: { product: IProduct }) => {
                 bladeSize={selectedBladeSize}
                 bladeCut={selectedBladeCut}
                 imageUrl={imageUrl}
-                isAnySelectEmpty={isAnySelectEmpty}
+                disabled={!formSubmitted}
               />
             </div>
           </div>
@@ -214,4 +207,4 @@ const CheckoutButton = ({ product }: { product: IProduct }) => {
   );
 };
 
-export default CheckoutButton;
+export default CustomCheckoutButton;

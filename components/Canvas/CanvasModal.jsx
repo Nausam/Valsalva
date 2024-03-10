@@ -19,7 +19,7 @@ const CanvasModal = () => {
         preserveDrawingBuffer: true,
       }}
       // shadows
-      camera={{ position: [3.5, 2, 1.3], fov: 30 }}
+      camera={{ position: [1.7, 5.5, 1.7], fov: 30 }}
     >
       <ambientLight intensity={1} />
       <directionalLight intensity={5} color="white" position={[0, 0, 5]} />

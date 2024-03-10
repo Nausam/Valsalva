@@ -52,8 +52,8 @@ export default async function Home({ searchParams }: SearchParamProps) {
           <Image
             src="/assets/images/logo_white.png"
             alt="hero"
-            width={300}
-            height={300}
+            width={250}
+            height={250}
             className="object-contain object-center mx-auto invert dark:invert-0"
           />
 
@@ -77,7 +77,7 @@ export default async function Home({ searchParams }: SearchParamProps) {
           </div>
         </div>
 
-        <div className="wrapper flex flex-wrap justify-between text-center gap-20 mt-20">
+        <div className="wrapper flex flex-wrap justify-center mx-auto text-center gap-20 mt-20">
           <div className="max-w-xl">
             <h2 className="h2-bold text-gray-800 dark:text-white">
               Our Mission

@@ -1,16 +1,11 @@
 import { Metadata } from "next";
 
-import Collection from "@/components/shared/Collection";
-import {
-  getProductById,
-  getRelatedProductsByCategory,
-} from "@/lib/actions/product.actions";
+import { getProductById } from "@/lib/actions/product.actions";
 import { SearchParamProps } from "@/types";
-import Image from "next/image";
 import React from "react";
 import { auth } from "@clerk/nextjs";
 import CanvasModelHolder from "@/components/shared/CanvasModelHolder";
-import CheckoutButton from "@/components/shared/CheckoutButton";
+import CustomCheckoutButton from "@/components/shared/CustomCheckoutButton";
 
 export const metadata: Metadata = {
   title: "Details | Valsalva",
@@ -36,7 +31,7 @@ const ProductDetails = async ({
               <div className="flex max-w-2xl">
                 <div className="mt-5">
                   {product.isAvailable === true && (
-                    <CheckoutButton product={product} />
+                    <CustomCheckoutButton product={product} />
                   )}
                 </div>
               </div>

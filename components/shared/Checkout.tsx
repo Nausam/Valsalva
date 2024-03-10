@@ -4,6 +4,8 @@ import { loadStripe } from "@stripe/stripe-js";
 import { IProduct } from "@/lib/database/models/product.model";
 import { Button } from "../ui/button";
 import { checkoutOrder } from "@/lib/actions/order.actions";
+import { type } from "os";
+import { toast } from "../ui/use-toast";
 
 loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 
@@ -16,6 +18,7 @@ const Checkout = ({
   bladeSize,
   bladeCut,
   imageUrl,
+  isAnySelectEmpty,
 }: {
   product: IProduct;
   userId: string;
@@ -25,6 +28,7 @@ const Checkout = ({
   bladeSize: string;
   bladeCut: string;
   imageUrl: string;
+  isAnySelectEmpty: boolean;
 }) => {
   useEffect(() => {
     // Check to see if this is a redirect back from Checkout
@@ -59,6 +63,13 @@ const Checkout = ({
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (isAnySelectEmpty)
+      return toast({
+        title: "EMPTY FORM FIELDS",
+        description:
+          "Please fill all the form fields to proceed with the checkout",
+        variant: "destructive",
+      });
     await onCheckout();
   };
 
