@@ -7,7 +7,7 @@ const AdminPage = () => {
   return (
     <div className="wrapper mt-20">
       <Tabs defaultValue="orders">
-        <TabsList>
+        <TabsList className="dark:bg-[#191919]">
           <TabsTrigger value="orders">Orders</TabsTrigger>
           <TabsTrigger value="create">Create</TabsTrigger>
         </TabsList>

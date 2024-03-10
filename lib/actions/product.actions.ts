@@ -94,10 +94,15 @@ export const getAllProducts = async ({
       ? await getCategoryByName(category)
       : null;
 
+    const excludedProductCondition = "65e9d07d684eaf43ce92ee67"
+      ? { _id: { $ne: "65e9d07d684eaf43ce92ee67" } }
+      : {};
+
     const conditions = {
       $and: [
         titleCondition,
         categoryCondition ? { category: categoryCondition._id } : {},
+        excludedProductCondition,
       ],
     };
 

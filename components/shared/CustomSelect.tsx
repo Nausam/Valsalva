@@ -26,7 +26,7 @@ const CustomSelect = ({
       <div className="p-bold-20 my-3  text-grey-600 dark:text-gray-300">
         <p>{title}</p>
       </div>
-      <Select onValueChange={handleValueChange}>
+      <Select name="select" onValueChange={handleValueChange}>
         <SelectTrigger className="select-field">
           <SelectValue placeholder="Select" />
         </SelectTrigger>

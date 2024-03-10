@@ -5,7 +5,7 @@ import CanvasModal from "../Canvas/CanvasModal";
 
 const CanvasModelHolder = () => {
   return (
-    <div className="w-full relative h-screen">
+    <div className="w-full relative h-[1000px]">
       <CanvasModal />
     </div>
   );

@@ -10,5 +10,5 @@ export const productFormSchema = z.object({
   categoryId: z.string(),
   price: z.string(),
   isAvailable: z.boolean(),
-  footPocketColor: z.string(),
+  footPocketColor: z.string().min(3, "Please add a color"),
 });

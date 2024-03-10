@@ -26,18 +26,14 @@ export function FileUploader({
 
     if (acceptedFiles.length > 0) {
       const selectedFile = acceptedFiles[0];
-      // Generate the URL for the selected file
       const fileUrl = URL.createObjectURL(selectedFile);
-      // Assign the file URL to state.fullDecal
       state.fullDecal = fileUrl;
-      // Set the selected files using setFiles function
       setFiles(acceptedFiles);
-      // Clear imageUrl since we're now updating state.fullDecal
+
       onFieldChange("");
     } else {
-      // Clear state.fullDecal if no files are selected
       state.fullDecal = "";
-      // Clear imageUrl
+
       onFieldChange("");
     }
 
@@ -52,7 +48,7 @@ export function FileUploader({
   return (
     <div
       {...getRootProps()}
-      className="flex-center bg-dark-3 flex p-3 h-52 cursor-pointer flex-col overflow-hidden rounded-sm bg-grey-50 dark:bg-[#191919]"
+      className="flex-center bg-dark-3 h-64 flex p-3 cursor-pointer flex-col overflow-hidden rounded-sm bg-grey-50 dark:bg-[#191919]"
     >
       <input {...getInputProps()} className="cursor-pointer" />
 

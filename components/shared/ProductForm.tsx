@@ -28,6 +28,7 @@ import { createProduct, updateProduct } from "@/lib/actions/product.actions";
 import { IProduct } from "@/lib/database/models/product.model";
 
 import { Switch } from "@/components/ui/switch";
+import { toast } from "../ui/use-toast";
 
 type ProductFormProps = {
   userId: string;
@@ -90,8 +91,14 @@ const ProductForm = ({
           form.reset();
           router.push(`/product/${newProduct._id}`);
         }
+        toast({
+          title: `${values.title} created successfully`,
+        });
       } catch (error) {
-        console.log(error);
+        toast({
+          title: `Error creating ${values.title}`,
+          variant: "destructive",
+        });
       }
     }
 
@@ -111,8 +118,14 @@ const ProductForm = ({
           form.reset();
           router.push(`/product/${updatedProduct._id}`);
         }
+        toast({
+          title: `${values.title} updated successfully`,
+        });
       } catch (error) {
-        console.log(error);
+        toast({
+          title: `Error updating ${values.title}`,
+          variant: "destructive",
+        });
       }
     }
   }

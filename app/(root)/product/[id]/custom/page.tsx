@@ -28,7 +28,7 @@ const ProductDetails = async ({
   return (
     <>
       <section className="flex justify-center md:mt-16 mt-20">
-        <div className="wrapper grid grid-cols-1 lg:grid-cols-2  2xl:max-w-7xl sm:py-10 items-center">
+        <div className="wrapper grid grid-cols-1 lg:grid-cols-2 2xl:max-w-7xl sm:py-10 items-center">
           <CanvasModelHolder />
 
           <div className="flex w-full flex-col gap-8 p-5 md:p-10">

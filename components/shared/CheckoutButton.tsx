@@ -30,6 +30,7 @@ import { FileUploader } from "./FileUploader";
 import { useUploadThing } from "@/lib/uploadthing";
 import { customFormSchema } from "@/lib/customValidator";
 import CustomCheckout from "./CustomCheckout";
+import { toast } from "../ui/use-toast";
 
 const CheckoutButton = ({ product }: { product: IProduct }) => {
   const { user } = useUser();
@@ -51,8 +52,6 @@ const CheckoutButton = ({ product }: { product: IProduct }) => {
   });
 
   async function onSubmit(values: z.infer<typeof customFormSchema>) {
-    console.log("Form submitted with values:", values);
-
     let uploadedImageUrl = values.imageUrl;
 
     if (files.length > 0) {
@@ -61,8 +60,11 @@ const CheckoutButton = ({ product }: { product: IProduct }) => {
       if (!uploadedImages) return;
 
       uploadedImageUrl = uploadedImages[0].url;
-      console.log(uploadedImageUrl);
       setImageUrl(uploadedImageUrl);
+      toast({
+        title: "Image uploaded successfully",
+        description: "Please go ahead with the checkout",
+      });
     }
   }
 
@@ -136,9 +138,10 @@ const CheckoutButton = ({ product }: { product: IProduct }) => {
                     <Button
                       type="submit"
                       size="lg"
+                      disabled={form.formState.isSubmitting}
                       className="button bg-black border border-black hover:bg-transparent text-white hover:text-black dark:bg-white dark:border-black dark:hover:border-white dark:text-black dark:hover:bg-transparent dark:hover:text-white  font-bold w-full sm:w-fit transition-all duration-300 ease-in-out shadow-lg"
                     >
-                      Upload
+                      {form.formState.isSubmitting ? "Uploading..." : "Upload"}
                     </Button>
                   </div>
                 </form>
@@ -146,12 +149,15 @@ const CheckoutButton = ({ product }: { product: IProduct }) => {
             )}
 
             <div className="flex gap-10 flex-wrap">
-              <CustomSelect
-                title="Foot Pocket Color"
-                selectItem1="Black"
-                selectItem2="White"
-                handleValueChange={handleColorChange}
-              />
+              {window.location.pathname !=
+                "/product/65e9d07d684eaf43ce92ee67/custom" && (
+                <CustomSelect
+                  title="Foot Pocket Color"
+                  selectItem1="Black"
+                  selectItem2="White"
+                  handleValueChange={handleColorChange}
+                />
+              )}
               <CustomSelect
                 title="Blade Angle"
                 selectItem1="Blade Angle ~ 20°"
