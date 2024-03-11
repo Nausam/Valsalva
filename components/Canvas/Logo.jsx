@@ -9,7 +9,7 @@ import { Decal, useGLTF } from "@react-three/drei";
 import { useTheme } from "next-themes";
 import { gsap } from "gsap";
 
-import { MeshPhysicalMaterial } from "three";
+import { MeshPhysicalMaterial, TextureLoader } from "three";
 
 const Logo = (props) => {
   const group = useRef();
@@ -38,7 +38,7 @@ const Logo = (props) => {
     const t = state.clock.getElapsedTime();
     group.current.rotation.x = THREE.MathUtils.lerp(
       group.current.rotation.x,
-      open ? Math.cos(t / 10) / 2 + 0.25 : 0,
+      open ? Math.cos(t / 10) / 50 + 0.25 : 0,
       0.1
     );
     group.current.rotation.y = THREE.MathUtils.lerp(
@@ -48,7 +48,7 @@ const Logo = (props) => {
     );
     group.current.rotation.z = THREE.MathUtils.lerp(
       group.current.rotation.z,
-      open ? Math.sin(t / 10) / 10 : 0,
+      open ? Math.sin(t / 10) / 50 : 0,
       0.1
     );
     group.current.position.y = THREE.MathUtils.lerp(
@@ -58,32 +58,11 @@ const Logo = (props) => {
     );
   });
 
-  useFrame((state) => {
-    const t = state.clock.getElapsedTime();
-    group2.current.rotation.x = THREE.MathUtils.lerp(
-      group2.current.rotation.x,
-      open ? Math.cos(t / 10) / 10 + 0.25 : 0,
-      0.1
-    );
-    group2.current.rotation.y = THREE.MathUtils.lerp(
-      group2.current.rotation.y,
-      open ? Math.sin(t / 10) / 4 : 0,
-      0.1
-    );
-    group2.current.rotation.z = THREE.MathUtils.lerp(
-      group2.current.rotation.z,
-      open ? Math.sin(t / 10) / 10 : 0,
-      0.1
-    );
-    group2.current.position.y = THREE.MathUtils.lerp(
-      group2.current.position.y,
-      open ? (-2 + Math.sin(t)) / 10 : -4.3,
-      0.1
-    );
-  });
+  const textureLoader = new TextureLoader();
+  const texture = textureLoader.load("/assets/images/manta.png");
 
   const physicalMaterial26 = new MeshPhysicalMaterial({
-    color: "#111",
+    color: "#fff",
     roughness: 0.5,
     metalness: 0.5,
     clearcoat: 0.02,
@@ -91,6 +70,7 @@ const Logo = (props) => {
     reflectivity: 0,
     roughnessMap: null,
     metalnessMap: null,
+    map: texture,
   });
   const physicalMaterial28 = new MeshPhysicalMaterial({
     color: "#151515",
@@ -115,7 +95,7 @@ const Logo = (props) => {
 
   return (
     <group {...props} dispose={null} ref={meshRef} rotation={[0, 0, 0]}>
-      <group position={[-0.5, 0, -1]} rotation={[0.5, 1, 1.4]}>
+      <group position={[0, 0.3, -1]} rotation={[0.8, 2.3, 0.1]}>
         <group ref={group}>
           <mesh
             castShadow
@@ -155,51 +135,6 @@ const Logo = (props) => {
             geometry={nodes.Object004.geometry}
             material={physicalMaterial28}
             position={[0.349, 0.026, -0.102]}
-            scale={0.025}
-          />
-        </group>
-      </group>
-
-      <group position={[0, 0.3, -1]} rotation={[0.5, 0.9, 0.5]}>
-        <group ref={group2}>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Box003.geometry}
-            material={physicalMaterial28}
-            position={[-0.969, 0.006, 0.598]}
-            scale={0.025}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Object005.geometry}
-            material={physicalMaterial26}
-            position={[-0.429, 0.009, 0.611]}
-            scale={0.025}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Object006.geometry}
-            material={physicalMaterial28}
-            position={[0.349, 0.026, 0.61]}
-            scale={0.025}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Plane009.geometry}
-            material={physicalMaterial26}
-            position={[-0.429, 0.009, 0.611]}
-            scale={0.025}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Plane010.geometry}
-            material={physicalMaterial29}
-            position={[0.409, 0.008, 0.324]}
             scale={0.025}
           />
         </group>

@@ -13,7 +13,7 @@ export const headerLinks = [
   },
   {
     label: "Customize",
-    route: "/product/customize",
+    route: "/product/65e9d07d684eaf43ce92ee67/custom",
   },
   {
     label: "Shop",

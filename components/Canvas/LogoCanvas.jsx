@@ -16,17 +16,11 @@ import Logo from "./Logo";
 const LogoCanvas = () => {
   return (
     <Canvas shadows camera={{ position: [0, 0, 10], fov: 25 }}>
-      <ambientLight intensity={10} />
-      <directionalLight intensity={30} color="white" position={[0, 0, 5]} />
+      <ambientLight intensity={0} />
+      <directionalLight intensity={10} position={[-50, 50, -20]} />
+      <directionalLight intensity={20} position={[-50, -50, 100]} />
 
-      <spotLight
-        position={[10, 10, 10]}
-        angle={0.15}
-        penumbra={1}
-        shadow-mapSize={2048}
-        castShadow
-      />
-      <Logo scale={1.4} />
+      <Logo scale={2.5} />
 
       <ContactShadows
         position={[0, -2, 0]}

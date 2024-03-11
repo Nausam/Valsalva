@@ -6,11 +6,9 @@ import { SignedIn, useUser } from "@clerk/nextjs";
 import Link from "next/link";
 import React, { useState } from "react";
 import { Button } from "../ui/button";
-import Checkout from "./Checkout";
 
 import state from "@/store";
 import CustomSelect from "./CustomSelect";
-import { useSnapshot } from "valtio";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -26,12 +24,23 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+
 import { FileUploader } from "./FileUploader";
 import { useUploadThing } from "@/lib/uploadthing";
 import { customFormSchema } from "@/lib/customValidator";
 import { toast } from "../ui/use-toast";
 import { usePathname } from "next/navigation";
 import CustomCheckout from "./CustomCheckout";
+import Card from "../ui/card";
+import CardContent from "../ui/cardContent";
+import Image from "next/image";
 
 const CustomCheckoutButton = ({ product }: { product: IProduct }) => {
   const { user } = useUser();
@@ -187,6 +196,83 @@ const CustomCheckoutButton = ({ product }: { product: IProduct }) => {
               />
             </div>
 
+            {/* <Carousel>
+              <CarouselContent>
+                <CarouselItem className="basis-1/3">
+                  <Image
+                    src="/assets/images/cut.png"
+                    height={100}
+                    width={100}
+                    alt="blade cut image"
+                    className="rounded-sm"
+                  />
+                </CarouselItem>
+                <CarouselItem className="basis-1/3">
+                  <Image
+                    src="/assets/images/cut.png"
+                    height={100}
+                    width={100}
+                    alt="blade cut image"
+                    className="rounded-sm"
+                  />
+                </CarouselItem>
+                <CarouselItem className="basis-1/3">
+                  <Image
+                    src="/assets/images/cut.png"
+                    height={100}
+                    width={100}
+                    alt="blade cut image"
+                    className="rounded-sm"
+                  />
+                </CarouselItem>
+                <CarouselItem className="basis-1/3">
+                  <Image
+                    src="/assets/images/cut.png"
+                    height={100}
+                    width={100}
+                    alt="blade cut image"
+                    className="rounded-sm"
+                  />
+                </CarouselItem>
+                <CarouselItem className="basis-1/3">
+                  <Image
+                    src="/assets/images/cut.png"
+                    height={100}
+                    width={100}
+                    alt="blade cut image"
+                    className="rounded-sm"
+                  />
+                </CarouselItem>
+                <CarouselItem className="basis-1/3">
+                  <Image
+                    src="/assets/images/cut.png"
+                    height={100}
+                    width={100}
+                    alt="blade cut image"
+                    className="rounded-sm"
+                  />
+                </CarouselItem>
+                <CarouselItem className="basis-1/3">
+                  <Image
+                    src="/assets/images/cut.png"
+                    height={100}
+                    width={100}
+                    alt="blade cut image"
+                    className="rounded-sm"
+                  />
+                </CarouselItem>
+                <CarouselItem className="basis-1/3">
+                  <Image
+                    src="/assets/images/cut.png"
+                    height={100}
+                    width={100}
+                    alt="blade cut image"
+                    className="rounded-sm"
+                  />
+                </CarouselItem>
+              </CarouselContent>
+            </Carousel> */}
+
             <div className="flex mt-10 justify-end">
               <CustomCheckout
                 product={product}
@@ -208,3 +294,30 @@ const CustomCheckoutButton = ({ product }: { product: IProduct }) => {
 };
 
 export default CustomCheckoutButton;
+
+export function CarouselSize() {
+  return (
+    <Carousel
+      opts={{
+        align: "start",
+      }}
+      className="w-full max-w-sm"
+    >
+      <CarouselContent>
+        {Array.from({ length: 5 }).map((_, index) => (
+          <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+            <div className="p-1">
+              <Card>
+                <CardContent className="flex aspect-square items-center justify-center p-6">
+                  <span className="text-3xl font-semibold">{index + 1}</span>
+                </CardContent>
+              </Card>
+            </div>
+          </CarouselItem>
+        ))}
+      </CarouselContent>
+      <CarouselPrevious />
+      <CarouselNext />
+    </Carousel>
+  );
+}

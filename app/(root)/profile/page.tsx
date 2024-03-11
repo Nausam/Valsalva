@@ -43,7 +43,7 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
             className="button hidden sm:flex bg-black border border-black hover:bg-transparent  hover:text-black dark:bg-white dark:text-black dark:hover:bg-transparent dark:hover:text-white dark:border-white font-bold w-full sm:w-fit transition-all duration-300 ease-in-out shadow-lg"
             size="lg"
           >
-            <Link href="/store">Explore More</Link>
+            <Link href="/shop">Explore More</Link>
           </Button>
         </div>
       </section>

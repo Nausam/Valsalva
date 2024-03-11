@@ -6,6 +6,12 @@ import Image from "next/image";
 import Link from "next/link";
 
 import LogoCanvas from "@/components/Canvas/LogoCanvas";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 export default async function Home({ searchParams }: SearchParamProps) {
   const page = Number(searchParams?.page) || 1;
@@ -72,7 +78,9 @@ export default async function Home({ searchParams }: SearchParamProps) {
               asChild
               className="button bg-black border border-black hover:bg-transparent text-white hover:text-black dark:bg-white dark:border-black dark:hover:border-white dark:text-black dark:hover:bg-transparent dark:hover:text-white  font-bold w-full sm:w-fit transition-all duration-300 ease-in-out shadow-lg mt-5"
             >
-              <Link href="/product/customize">Customize Now</Link>
+              <Link href="/product/65e9d07d684eaf43ce92ee67/custom">
+                Customize Now
+              </Link>
             </Button>
           </div>
         </div>
@@ -123,7 +131,9 @@ export default async function Home({ searchParams }: SearchParamProps) {
         id="#products"
         className="wrapper my-20 items-center flex flex-col gap-8 md:gap-12"
       >
-        <h2 className="h2-bold">Featured Products</h2>
+        <h2 className="h2-bold text-gray-800 dark:text-white">
+          Featured Products
+        </h2>
 
         <Collection
           data={products?.data}
@@ -135,6 +145,34 @@ export default async function Home({ searchParams }: SearchParamProps) {
           page={page}
           totalPages={products?.totalPages}
         />
+      </section>
+
+      <section className="wrapper w-full my-20 items-center flex flex-col gap-8 md:gap-12">
+        <h2 className="h2-bold text-gray-800 dark:text-white">FAQ</h2>
+        <Accordion type="single" collapsible>
+          <AccordionItem
+            className="sm:w-[600px] md:w-[700px] w-[400px]"
+            value="item-1"
+          >
+            <AccordionTrigger>Who are we?</AccordionTrigger>
+            <AccordionContent>
+              Valsalva is a premium destination for customizable snorkel fins
+              tailored to meet your exact preferences and needs.
+            </AccordionContent>
+          </AccordionItem>
+          <AccordionItem value="item-2">
+            <AccordionTrigger>Where are we located?</AccordionTrigger>
+            <AccordionContent>
+              We are located in the sunny side of life, Maldives
+            </AccordionContent>
+          </AccordionItem>
+          <AccordionItem value="item-3">
+            <AccordionTrigger>Do we ship worldwide?</AccordionTrigger>
+            <AccordionContent>
+              No. At the moment we only ship to Asia.
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
       </section>
     </>
   );

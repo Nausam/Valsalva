@@ -53,13 +53,6 @@ const Header = async () => {
                         Dashboard
                       </MenubarItem>
                     </Link>
-                    <MenubarSeparator className="dark:bg-[#151515]" />
-
-                    <Link href="/product/65e9d07d684eaf43ce92ee67/custom">
-                      <MenubarItem className="dark:hover:bg-[#323232] hover:bg-primary-50 cursor-pointer">
-                        Custom
-                      </MenubarItem>
-                    </Link>
                   </MenubarContent>
                 </MenubarMenu>
               </Menubar>
