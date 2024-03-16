@@ -13,7 +13,7 @@ const Faq = () => {
       <h2 className="h2-bold text-gray-800 dark:text-white">FAQ</h2>
       <Accordion type="single" collapsible>
         <AccordionItem
-          className="sm:w-[600px] md:w-[700px] w-[400px]"
+          className="sm:w-[600px] md:w-[700px] w-[330px]"
           value="item-1"
         >
           <AccordionTrigger>Who are we?</AccordionTrigger>

@@ -41,11 +41,17 @@ const Logo = (props) => {
       open ? Math.cos(t / 10) / 50 + 0.25 : 0,
       0.1
     );
-    group.current.rotation.y = THREE.MathUtils.lerp(
-      group.current.rotation.y,
-      open ? Math.sin(t / 10) / 3 : 0,
-      0.1
-    );
+    if (typeof window !== "undefined") {
+      const width = window.innerWidth;
+
+      if (width > 768) {
+        group.current.rotation.y = THREE.MathUtils.lerp(
+          group.current.rotation.y,
+          open ? Math.sin(t / 10) / 3 : 0,
+          0.1
+        );
+      }
+    }
     group.current.rotation.z = THREE.MathUtils.lerp(
       group.current.rotation.z,
       open ? Math.sin(t / 10) / 50 : 0,
@@ -93,9 +99,23 @@ const Logo = (props) => {
     metalnessMap: null,
   });
 
+  const handleRotation = (rotation) => {
+    if (typeof window !== "undefined") {
+      const width = window.innerWidth;
+
+      if (width > 768) {
+        return (rotation = 2.3);
+      }
+
+      if (width < 768) {
+        return (rotation = 1.7);
+      }
+    }
+  };
+
   return (
     <group {...props} dispose={null} ref={meshRef} rotation={[0, 0, 0]}>
-      <group position={[0, 0.3, -1]} rotation={[0.8, 2.3, 0.1]}>
+      <group position={[0, 0.3, -1]} rotation={[0.8, handleRotation(), 0.1]}>
         <group ref={group}>
           <mesh
             castShadow

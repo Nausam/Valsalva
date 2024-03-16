@@ -3,31 +3,12 @@
 import { Canvas, useFrame } from "@react-three/fiber";
 import {
   Environment,
-  Center,
-  AccumulativeShadows,
-  RandomizedLight,
-  OrbitControls,
   ContactShadows,
-  PresentationControls,
-  useEnvironment,
   PerspectiveCamera,
 } from "@react-three/drei";
 import Logo from "./Logo";
 
 const LogoCanvas = () => {
-  const handleSize = (scale) => {
-    if (typeof window !== "undefined") {
-      const width = window.innerWidth;
-
-      if (width > 768) {
-        return (scale = 2);
-      }
-
-      if (width < 768) {
-        return (scale = 1);
-      }
-    }
-  };
   return (
     <Canvas className="w-full h-full" shadows>
       <ambientLight intensity={0.3} />
@@ -36,7 +17,7 @@ const LogoCanvas = () => {
 
       <PerspectiveCamera makeDefault position={[0, 0, 11]} fov={25} />
 
-      <Logo scale={handleSize()} />
+      <Logo scale={2} />
 
       <ContactShadows
         position={[0, -2, 0]}
