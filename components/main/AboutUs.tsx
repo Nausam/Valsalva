@@ -5,14 +5,21 @@ import Link from "next/link";
 
 const AboutUs = () => {
   return (
-    <section className="wrapper flex flex-wrap gap-10 mt-10">
+    <section className="wrapper flex flex-wrap gap-10 mt-28">
       <div className="grid grid-cols-1 gap-5 lg:grid-cols-2 2xl:gap-0 items-center justify-center ">
         <Image
           src="/assets/images/logo_white.png"
           alt="hero"
           width={250}
           height={250}
-          className="object-contain object-center mx-auto invert dark:invert-0"
+          className="object-contain object-center mx-auto invert dark:invert-0 hidden md:block"
+        />
+        <Image
+          src="/assets/images/logo_white.png"
+          alt="hero"
+          width={150}
+          height={150}
+          className="object-contain object-center mx-auto invert dark:invert-0 md:hidden block"
         />
 
         <div className="flex flex-col justify-center gap-8 mt-16">
