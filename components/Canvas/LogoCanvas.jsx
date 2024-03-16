@@ -10,17 +10,33 @@ import {
   ContactShadows,
   PresentationControls,
   useEnvironment,
+  PerspectiveCamera,
 } from "@react-three/drei";
 import Logo from "./Logo";
 
 const LogoCanvas = () => {
+  const handleSize = (scale) => {
+    if (typeof window !== "undefined") {
+      const width = window.innerWidth;
+
+      if (width > 768) {
+        return (scale = 2);
+      }
+
+      if (width < 768) {
+        return (scale = 1);
+      }
+    }
+  };
   return (
-    <Canvas shadows camera={{ position: [0, 0, 10], fov: 25 }}>
-      <ambientLight intensity={0} />
+    <Canvas className="w-full h-full" shadows>
+      <ambientLight intensity={0.3} />
       <directionalLight intensity={10} position={[-50, 50, -20]} />
       <directionalLight intensity={20} position={[-50, -50, 100]} />
 
-      <Logo scale={2.5} />
+      <PerspectiveCamera makeDefault position={[0, 0, 11]} fov={25} />
+
+      <Logo scale={handleSize()} />
 
       <ContactShadows
         position={[0, -2, 0]}

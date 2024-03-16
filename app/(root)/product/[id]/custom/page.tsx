@@ -2,7 +2,7 @@ import { Metadata } from "next";
 
 import { getProductById } from "@/lib/actions/product.actions";
 import { SearchParamProps } from "@/types";
-import React from "react";
+import { Suspense } from "react";
 import { auth } from "@clerk/nextjs";
 import CanvasModelHolder from "@/components/shared/CanvasModelHolder";
 import CustomCheckoutButton from "@/components/shared/CustomCheckoutButton";
@@ -24,7 +24,11 @@ const ProductDetails = async ({
     <>
       <section className="flex justify-center md:mt-16 mt-20">
         <div className="wrapper grid grid-cols-1 lg:grid-cols-2 2xl:max-w-7xl sm:py-10 items-center">
-          <CanvasModelHolder />
+          <div className="flex items-center justify-center h-full">
+            <Suspense fallback={<div>Loading...</div>}>
+              <CanvasModelHolder />
+            </Suspense>
+          </div>
 
           <div className="flex w-full flex-col gap-8 p-5 md:p-10">
             <div className="flex flex-col gap-6">
