@@ -113,9 +113,26 @@ const Logo = (props) => {
     }
   };
 
+  const handlePosition = (position) => {
+    if (typeof window !== "undefined") {
+      const width = window.innerWidth;
+
+      if (width > 768) {
+        return (position = 0.3);
+      }
+
+      if (width < 768) {
+        return (position = 0.6);
+      }
+    }
+  };
+
   return (
     <group {...props} dispose={null} ref={meshRef} rotation={[0, 0, 0]}>
-      <group position={[0, 0.3, -1]} rotation={[0.8, handleRotation(), 0.1]}>
+      <group
+        position={[0, handlePosition(), -1]}
+        rotation={[0.8, handleRotation(), 0.1]}
+      >
         <group ref={group}>
           <mesh
             castShadow
