@@ -1,11 +1,6 @@
 import Collection from "@/components/shared/Collection";
-import { Button } from "@/components/ui/button";
 import { getAllProducts } from "@/lib/actions/product.actions";
 import { SearchParamProps } from "@/types";
-import Image from "next/image";
-import Link from "next/link";
-
-import LogoCanvas from "@/components/Canvas/LogoCanvas";
 
 import Hero from "@/components/main/Hero";
 import AboutUs from "@/components/main/AboutUs";

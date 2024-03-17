@@ -31,7 +31,7 @@ const Hero = () => {
             <LogoCanvas />
           </Suspense>
         </div>
-        <h1 className="text-center absolute bottom-10 right-0 left-0 mx-auto items-center justify-center h1-bold2 drop-shadow-md">
+        <h1 className="text-center absolute bottom-20 right-0 left-0 mx-auto items-center justify-center h1-bold2 drop-shadow-md">
           Discover Precision, Power, and Beauty Below.
         </h1>
       </div>

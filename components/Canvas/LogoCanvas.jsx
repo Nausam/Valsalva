@@ -8,6 +8,20 @@ import {
 } from "@react-three/drei";
 import Logo from "./Logo";
 
+const handleSize = (size) => {
+  if (typeof window !== "undefined") {
+    const width = window.innerWidth;
+
+    if (width > 768) {
+      return (size = 2);
+    }
+
+    if (width < 768) {
+      return (size = 1.5);
+    }
+  }
+};
+
 const LogoCanvas = () => {
   return (
     <Canvas className="w-full h-full" shadows>
@@ -17,7 +31,7 @@ const LogoCanvas = () => {
 
       <PerspectiveCamera makeDefault position={[0, 0, 11]} fov={25} />
 
-      <Logo scale={2} />
+      <Logo scale={handleSize()} />
 
       <ContactShadows
         position={[0, -2, 0]}
