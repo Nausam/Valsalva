@@ -26,14 +26,14 @@ const Hero = () => {
         </div>
       </div> */}
       <div className="wrapper w-full h-full">
-        <h1 className="text-center mx-auto items-center justify-center h1-bold2 drop-shadow-md">
-          Discover Precision, Power, and Beauty Below.
-        </h1>
-        <div className="flex items-center justify-center h-full">
+        <div className="flex items-center justify-center h-full relative">
           <Suspense fallback={<div>Loading...</div>}>
             <LogoCanvas />
           </Suspense>
         </div>
+        <h1 className="text-center absolute bottom-10 right-0 left-0 mx-auto items-center justify-center h1-bold2 drop-shadow-md">
+          Discover Precision, Power, and Beauty Below.
+        </h1>
       </div>
     </section>
   );
