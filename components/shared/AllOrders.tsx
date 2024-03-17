@@ -1,18 +1,9 @@
 import { Metadata } from "next";
 
-import Search from "@/components/shared/Search";
-import {
-  getAllOrders,
-  getOrdersByProduct,
-  getOrdersBySpecificUser,
-  getOrdersByUser,
-} from "@/lib/actions/order.actions";
+import { getAllOrders } from "@/lib/actions/order.actions";
 import { formatDateTime, formatPrice } from "@/lib/utils";
-import { SearchParamProps } from "@/types";
-import {
-  IOrderItem,
-  IOrderSpecificItem,
-} from "@/lib/database/models/order.model";
+
+import { IOrderSpecificItem } from "@/lib/database/models/order.model";
 import { auth } from "@clerk/nextjs";
 
 export const metadata: Metadata = {

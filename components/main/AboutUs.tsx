@@ -67,7 +67,7 @@ const AboutUs = () => {
         </div>
       </div>
 
-      <div className="wrapper flex flex-wrap justify-center mx-auto text-center gap-20 mt-20">
+      <div className="wrapper flex flex-wrap justify-center mx-auto text-center gap-20 mt-10">
         <div className="max-w-xl">
           <h2 className="h2-bold text-gray-800 dark:text-white">Our Mission</h2>
           <p className="p-regular-20 md:p-regular-18 text-gray-700 dark:text-gray-300 mt-5">

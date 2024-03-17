@@ -20,33 +20,32 @@ export default async function Home({ searchParams }: SearchParamProps) {
     query: searchText,
     category: category,
     page,
-    limit: 3,
+    limit: 6,
   });
 
   return (
     <>
       <Hero />
       <AboutUs />
-      <section
-        id="#products"
-        className="wrapper my-20 items-center flex flex-col gap-8 md:gap-12"
-      >
-        <h2 className="h2-bold text-gray-800 dark:text-white">
-          Featured Products
-        </h2>
+      <section id="#products">
+        <div className="wrapper my-20 items-center flex flex-col gap-8 md:gap-12 ">
+          <h2 className="h2-bold text-gray-800 dark:text-white mt-10">
+            Featured Products
+          </h2>
 
-        <Collection
-          data={products?.data}
-          emptyTitle="No products found"
-          emptyStateSubtext="Come back later"
-          collectionType="All_Products"
-          limit={3}
-          homePage={true}
-          page={page}
-          totalPages={products?.totalPages}
-        />
-        <Faq />
+          <Collection
+            data={products?.data}
+            emptyTitle="No products found"
+            emptyStateSubtext="Come back later"
+            collectionType="All_Products"
+            limit={3}
+            homePage={true}
+            page={page}
+            totalPages={products?.totalPages}
+          />
+        </div>
       </section>
+      <Faq />
     </>
   );
 }

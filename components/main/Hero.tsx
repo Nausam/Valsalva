@@ -1,13 +1,11 @@
 "use client";
 
-import Link from "next/link";
-import { Button } from "../ui/button";
 import LogoCanvas from "../Canvas/LogoCanvas";
 import { Suspense } from "react";
 
 const Hero = () => {
   return (
-    <section className="md:mt-28 mt-20 nav-height relative ">
+    <section className="mt-20 nav-height relative">
       {/* <div className="wrapper h-5/6 grid grid-cols-1 gap-5 lg:grid-cols-2 2xl:gap-0">
         <div className="flex flex-col justify-center gap-8 relative z-10">
           <h1 className="h1-bold drop-shadow-md">

@@ -1,4 +1,4 @@
-import React from "react";
+import { Suspense } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import AllOrders from "@/components/shared/AllOrders";
 import CreateProduct from "@/components/shared/CreateProduct";
@@ -12,7 +12,13 @@ const AdminPage = () => {
           <TabsTrigger value="create">Create</TabsTrigger>
         </TabsList>
         <TabsContent value="orders">
-          <AllOrders />
+          <Suspense
+            fallback={
+              <div className="flex items-center justify-center">Loading...</div>
+            }
+          >
+            <AllOrders />
+          </Suspense>
         </TabsContent>
         <TabsContent value="create">
           <CreateProduct />
