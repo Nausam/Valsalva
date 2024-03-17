@@ -52,6 +52,18 @@ const Logo = (props) => {
         );
       }
     }
+
+    if (typeof window !== "undefined") {
+      const width = window.innerWidth;
+
+      if (width < 768) {
+        group.current.rotation.y = THREE.MathUtils.lerp(
+          group.current.rotation.y,
+          open ? Math.sin(t / 5) / 10 : 0,
+          0.1
+        );
+      }
+    }
     group.current.rotation.z = THREE.MathUtils.lerp(
       group.current.rotation.z,
       open ? Math.sin(t / 10) / 50 : 0,

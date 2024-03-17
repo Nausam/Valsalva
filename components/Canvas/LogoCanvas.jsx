@@ -22,6 +22,20 @@ const handleSize = (size) => {
   }
 };
 
+const handleShadow = (shadow) => {
+  if (typeof window !== "undefined") {
+    const width = window.innerWidth;
+
+    if (width > 768) {
+      return (shadow = -1.65);
+    }
+
+    if (width < 768) {
+      return (shadow = -1.2);
+    }
+  }
+};
+
 const LogoCanvas = () => {
   return (
     <Canvas className="w-full h-full" shadows>
@@ -34,7 +48,7 @@ const LogoCanvas = () => {
       <Logo scale={handleSize()} />
 
       <ContactShadows
-        position={[0, -2, 0]}
+        position={[0, handleShadow(), 0]}
         opacity={0.75}
         scale={10}
         blur={3}
