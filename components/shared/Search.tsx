@@ -8,17 +8,19 @@ import { useRouter, useSearchParams } from "next/navigation";
 
 type SearchProps = {
   placeholder?: string;
-  setSearchQuery: Dispatch<SetStateAction<string>>; // Add setSearchQuery prop
 };
 
-const Search = ({ placeholder = "Search...", setSearchQuery }: SearchProps) => {
+const Search = ({
+  placeholder = "Search title...",
+}: {
+  placeholder?: string;
+}) => {
   const [query, setQuery] = useState("");
   const router = useRouter();
   const searchParams = useSearchParams();
 
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
-      setSearchQuery(query);
       let newUrl = "";
 
       if (query) {
@@ -38,7 +40,7 @@ const Search = ({ placeholder = "Search...", setSearchQuery }: SearchProps) => {
     }, 300);
 
     return () => clearTimeout(delayDebounceFn);
-  }, [query, searchParams, router, setSearchQuery]);
+  }, [query, searchParams, router]);
 
   return (
     <div className="flex-center min-h-[54px] w-full overflow-hidden rounded-sm bg-grey-50 dark:bg-[#191919] px-4 py-2">
