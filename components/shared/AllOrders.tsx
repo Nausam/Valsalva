@@ -93,7 +93,7 @@ const AllOrders = async () => {
                       <td className="min-w-[350px] flex-1 py-4 pr-4 dark:text-gray-400">
                         {row.bladeSize}
                       </td>
-                      <td className="min-w-[200px] py-4 dark:text-gray-400">{`${row.buyer.firstName} ${row.buyer.lastName}`}</td>
+                      <td className="min-w-[200px] py-4 dark:text-gray-400">{`${row.buyer?.firstName} ${row.buyer?.lastName}`}</td>
                       <td className="min-w-[200px] py-4 dark:text-gray-400">
                         {formatDateTime(row.createdAt).dateTime}
                       </td>

@@ -257,8 +257,6 @@ export async function getAllOrders({
         select: "_id firstName lastName",
       });
 
-    console.log(orders);
-
     const ordersCount = await Order.countDocuments();
 
     return {

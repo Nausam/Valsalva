@@ -1,18 +1,24 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { Input } from "../ui/input";
 import { formUrlQuery, removeKeysFromQuery } from "@/lib/utils";
 import { useRouter, useSearchParams } from "next/navigation";
 
-const Search = ({ placeholder = "Search..." }: { placeholder?: string }) => {
+type SearchProps = {
+  placeholder?: string;
+  setSearchQuery: Dispatch<SetStateAction<string>>; // Add setSearchQuery prop
+};
+
+const Search = ({ placeholder = "Search...", setSearchQuery }: SearchProps) => {
   const [query, setQuery] = useState("");
   const router = useRouter();
   const searchParams = useSearchParams();
 
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
+      setSearchQuery(query);
       let newUrl = "";
 
       if (query) {
@@ -32,7 +38,7 @@ const Search = ({ placeholder = "Search..." }: { placeholder?: string }) => {
     }, 300);
 
     return () => clearTimeout(delayDebounceFn);
-  }, [query, searchParams, router]);
+  }, [query, searchParams, router, setSearchQuery]);
 
   return (
     <div className="flex-center min-h-[54px] w-full overflow-hidden rounded-sm bg-grey-50 dark:bg-[#191919] px-4 py-2">
