@@ -14,6 +14,7 @@ export type UpdateUserParams = {
   lastName: string;
   username: string;
   photo: string;
+  address: string;
 };
 
 // ====== PRODUCT PARAMS

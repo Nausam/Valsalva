@@ -90,6 +90,7 @@ export async function POST(req: Request) {
       lastName: last_name,
       username: username!,
       photo: image_url,
+      address: "NONE",
     };
 
     const updatedUser = await updateUser(id, user);
