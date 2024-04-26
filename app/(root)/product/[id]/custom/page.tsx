@@ -22,7 +22,7 @@ const ProductDetails = async ({
 
   return (
     <>
-      <section className="flex justify-center md:mt-16 mt-20">
+      <section className="flex justify-center md:mt-5 mt-20">
         <div className="wrapper grid grid-cols-1 lg:grid-cols-2 2xl:max-w-7xl sm:py-10 items-center">
           <div className="flex items-center justify-center h-full">
             <Suspense fallback={<div>Loading...</div>}>

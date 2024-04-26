@@ -13,11 +13,15 @@ type CardProps = {
 
 const Card = ({ product, hasOrderLink, hidePrice }: CardProps) => {
   const { sessionClaims } = auth();
+  const user = auth();
   const userId = sessionClaims?.userId as string;
 
   const isProductCreator =
     product && product.creator && product.creator._id === userId;
   // const isProductCreator = product.creator._id === userId.toString();
+
+  const admins = [process.env.ADMIN1, process.env.ADMIN2];
+  const isAdmin = user.userId !== null && admins.includes(user.userId);
 
   return (
     <div className="relative flex w-full flex-col">
@@ -47,7 +51,7 @@ const Card = ({ product, hasOrderLink, hidePrice }: CardProps) => {
             </div>
           )}
 
-          <div className="flex flex-col items-start gap-3">
+          <div className="flex w-full flex-col items-start gap-3">
             <Link href={`/product/${product._id}`}>
               <p className="p-medium-16 text-black dark:text-gray-300">
                 {product.title}

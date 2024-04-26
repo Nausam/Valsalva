@@ -41,6 +41,13 @@ export const productDefaultValues = {
   footPocketColor: "",
 };
 
+export const userDefaultValues = {
+  username: "",
+  email: "",
+  firstName: "",
+  lastName: "",
+};
+
 export const EditorTabs = [
   // {
   //   name: "colorpicker",

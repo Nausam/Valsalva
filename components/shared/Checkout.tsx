@@ -30,6 +30,7 @@ const Checkout = ({
   imageUrl: string;
   isAnySelectEmpty: boolean;
 }) => {
+  console.log("isAnySelectEmpty", isAnySelectEmpty);
   useEffect(() => {
     // Check to see if this is a redirect back from Checkout
     const query = new URLSearchParams(window.location.search);

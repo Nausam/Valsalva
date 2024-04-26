@@ -160,14 +160,13 @@ const CheckoutButton = ({ product }: { product: IProduct }) => {
             )}
 
             <div className="flex gap-10 flex-wrap">
-              {pathname != "/product/65e9d07d684eaf43ce92ee67/custom" && (
-                <CustomSelect
-                  title="Foot Pocket Color"
-                  selectItem1="Black"
-                  selectItem2="White"
-                  handleValueChange={handleColorChange}
-                />
-              )}
+              <CustomSelect
+                title="Foot Pocket Color"
+                selectItem1="Black"
+                selectItem2="White"
+                handleValueChange={handleColorChange}
+              />
+
               <CustomSelect
                 title="Blade Angle"
                 selectItem1="Blade Angle ~ 20°"

@@ -112,6 +112,13 @@ const CustomCheckoutButton = ({ product }: { product: IProduct }) => {
     setSelectedBladeCut(cut);
   };
 
+  const isAnySelectEmpty =
+    !selectedFootPocketColor ||
+    !selectedBladeAngle ||
+    !selectedSoftness ||
+    !selectedBladeSize ||
+    !selectedBladeCut;
+
   return (
     <>
       <div className="flex items-center gap-3">
@@ -162,14 +169,13 @@ const CustomCheckoutButton = ({ product }: { product: IProduct }) => {
             )}
 
             <div className="flex gap-10 flex-wrap">
-              {pathname != "/product/65e9d07d684eaf43ce92ee67/custom" && (
-                <CustomSelect
-                  title="Foot Pocket Color"
-                  selectItem1="Black"
-                  selectItem2="White"
-                  handleValueChange={handleColorChange}
-                />
-              )}
+              <CustomSelect
+                title="Foot Pocket Color"
+                selectItem1="Black"
+                selectItem2="White"
+                handleValueChange={handleColorChange}
+              />
+
               <CustomSelect
                 title="Blade Angle"
                 selectItem1="Blade Angle ~ 20°"
@@ -284,6 +290,7 @@ const CustomCheckoutButton = ({ product }: { product: IProduct }) => {
                 bladeCut={selectedBladeCut}
                 imageUrl={imageUrl}
                 disabled={!formSubmitted}
+                isAnySelectEmpty={isAnySelectEmpty}
               />
             </div>
           </div>
