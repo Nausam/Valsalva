@@ -1,5 +1,3 @@
-import { IUser } from "@/lib/database/models/user.model";
-
 // ====== USER PARAMS
 export type CreateUserParams = {
   clerkId: string;
@@ -11,13 +9,10 @@ export type CreateUserParams = {
 };
 
 export type UpdateUserParams = {
-  userId: string;
-  user: {
-    address: string;
-    phoneNumber: string;
-    profileCompleted: boolean;
-  };
-  path: string;
+  firstName: string;
+  lastName: string;
+  username: string;
+  photo: string;
 };
 
 // ====== PRODUCT PARAMS

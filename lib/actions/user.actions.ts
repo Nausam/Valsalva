@@ -49,33 +49,6 @@ export async function updateUser(clerkId: string, user: UpdateUserParams) {
   }
 }
 
-export async function updateUserProfile({
-  userId,
-  user,
-  path,
-}: UpdateUserParams) {
-  try {
-    await connectToDatabase();
-
-    const userToUpdate = await User.findById(userId);
-    if (!userToUpdate) {
-      throw new Error("User not found");
-    }
-
-    const updatedUser = await User.findByIdAndUpdate(
-      userId,
-      { ...user },
-      { new: true }
-    );
-    revalidatePath(path); // Only if using Next.js and ISR
-
-    return JSON.parse(JSON.stringify(updatedUser));
-  } catch (error) {
-    handleError(error);
-    throw new Error("Failed to update user");
-  }
-}
-
 export async function deleteUser(clerkId: string) {
   try {
     await connectToDatabase();

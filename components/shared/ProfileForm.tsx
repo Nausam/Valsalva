@@ -51,16 +51,12 @@ const ProfileForm = ({ userId, user }: ProductFormProps) => {
     try {
       const updatedUser = await updateUserProfile({
         userId,
-        user: {
-          ...values,
-          address: "",
-          phoneNumber: "",
-        },
+        user: values,
         path: "/profile",
       });
       if (updatedUser) {
         form.reset();
-        router.push(`/profile/${updatedUser._id}`);
+        router.push("/");
         toast({
           title: "Profile updated successfully",
         });

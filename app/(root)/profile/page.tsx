@@ -10,8 +10,6 @@ import { SearchParamProps } from "@/types";
 import { auth } from "@clerk/nextjs";
 import Link from "next/link";
 import React from "react";
-import { getUserById } from "@/lib/actions/user.actions";
-import ProfileForm from "@/components/shared/ProfileForm";
 
 export const metadata: Metadata = {
   title: "Profile | Valsalva",
@@ -34,8 +32,6 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
   //   page: productsPage,
   // });
 
-  const user = await getUserById(userId);
-
   return (
     <>
       <section className="mt-20">
@@ -50,12 +46,6 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
             <Link href="/shop">Explore More</Link>
           </Button>
         </div>
-      </section>
-
-      <section className="wrapper my-8 items-center flex flex-col gap-8 md:gap-12">
-        <p>Complete Profile</p>
-
-        <ProfileForm user={user} userId={userId} />
       </section>
 
       <section className="wrapper my-8 items-center flex flex-col gap-8 md:gap-12">
