@@ -12,3 +12,11 @@ export const productFormSchema = z.object({
   isAvailable: z.boolean(),
   footPocketColor: z.string().min(3, "Please add a color"),
 });
+
+export const profileFormSchema = z.object({
+  street: z.string().min(1, "Street cannot be empty"),
+  city: z.string().min(1, "City cannot be empty"),
+  zipCode: z.string().min(1, "Zip code cannot be empty"),
+  country: z.string().min(1, "Country cannot be empty"),
+  phoneNumber: z.string().min(1, "Phone number cannot be empty"),
+});

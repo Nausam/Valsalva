@@ -58,7 +58,6 @@ const Checkout = ({
       bladeCut: bladeCut,
       imageUrl: imageUrl,
     };
-    console.log("Order Details:", order);
     await checkoutOrder(order);
   };
 

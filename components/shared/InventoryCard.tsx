@@ -4,13 +4,29 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+
 type CardProps = {
   product: IProduct;
   hasOrderLink?: boolean;
   hidePrice?: boolean;
 };
 
-const InventoryCard = ({ product, hasOrderLink, hidePrice }: CardProps) => {
+const InventoryCard = async ({
+  product,
+  hasOrderLink,
+  hidePrice,
+}: CardProps) => {
   const { sessionClaims } = auth();
   const userId = sessionClaims?.userId as string;
 
@@ -19,26 +35,14 @@ const InventoryCard = ({ product, hasOrderLink, hidePrice }: CardProps) => {
   // const isProductCreator = product.creator._id === userId.toString();
 
   return (
-    <div className="relative flex min-h-[350px] w-full max-w-[680px] flex-col overflow-hidden rounded-sm bg-white dark:bg-[#191919] shadow-lg hover:shadow-xl md:min-h-[238px] hover:scale-105 border dark:border-gray-800 transition-all duration-300">
-      <div className="flex md:justify-between items-center md:flex-row flex-col p-5 gap-5">
-        <Image
-          src={product.imageUrl}
-          width={350}
-          height={70}
-          alt="product image"
-          className="flex-1 rounded-sm"
-        />
-
+    <div className="flex flex-col overflow-hidden rounded-sm bg-white dark:bg-[#191919] shadow-lg hover:shadow-xl border dark:border-gray-800 transition-all duration-300 sm:w-[500px] w-[400px]">
+      <div className="flex md:justify-between items-center md:flex-row flex-col p-5 gap-5 ">
         <div className="flex flex-col gap-5">
           <p className="p-medium-18 md:p-medium-20 text-black dark:text-gray-300">
-            {product.title}
+            {product.product.title}
           </p>
 
-          {/* <p className="w-72 text-sm text-grey-500 flex-start dark:text-gray-400">
-            {product.description}
-          </p> */}
-
-          {isProductCreator && !hidePrice && (
+          {/* {isProductCreator && !hidePrice && (
             <div className="absolute left-2 top-2 flex flex-col gap-4 rounded-xl bg-white p-3 shadow-sm transition-all">
               <Link href={`/product/${product._id}/update`}>
                 <Image
@@ -49,7 +53,7 @@ const InventoryCard = ({ product, hasOrderLink, hidePrice }: CardProps) => {
                 />
               </Link>
             </div>
-          )}
+          )} */}
 
           <div className="flex-start">
             <div className="">
@@ -65,17 +69,78 @@ const InventoryCard = ({ product, hasOrderLink, hidePrice }: CardProps) => {
                 </div>
               ) : (
                 <div className="flex gap-2">
-                  <p className="p-semibold-14 w-min p-2 rounded-sm border border-green-500 px-4 text-green-600 flex-center">
+                  {/* <p className="p-semibold-14 w-min p-2 rounded-sm border border-green-500 px-4 text-green-600 flex-center">
                     Purchased
-                  </p>
+                  </p> */}
 
-                  {hasOrderLink && (
-                    <Link href={`/orders?eventId=${product._id}`}>
+                  {/* {hasOrderLink && (
+                    <Link href={`/orders/my-order/${product._id}`}>
                       <p className="p-semibold-14 w-36 p-2 rounded-sm border border-black/75 bg-black/80 px-4 text-white flex-center hover:bg-transparent dark:bg-gray-200 dark:border-white dark:text-black dark:hover:bg-transparent dark:hover:text-white hover:text-black transition-all duration-300">
                         Order Details
                       </p>
                     </Link>
-                  )}
+                  )} */}
+
+                  <AlertDialog>
+                    <AlertDialogTrigger className="p-semibold-14 w-36 p-2 rounded-sm border dark:border-[#343434] hover:scale-105 hover:shadow-md transition-all duration-300">
+                      Order Details
+                    </AlertDialogTrigger>
+                    <AlertDialogContent className="bg-white dark:bg-[#191919] border-2 dark:border-gray-800">
+                      <AlertDialogHeader>
+                        {/* <Image
+                          src={product.product.imageUrl}
+                          width={300}
+                          height={70}
+                          alt="product image"
+                          className="flex-1 rounded-sm mx-auto"
+                        /> */}
+                        <AlertDialogTitle className="flex h3-bold justify-center text-center mb-5">
+                          <div>{product.product.title}</div>
+                        </AlertDialogTitle>
+                      </AlertDialogHeader>
+
+                      <AlertDialogHeader className="mt-3">
+                        <AlertDialogTitle>Foot Pocket Color</AlertDialogTitle>
+                        <AlertDialogDescription className="p-regular-16 dark:text-gray-300 text-black">
+                          {product.footPocketColor}
+                        </AlertDialogDescription>
+                      </AlertDialogHeader>
+
+                      <AlertDialogHeader className="mt-3">
+                        <AlertDialogTitle>Blade Angle</AlertDialogTitle>
+                        <AlertDialogDescription className="p-regular-16 dark:text-gray-300 text-black">
+                          {product.bladeAngle}
+                        </AlertDialogDescription>
+                      </AlertDialogHeader>
+
+                      <AlertDialogHeader className="mt-3">
+                        <AlertDialogTitle>Softness</AlertDialogTitle>
+                        <AlertDialogDescription className="p-regular-16 dark:text-gray-300 text-black">
+                          {product.softness}
+                        </AlertDialogDescription>
+                      </AlertDialogHeader>
+
+                      <AlertDialogHeader className="mt-3">
+                        <AlertDialogTitle>Blade Size</AlertDialogTitle>
+                        <AlertDialogDescription className="p-regular-16 dark:text-gray-300 text-black">
+                          {product.bladeSize}
+                        </AlertDialogDescription>
+                      </AlertDialogHeader>
+
+                      <AlertDialogHeader className="mt-3">
+                        <AlertDialogTitle>Total Price</AlertDialogTitle>
+                        <AlertDialogDescription className="p-regular-16 dark:text-gray-300 text-black">
+                          {`$${product.totalAmount}`}
+                        </AlertDialogDescription>
+                      </AlertDialogHeader>
+
+                      <AlertDialogFooter>
+                        <AlertDialogCancel className="border border-[#343434] hover:scale-105 hover:bg-transparent transition-all duration-300">
+                          Close
+                        </AlertDialogCancel>
+                      </AlertDialogFooter>
+                    </AlertDialogContent>
+                  </AlertDialog>
                 </div>
               )}
             </div>

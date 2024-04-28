@@ -6,7 +6,6 @@ export type CreateUserParams = {
   username: string;
   email: string;
   photo: string;
-  address: string;
 };
 
 export type UpdateUserParams = {
@@ -15,6 +14,16 @@ export type UpdateUserParams = {
   username: string;
   photo: string;
   address: string;
+};
+
+export type UpdateProfileParams = {
+  address: {
+    country: string;
+    city: string;
+    street: string;
+    zipCode: string;
+    phoneNumber: string;
+  };
 };
 
 // ====== PRODUCT PARAMS
@@ -135,6 +144,7 @@ export type GetOrdersByUserParams = {
   userId: string | null;
   limit?: number;
   page: string | number | null;
+  query: string;
 };
 
 // ====== URL QUERY PARAMS

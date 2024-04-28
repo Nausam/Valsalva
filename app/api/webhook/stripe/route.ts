@@ -27,6 +27,7 @@ export async function POST(request: Request) {
     const order = {
       stripeId: id,
       productId: metadata?.productId || "",
+      orderId: metadata?.orderId || "",
       buyerId: metadata?.buyerId || "",
       totalAmount: amount_total ? (amount_total / 100).toString() : "0",
       footPocketColor: metadata?.footPocketColor || "",

@@ -20,8 +20,6 @@ export const checkoutOrder = async (order: CheckoutOrderParams) => {
 
   const price = Number(order.price) * 100;
 
-  console.log("ORDER:", order);
-
   try {
     const session = await stripe.checkout.sessions.create({
       line_items: [
@@ -75,7 +73,6 @@ export const createOrder = async (order: CreateOrderParams) => {
 
     return JSON.parse(JSON.stringify(newOrder));
   } catch (error) {
-    console.error("Error creating order:", error);
     handleError(error);
   }
 };
@@ -145,7 +142,7 @@ export async function getOrdersByProduct({
 // GET ORDERS BY USER
 export async function getOrdersByUser({
   userId,
-  limit = 5,
+  limit = 6,
   page,
 }: GetOrdersByUserParams) {
   try {
@@ -213,8 +210,6 @@ export async function getOrdersBySpecificUser({
         select: "_id firstName lastName",
       });
 
-    console.log(orders);
-
     const ordersCount = await Order.distinct("product._id").countDocuments(
       conditions
     );
@@ -229,15 +224,21 @@ export async function getOrdersBySpecificUser({
 }
 
 export async function getAllOrders({
-  limit = 100,
+  limit = 6,
   page,
+  query,
 }: GetOrdersByUserParams) {
   try {
     await connectToDatabase();
 
     const skipAmount = (Number(page) - 1) * limit;
 
-    const orders = await Order.find()
+    let searchCondition = {};
+    if (query && ObjectId.isValid(query)) {
+      searchCondition = { _id: new ObjectId(query) };
+    }
+
+    const orders = await Order.find(searchCondition)
       .sort({ createdAt: "desc" })
       .skip(skipAmount)
       .limit(limit)
@@ -257,7 +258,7 @@ export async function getAllOrders({
         select: "_id firstName lastName",
       });
 
-    const ordersCount = await Order.countDocuments();
+    const ordersCount = await Order.countDocuments(searchCondition);
 
     return {
       data: JSON.parse(JSON.stringify(orders)),
