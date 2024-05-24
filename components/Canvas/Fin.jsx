@@ -57,12 +57,12 @@ const Fin = () => {
   const { Model_Color, isLogoTexture, isFullTexture } = useControls(
     "Color Settings",
     {
-      footPocketColor: {
-        label: "Foot Pocket Color",
-        options: customColorNames,
-        getValueToStore: (value) => colorMap[value], // Map the selected color name to its hex value
-        onChange: (value) => (state.footPocketColor = colorMap[value]),
-      },
+      // footPocketColor: {
+      //   label: "Foot Pocket Color",
+      //   options: customColorNames,
+      //   getValueToStore: (value) => colorMap[value], // Map the selected color name to its hex value
+      //   onChange: (value) => (state.footPocketColor = colorMap[value]),
+      // },
       finColor: {
         label: "Fin Color",
         value: snap.finColor,

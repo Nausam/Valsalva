@@ -1,9 +1,11 @@
-import { Suspense } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import AllOrders from "@/components/shared/AllOrders";
 import CreateProduct from "@/components/shared/CreateProduct";
+import { SearchParamProps } from "@/types";
 
-const AdminPage = () => {
+const AdminPage = ({ searchParams }: SearchParamProps) => {
+  const ordersPage = Number(searchParams?.ordersPage) || 1;
+  const searchText = (searchParams?.query as string) || "";
   return (
     <div className="wrapper mt-20">
       <Tabs defaultValue="orders">
@@ -12,13 +14,7 @@ const AdminPage = () => {
           <TabsTrigger value="create">Create</TabsTrigger>
         </TabsList>
         <TabsContent value="orders">
-          <Suspense
-            fallback={
-              <div className="flex items-center justify-center">Loading...</div>
-            }
-          >
-            <AllOrders />
-          </Suspense>
+          <AllOrders ordersPage={ordersPage} searchText={searchText} />
         </TabsContent>
         <TabsContent value="create">
           <CreateProduct />

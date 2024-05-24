@@ -26,6 +26,7 @@ const Orders = async ({ searchParams }: SearchParamProps) => {
   const userId = sessionClaims?.userId as string;
 
   const result = await getOrdersBySpecificUser({
+    query: "",
     userId,
     page: 1,
   });

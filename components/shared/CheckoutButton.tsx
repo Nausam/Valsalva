@@ -17,6 +17,14 @@ import { useForm } from "react-hook-form";
 import * as z from "zod";
 
 import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+
+import {
   Form,
   FormControl,
   FormDescription,
@@ -32,6 +40,8 @@ import { customFormSchema } from "@/lib/customValidator";
 import { toast } from "../ui/use-toast";
 import { usePathname } from "next/navigation";
 import CustomCheckout from "./CustomCheckout";
+import Image from "next/image";
+import { cuts } from "@/utils/data";
 
 const CheckoutButton = ({ product }: { product: IProduct }) => {
   const { user } = useUser();
@@ -160,38 +170,72 @@ const CheckoutButton = ({ product }: { product: IProduct }) => {
             )}
 
             <div className="flex gap-10 flex-wrap">
-              {pathname != "/product/65e9d07d684eaf43ce92ee67/custom" && (
-                <CustomSelect
-                  title="Foot Pocket Color"
-                  selectItem1="Black"
-                  selectItem2="White"
-                  handleValueChange={handleColorChange}
-                />
-              )}
+              <CustomSelect
+                title="Foot Pocket Color"
+                selectItems={["Black", "White"]}
+                handleValueChange={handleColorChange}
+              />
+
               <CustomSelect
                 title="Blade Angle"
-                selectItem1="Blade Angle ~ 20°"
-                selectItem2="Blade Angle ~ 33°"
+                selectItems={[
+                  "Blade Angle ~ 15°",
+                  "Blade Angle ~ 26°",
+                  "Blade Angle ~ 29°",
+                  "Blade Angle ~ 30°",
+                ]}
                 handleValueChange={handleBladeAngleChange}
               />
               <CustomSelect
-                title="Softness"
-                selectItem1="Extra Soft"
-                selectItem2="Medium"
+                title="Hardness"
+                selectItems={["Soft", "Medium", "Hard"]}
                 handleValueChange={handleSoftnessChange}
               />
               <CustomSelect
                 title="Blade Size"
-                selectItem1="Short | 70cm | 28 inch | 2.3 Feet"
-                selectItem2="Standard | 80cm | 32 inch | 2.6 Feet"
+                selectItems={[
+                  "35-36 cm",
+                  "37-38 cm",
+                  "39-40 cm",
+                  "41-42 cm",
+                  "43-44 cm",
+                  "45-46 cm",
+                ]}
                 handleValueChange={handleBladeSizeChange}
               />
               <CustomSelect
                 title="Blade Cut"
-                selectItem1="Round"
-                selectItem2="Rectangular"
+                selectItems={[
+                  "01",
+                  "02",
+                  "03",
+                  "04",
+                  "05",
+                  "06",
+                  "07",
+                  "08",
+                  "09",
+                  "10",
+                ]}
                 handleValueChange={handleBladeCutChange}
               />
+
+              <Carousel>
+                <CarouselContent>
+                  {cuts.map((cut) => (
+                    <CarouselItem key={cut.id} className="basis-1/3">
+                      <Image
+                        src={cut.imageUrl}
+                        height={100}
+                        width={100}
+                        alt="blade cut image"
+                        className="rounded-sm dark:invert-0 invert"
+                        loading="lazy"
+                      />
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+              </Carousel>
             </div>
 
             <div className="flex mt-10 justify-end">

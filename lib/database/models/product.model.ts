@@ -10,8 +10,38 @@ export interface IProduct extends Document {
   price: string;
   isAvailable: boolean;
   footPocketColor: string;
+  product: {
+    _id: string;
+    title: string;
+    creator: { _id: string; firstName: string; lastName: string };
+    imageUrl: string;
+  };
+  totalAmount: string;
+  bladeAngle: string;
+  softness: string;
+  bladeSize: string;
+  bladeCut: string;
+  buyer: { _id: string; firstName: string; lastName: string };
   category: { _id: string; name: string };
   creator: { _id: string; firstName: string; lastName: string };
+}
+
+export interface IOrderedProduct extends Document {
+  _id: string;
+  createdAt: Date;
+  stripeId: string;
+  totalAmount: string;
+  footPocketColor: string;
+  bladeAngle: string;
+  softness: string;
+  bladeSize: string;
+  imageUrl: string;
+  product: {
+    _id: string;
+    title: string;
+    creator: { _id: string; firstName: string; lastName: string };
+  };
+  buyer: { _id: string; firstName: string; lastName: string };
 }
 
 const ProductSchema = new Schema({

@@ -18,6 +18,7 @@ const CustomCheckout = ({
   bladeCut,
   imageUrl,
   disabled,
+  isAnySelectEmpty,
 }: {
   product: IProduct;
   userId: string;
@@ -28,7 +29,9 @@ const CustomCheckout = ({
   bladeCut: string;
   imageUrl: string;
   disabled: boolean;
+  isAnySelectEmpty: boolean;
 }) => {
+  console.log("isAnySelectEmpty", isAnySelectEmpty);
   useEffect(() => {
     // Check to see if this is a redirect back from Checkout
     const query = new URLSearchParams(window.location.search);
@@ -62,7 +65,7 @@ const CustomCheckout = ({
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (disabled)
+    if (isAnySelectEmpty)
       return toast({
         title: "UPLOAD IMAGE",
         description: "Please upload an image to proceed with the checkout",
