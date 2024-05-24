@@ -11,14 +11,12 @@ import {
 type CustomizeSelectProps = {
   handleValueChange: (value: string) => void;
   title: string;
-  selectItem1: string;
-  selectItem2: string;
+  selectItems: string[];
 };
 
 const CustomSelect = ({
   handleValueChange,
-  selectItem1,
-  selectItem2,
+  selectItems,
   title,
 }: CustomizeSelectProps) => {
   return (
@@ -31,18 +29,15 @@ const CustomSelect = ({
           <SelectValue placeholder="Select" />
         </SelectTrigger>
         <SelectContent className="dark:bg-[#191919]">
-          <SelectItem
-            className="select-item p-regular-14 dark:text-white dark:hover:bg-[#252525]"
-            value={selectItem1}
-          >
-            {selectItem1}
-          </SelectItem>
-          <SelectItem
-            className="select-item p-regular-14 dark:text-white dark:hover:bg-[#252525]"
-            value={selectItem2}
-          >
-            {selectItem2}
-          </SelectItem>
+          {selectItems.map((item, index) => (
+            <SelectItem
+              key={item}
+              className="select-item p-regular-14 dark:text-white dark:hover:bg-[#252525]"
+              value={item}
+            >
+              {item}
+            </SelectItem>
+          ))}
         </SelectContent>
       </Select>
     </div>

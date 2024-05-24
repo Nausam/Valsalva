@@ -42,12 +42,12 @@ const Header = async () => {
 
           {isAdmin && (
             <SignedIn>
-              <Menubar className="ml-5 dark:bg-[#222222] dark:border-none dark:hover:bg-[#323232]">
+              <Menubar className="ml-5 dark:bg-transparent bg-transparent border-[#929292] dark:border-[#727272] dark:hover:bg-[#323232]">
                 <MenubarMenu>
                   <MenubarTrigger className="cursor-pointer">
                     Admin
                   </MenubarTrigger>
-                  <MenubarContent className="dark:bg-[#222222] dark:border-none">
+                  <MenubarContent className="dark:bg-[#222222] dark:border-[#323232]">
                     <Link href="/admin">
                       <MenubarItem className="dark:hover:bg-[#323232] hover:bg-primary-50 cursor-pointer">
                         Dashboard

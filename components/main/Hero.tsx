@@ -1,14 +1,12 @@
-"use client";
-
 import Link from "next/link";
 import { Button } from "../ui/button";
 import { AuroraBackground } from "../ui/AuroraBackground";
-import { motion } from "framer-motion";
+import { MotionDiv } from "../shared/MotionDiv";
 
 const Hero = () => {
   return (
     <AuroraBackground>
-      <motion.div
+      <MotionDiv
         initial={{ opacity: 0.0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{
@@ -32,7 +30,7 @@ const Hero = () => {
         >
           <Link href="/shop">Explore Now</Link>
         </Button>
-      </motion.div>
+      </MotionDiv>
     </AuroraBackground>
   );
 };
