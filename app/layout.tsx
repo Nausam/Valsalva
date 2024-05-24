@@ -1,13 +1,9 @@
-import dynamic from "next/dynamic";
-
 import type { Metadata } from "next";
 import { Cinzel } from "next/font/google";
 import { Ubuntu } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { ThemeProvider } from "@/Providers/ThemeProvider";
-
-// const dynamicThemeProvider = dynamic(() => import("@/Providers/ThemeProvider"));
 
 const cinzel = Cinzel({
   subsets: ["latin"],

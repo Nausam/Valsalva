@@ -37,12 +37,12 @@ const Header = async () => {
           />
         </Link>
 
-        <nav className="md:flex-between mx-auto hidden w-full max-w-xs">
+        <nav className="md:flex-between mx-auto hidden w-full max-w-md">
           <NavItems />
 
           {isAdmin && (
             <SignedIn>
-              <Menubar className="ml-10 dark:bg-[#222222] dark:border-none dark:hover:bg-[#323232]">
+              <Menubar className="ml-5 dark:bg-[#222222] dark:border-none dark:hover:bg-[#323232]">
                 <MenubarMenu>
                   <MenubarTrigger className="cursor-pointer">
                     Admin
