@@ -1,10 +1,14 @@
-import Collection from "@/components/shared/Collection";
+import dynamic from "next/dynamic";
+
 import { getAllProducts } from "@/lib/actions/product.actions";
 import { SearchParamProps } from "@/types";
 
-import Hero from "@/components/main/Hero";
-import AboutUs from "@/components/main/AboutUs";
-import Faq from "@/components/main/Faq";
+const DynamicHero = dynamic(() => import("@/components/main/Hero"));
+const DynamicCollection = dynamic(
+  () => import("@/components/shared/Collection")
+);
+const DynamicAboutUs = dynamic(() => import("@/components/main/AboutUs"));
+const DynamicFaq = dynamic(() => import("@/components/main/Faq"));
 
 export default async function Home({ searchParams }: SearchParamProps) {
   const page = Number(searchParams?.page) || 1;
@@ -20,15 +24,15 @@ export default async function Home({ searchParams }: SearchParamProps) {
 
   return (
     <>
-      <Hero />
-      <AboutUs />
+      <DynamicHero />
+      <DynamicAboutUs />
       <section id="#products">
         <div className="wrapper my-20 items-center flex flex-col gap-8 md:gap-12 ">
           <h2 className="h2-bold text-gray-800 dark:text-white mt-10">
             Featured Products
           </h2>
 
-          <Collection
+          <DynamicCollection
             data={products?.data}
             emptyTitle="No products found"
             emptyStateSubtext="Come back later"
@@ -40,7 +44,7 @@ export default async function Home({ searchParams }: SearchParamProps) {
           />
         </div>
       </section>
-      <Faq />
+      <DynamicFaq />
     </>
   );
 }

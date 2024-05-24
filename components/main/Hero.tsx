@@ -1,12 +1,14 @@
 "use client";
 
+import Link from "next/link";
 import LogoCanvas from "../Canvas/LogoCanvas";
 import { Suspense } from "react";
+import { Button } from "../ui/button";
 
 const Hero = () => {
   return (
     <section className="mt-20 nav-height relative">
-      {/* <div className="wrapper h-5/6 grid grid-cols-1 gap-5 lg:grid-cols-2 2xl:gap-0">
+      <div className="wrapper h-5/6 grid grid-cols-1 gap-5 lg:grid-cols-2 2xl:gap-0">
         <div className="flex flex-col justify-center gap-8 relative z-10">
           <h1 className="h1-bold drop-shadow-md">
             Discover Precision, Power, and Beauty Below.
@@ -24,8 +26,8 @@ const Hero = () => {
             <Link href="/shop">Explore Now</Link>
           </Button>
         </div>
-      </div> */}
-      <div className="wrapper w-full h-full">
+      </div>
+      {/* <div className="wrapper w-full h-full">
         <div className="flex items-center justify-center h-full relative">
           <Suspense fallback={<div>Loading...</div>}>
             <LogoCanvas />
@@ -34,7 +36,7 @@ const Hero = () => {
         <h1 className="text-center absolute bottom-20 right-0 left-0 mx-auto items-center justify-center h1-bold2 drop-shadow-md">
           Discover Precision, Power, and Beauty Below.
         </h1>
-      </div>
+      </div> */}
     </section>
   );
 };
