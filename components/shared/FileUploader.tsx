@@ -71,7 +71,7 @@ export function FileUploader({
             alt="file upload"
           />
           <h3 className="mb-2 mt-2">Drag photo here</h3>
-          <p className="p-medium-12 mb-4">SVG, PNG, JPG</p>
+          <p className="p-medium-12 mb-4">SVG, PNG, JPG : MAX 10MB</p>
           <Button
             type="button"
             className="rounded-full dark:bg-[#252525] bg-gray-400 hover:bg-gray-500 dark:hover:bg-[#393939] text-white"

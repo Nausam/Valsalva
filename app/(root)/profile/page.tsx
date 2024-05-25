@@ -8,11 +8,7 @@ import { Button } from "@/components/ui/button";
 import { getOrdersByUser } from "@/lib/actions/order.actions";
 import { IOrder } from "@/lib/database/models/order.model";
 import { SearchParamProps } from "@/types";
-import { useState } from "react";
-import { getUserById, updateProfile } from "@/lib/actions/user.actions";
-import { Input } from "@/components/ui/input";
-import ProfileCompletion from "@/components/shared/ProfileCompletion";
-import console from "console";
+import { getUserById } from "@/lib/actions/user.actions";
 
 export const metadata: Metadata = {
   title: "Profile | Valsalva",

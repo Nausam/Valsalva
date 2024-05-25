@@ -20,7 +20,7 @@ const CustomSelect = ({
   title,
 }: CustomizeSelectProps) => {
   return (
-    <div className="w-full">
+    <div className="md:w-[250px] w-full">
       <div className="p-bold-20 my-3  text-grey-600 dark:text-gray-300">
         <p>{title}</p>
       </div>

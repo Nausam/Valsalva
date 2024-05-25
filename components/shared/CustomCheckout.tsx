@@ -31,7 +31,6 @@ const CustomCheckout = ({
   disabled: boolean;
   isAnySelectEmpty: boolean;
 }) => {
-  console.log("isAnySelectEmpty", isAnySelectEmpty);
   useEffect(() => {
     // Check to see if this is a redirect back from Checkout
     const query = new URLSearchParams(window.location.search);
@@ -59,7 +58,6 @@ const CustomCheckout = ({
       bladeCut: bladeCut,
       imageUrl: imageUrl,
     };
-    console.log("Order Details:", order);
     await checkoutOrder(order);
   };
 
@@ -67,8 +65,8 @@ const CustomCheckout = ({
     event.preventDefault();
     if (isAnySelectEmpty)
       return toast({
-        title: "UPLOAD IMAGE",
-        description: "Please upload an image to proceed with the checkout",
+        title: "UPLOAD DESIGN",
+        description: "Please upload your design to proceed with the checkout",
         variant: "destructive",
       });
     await onCheckout();

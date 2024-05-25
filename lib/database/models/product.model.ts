@@ -35,6 +35,7 @@ export interface IOrderedProduct extends Document {
   bladeAngle: string;
   softness: string;
   bladeSize: string;
+  bladeCut: string;
   imageUrl: string;
   product: {
     _id: string;

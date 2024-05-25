@@ -42,19 +42,6 @@ const InventoryCard = async ({
             {product.product.title}
           </p>
 
-          {/* {isProductCreator && !hidePrice && (
-            <div className="absolute left-2 top-2 flex flex-col gap-4 rounded-xl bg-white p-3 shadow-sm transition-all">
-              <Link href={`/product/${product._id}/update`}>
-                <Image
-                  src="/assets/icons/edit.svg"
-                  alt="edit"
-                  width={20}
-                  height={20}
-                />
-              </Link>
-            </div>
-          )} */}
-
           <div className="flex-start">
             <div className="">
               {!hidePrice ? (
@@ -69,18 +56,6 @@ const InventoryCard = async ({
                 </div>
               ) : (
                 <div className="flex gap-2">
-                  {/* <p className="p-semibold-14 w-min p-2 rounded-sm border border-green-500 px-4 text-green-600 flex-center">
-                    Purchased
-                  </p> */}
-
-                  {/* {hasOrderLink && (
-                    <Link href={`/orders/my-order/${product._id}`}>
-                      <p className="p-semibold-14 w-36 p-2 rounded-sm border border-black/75 bg-black/80 px-4 text-white flex-center hover:bg-transparent dark:bg-gray-200 dark:border-white dark:text-black dark:hover:bg-transparent dark:hover:text-white hover:text-black transition-all duration-300">
-                        Order Details
-                      </p>
-                    </Link>
-                  )} */}
-
                   <AlertDialog>
                     <AlertDialogTrigger className="p-semibold-14 w-36 p-2 rounded-sm border dark:border-[#343434] hover:scale-105 hover:shadow-md transition-all duration-300">
                       Order Details
@@ -114,7 +89,7 @@ const InventoryCard = async ({
                       </AlertDialogHeader>
 
                       <AlertDialogHeader className="mt-3">
-                        <AlertDialogTitle>Softness</AlertDialogTitle>
+                        <AlertDialogTitle>Hardness</AlertDialogTitle>
                         <AlertDialogDescription className="p-regular-16 dark:text-gray-300 text-black">
                           {product.softness}
                         </AlertDialogDescription>
