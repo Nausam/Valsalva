@@ -4,7 +4,6 @@ import { loadStripe } from "@stripe/stripe-js";
 import { IProduct } from "@/lib/database/models/product.model";
 import { Button } from "../ui/button";
 import { checkoutOrder } from "@/lib/actions/order.actions";
-import { type } from "os";
 import { toast } from "../ui/use-toast";
 
 loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
@@ -30,7 +29,6 @@ const Checkout = ({
   imageUrl: string;
   isAnySelectEmpty: boolean;
 }) => {
-  console.log("isAnySelectEmpty", isAnySelectEmpty);
   useEffect(() => {
     // Check to see if this is a redirect back from Checkout
     const query = new URLSearchParams(window.location.search);

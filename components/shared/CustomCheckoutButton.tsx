@@ -45,8 +45,6 @@ import { cuts } from "@/utils/data";
 
 const CustomCheckoutButton = ({ product }: { product: IProduct }) => {
   const { user } = useUser();
-  const userId = user?.publicMetadata.userId as string;
-
   const pathname = usePathname();
 
   const [selectedFootPocketColor, setSelectedFootPocketColor] = useState("");
@@ -57,6 +55,8 @@ const CustomCheckoutButton = ({ product }: { product: IProduct }) => {
   const [files, setFiles] = useState<File[]>([]);
   const [imageUrl, setImageUrl] = useState("");
   const [formSubmitted, setFormSubmitted] = useState(false);
+
+  const userId = user?.publicMetadata.userId as string;
 
   const { startUpload } = useUploadThing("imageUploader");
 
@@ -76,7 +76,7 @@ const CustomCheckoutButton = ({ product }: { product: IProduct }) => {
       uploadedImageUrl = uploadedImages[0].url;
       setImageUrl(uploadedImageUrl);
       toast({
-        title: "Image uploaded successfully",
+        title: "Design uploaded successfully",
         description: "Please go ahead with the checkout",
       });
     }
@@ -169,9 +169,9 @@ const CustomCheckoutButton = ({ product }: { product: IProduct }) => {
               </Form>
             )}
 
-            <div className="flex gap-10 flex-wrap">
+            <div className="flex justify-start gap-10 flex-wrap">
               <CustomSelect
-                title="Foot Pocket Color"
+                title="Foot Pocket"
                 selectItems={["Black", "White"]}
                 handleValueChange={handleColorChange}
               />
@@ -236,21 +236,20 @@ const CustomCheckoutButton = ({ product }: { product: IProduct }) => {
                   ))}
                 </CarouselContent>
               </Carousel>
-
-              <div className="flex mt-10 justify-end">
-                <CustomCheckout
-                  product={product}
-                  userId={userId}
-                  footPocketColor={selectedFootPocketColor}
-                  bladeAngle={selectedBladeAngle}
-                  softness={selectedSoftness}
-                  bladeSize={selectedBladeSize}
-                  bladeCut={selectedBladeCut}
-                  imageUrl={imageUrl}
-                  disabled={!formSubmitted}
-                  isAnySelectEmpty={isAnySelectEmpty}
-                />
-              </div>
+            </div>
+            <div className="flex mt-10 md:justify-start justify-end">
+              <CustomCheckout
+                product={product}
+                userId={userId}
+                footPocketColor={selectedFootPocketColor}
+                bladeAngle={selectedBladeAngle}
+                softness={selectedSoftness}
+                bladeSize={selectedBladeSize}
+                bladeCut={selectedBladeCut}
+                imageUrl={imageUrl}
+                disabled={!formSubmitted}
+                isAnySelectEmpty={isAnySelectEmpty}
+              />
             </div>
           </div>
         </SignedIn>

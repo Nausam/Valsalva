@@ -238,7 +238,7 @@ const CheckoutButton = ({ product }: { product: IProduct }) => {
               </Carousel>
             </div>
 
-            <div className="flex mt-10 justify-end">
+            <div className="flex mt-10 md:justify-start justify-end">
               <Checkout
                 product={product}
                 userId={userId}

@@ -85,6 +85,10 @@ const OrderSchema = new Schema({
     type: String,
     required: true,
   },
+  bladeCut: {
+    type: String,
+    required: true,
+  },
   imageUrl: {
     type: String,
   },

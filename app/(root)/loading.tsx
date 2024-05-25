@@ -6,7 +6,14 @@ const loading = () => {
   return (
     <>
       <section className="wrapper flex items-center justify-center h-screen">
-        <div className={classes.loader}></div>
+        <div className={classes.wrapper}>
+          <div className={classes.circle}></div>
+          <div className={classes.circle}></div>
+          <div className={classes.circle}></div>
+          <div className={classes.shadow}></div>
+          <div className={classes.shadow}></div>
+          <div className={classes.shadow}></div>
+        </div>
       </section>
     </>
   );
